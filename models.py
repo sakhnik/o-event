@@ -1,33 +1,20 @@
-
 from sqlalchemy import (
-    Column, Integer, String, Float, ForeignKey, DateTime
+    Column, Integer, String, Float, ForeignKey
 )
 from sqlalchemy.orm import declarative_base, relationship
 
 Base = declarative_base()
-
-class Race(Base):
-    __tablename__ = "races"
-
-    id = Column(Integer, primary_key=True)
-    name = Column(String)
-    description = Column(String)
-
-    stages = relationship("Stage", back_populates="race",
-                          cascade="all, delete-orphan")
 
 
 class Stage(Base):
     __tablename__ = "stages"
 
     id = Column(Integer, primary_key=True)
-    race_id = Column(Integer, ForeignKey("races.id"))
-    number = Column(Integer)    # 1,2,3…
-    date = Column(String)       # stored as ISO date
-    name = Column(String)       # optional (e.g. "Sprint", "Middle")
-    iof_file = Column(String)   # original XML filename for traceability
+    number = Column(Integer)      # 1, 2, …
+    date = Column(String)         # "2025-11-15"
+    name = Column(String)         # Optional (e.g. "Sprint")
+    iof_file = Column(String)     # Original filename
 
-    race = relationship("Race", back_populates="stages")
     map = relationship("MapInfo", uselist=False, back_populates="stage",
                        cascade="all, delete-orphan")
     controls = relationship("Control", back_populates="stage",
@@ -54,10 +41,10 @@ class Control(Base):
     __tablename__ = "controls"
 
     id = Column(Integer, primary_key=True)
-    code = Column(String)       # “31”, “S”, “F”
+    code = Column(String)
     type = Column(String)
-    stage_id = Column(Integer, ForeignKey("stages.id"))
     modify_time = Column(String)
+    stage_id = Column(Integer, ForeignKey("stages.id"))
 
     lng = Column(Float)
     lat = Column(Float)
@@ -78,9 +65,11 @@ class Course(Base):
     modify_time = Column(String)
 
     stage = relationship("Stage", back_populates="courses")
-    controls = relationship("CourseControl",
-                            order_by="CourseControl.seq",
-                            cascade="all, delete-orphan")
+    controls = relationship(
+        "CourseControl",
+        order_by="CourseControl.seq",
+        cascade="all, delete-orphan"
+    )
 
 
 class CourseControl(Base):
@@ -90,7 +79,5 @@ class CourseControl(Base):
     course_id = Column(Integer, ForeignKey("courses.id"))
     seq = Column(Integer)
     type = Column(String)
-    control_code = Column(String, ForeignKey("controls.code"))
+    control_code = Column(String)
     leg_length = Column(Integer)
-
-    control = relationship("Control", foreign_keys=[control_code])
