@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+from receipt import Receipt
+from printer import Printer
 import uvicorn
 from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel
@@ -171,6 +173,9 @@ def receive_card(readout: PunchReadout):
         card.status = determine_status(required_codes, actual_codes)
 
         db.commit()
+
+        with Printer() as p:
+            Receipt(db, card.id).print(p)
 
         return {"status": card.status}
 
