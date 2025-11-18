@@ -7,14 +7,13 @@ class IOFImporter:
         self.session = session
         self.ns = {"iof": "http://www.orienteering.org/datastandard/3.0"}
 
-    def import_stage(self, filename, stage_number, stage_name=None):
+    def import_stage(self, filename, day, stage_name=None):
         tree = ET.parse(filename)
         root = tree.getroot()
 
         stage = Stage(
-            number=stage_number,
-            name=stage_name,
-            iof_file=filename
+            day=day,
+            name=stage_name
         )
         self.session.add(stage)
 
@@ -62,7 +61,7 @@ class IOFImporter:
         # ----- Courses -----
         for course_elem in root.findall("iof:RaceCourseData/iof:Course", self.ns):
             course = Course(
-                name=course_elem.find("iof:Name", self.ns).text.strip(),
+                name=course_elem.find("iof:Name", self.ns).text.strip().replace(' ', ''),
                 length=int(course_elem.find("iof:Length", self.ns).text),
                 climb=int(course_elem.find("iof:Climb", self.ns).text),
                 modify_time=course_elem.get("modifyTime"),

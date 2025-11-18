@@ -1,5 +1,6 @@
+from datetime import date
 from sqlalchemy import (
-    Column, Integer, String, Float, ForeignKey, Enum, JSON
+    Column, Integer, String, Float, DateTime, ForeignKey, Enum, JSON
 )
 from sqlalchemy.orm import declarative_base, relationship
 import enum
@@ -7,14 +8,59 @@ import enum
 Base = declarative_base()
 
 
+class Config(Base):
+    __tablename__ = "config"
+
+    id = Column(Integer, primary_key=True)
+    key = Column(String, unique=True, nullable=False)
+    value = Column(String, nullable=False)
+    type = Column(String, nullable=False)  # "str", "int", "date"
+
+    @staticmethod
+    def set(db, key, value):
+        if isinstance(value, int):
+            typ = "int"
+            val_str = str(value)
+        elif isinstance(value, date):
+            typ = "date"
+            val_str = value.isoformat()
+        else:
+            typ = "str"
+            val_str = str(value)
+
+        # Check if key exists
+        c = db.query(Config).filter_by(key=key).first()
+        if c:
+            # Update existing
+            c.value = val_str
+            c.type = typ
+        else:
+            # Insert new
+            c = Config(key=key, value=val_str, type=typ)
+            db.add(c)
+        db.commit()
+
+    @staticmethod
+    def get(db, key, default=None):
+        c = db.query(Config).filter_by(key=key).first()
+        if not c:
+            return default
+
+        if c.type == "int":
+            return int(c.value)
+        elif c.type == "date":
+            return date.fromisoformat(c.value)
+        else:
+            return c.value
+
+
 class Stage(Base):
     __tablename__ = "stages"
 
     id = Column(Integer, primary_key=True)
-    number = Column(Integer)      # 1, 2, …
-    date = Column(String)         # "2025-11-15"
+    day = Column(Integer)            # 1-based: stage number
     name = Column(String)         # Optional (e.g. "Sprint")
-    iof_file = Column(String)     # Original filename
+    start_time = Column(DateTime)     # time-of-day when start is allowed
 
     map = relationship("MapInfo", uselist=False, back_populates="stage",
                        cascade="all, delete-orphan")
@@ -121,3 +167,34 @@ class Run(Base):
     status = Column(Enum(Status), default=Status.DNS)
 
     competitor = relationship("Competitor", back_populates="runs")
+
+
+class Card(Base):
+    __tablename__ = "cards"
+
+    id = Column(Integer, primary_key=True)
+    card_number = Column(Integer, nullable=False)
+
+    run_id = Column(Integer, ForeignKey("runs.id"), nullable=True)
+
+    start_time = Column(Integer)
+    finish_time = Column(Integer)
+    check_time = Column(Integer)
+
+    readout_datetime = Column(DateTime)
+
+    raw_json = Column(JSON)
+
+    punches = relationship("Punch", back_populates="card",
+                           cascade="all, delete-orphan")
+
+
+class Punch(Base):
+    __tablename__ = "punches"
+
+    id = Column(Integer, primary_key=True)
+    card_id = Column(Integer, ForeignKey("cards.id"), nullable=False)
+    code = Column(Integer)
+    punch_time = Column(Integer)
+
+    card = relationship("Card", back_populates="punches")

@@ -30,7 +30,7 @@ def import_competitors(session, csv_path: Path):
 
             comp = Competitor(
                 reg=row["Reg"].strip() or None,
-                group=row["Group"].strip(),
+                group=row["Group"].strip().replace(' ', ''),
                 sid=int(row["SID"]),
                 first_name=row["First name"].strip(),
                 last_name=row["Last name"].strip(),
