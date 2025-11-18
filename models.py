@@ -1,7 +1,8 @@
 from sqlalchemy import (
-    Column, Integer, String, Float, ForeignKey
+    Column, Integer, String, Float, ForeignKey, Enum, JSON
 )
 from sqlalchemy.orm import declarative_base, relationship
+import enum
 
 Base = declarative_base()
 
@@ -81,3 +82,42 @@ class CourseControl(Base):
     type = Column(String)
     control_code = Column(String)
     leg_length = Column(Integer)
+
+
+class Status(enum.Enum):
+    OK = "OK"
+    DNS = "DNS"
+    MP = "MP"
+    OVT = "OVT"
+
+
+class Competitor(Base):
+    __tablename__ = "competitors"
+
+    id = Column(Integer, primary_key=True)
+    reg = Column(String(20))
+    group = Column(String(50))
+    sid = Column(Integer)
+    first_name = Column(String(100))
+    last_name = Column(String(100))
+    notes = Column(String(500))
+    money = Column(Integer)
+
+    declared_days = Column(JSON)   # e.g. [1,2]
+
+    runs = relationship("Run", back_populates="competitor")
+
+
+class Run(Base):
+    __tablename__ = "runs"
+
+    id = Column(Integer, primary_key=True)
+    competitor_id = Column(Integer, ForeignKey("competitors.id"))
+    day = Column(Integer)
+
+    start = Column(Integer, nullable=True)
+    finish = Column(Integer, nullable=True)
+    result = Column(Integer, nullable=True)
+    status = Column(Enum(Status), default=Status.DNS)
+
+    competitor = relationship("Competitor", back_populates="runs")
