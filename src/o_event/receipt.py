@@ -33,7 +33,7 @@ class Receipt:
         self.club = competitor.group
         self.category = competitor.group
 
-        day = card.raw_json.get("day") or Config.get(self.db, "current_day")
+        day = card.raw_json.get("day") or Config.get(self.db, Config.KEY_CURRENT_DAY)
         if not day:
             raise ValueError("Day not provided in card or config")
 
@@ -63,9 +63,9 @@ class Receipt:
         if not self.course:
             raise ValueError("Course not found for category")
 
-        self.race_name = Config.get(self.db, "race_name", "")
-        self.place = Config.get(self.db, "place", "")
-        self.race_date = Config.get(self.db, "start_date", date.today())
+        self.race_name = Config.get(self.db, Config.KEY_NAME, "")
+        self.place = Config.get(self.db, Config.KEY_PLACE, "")
+        self.race_date = Config.get(self.db, Config.KEY_DATE, date.today())
 
         self.punches = sorted(card.punches, key=lambda p: p.punch_time)
 

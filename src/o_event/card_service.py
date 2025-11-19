@@ -140,7 +140,7 @@ def receive_card(readout: PunchReadout):
             db.commit()
             return {"status": "UNK", "reason": "unknown card"}
 
-        day = Config.get(db, "current_day")
+        day = Config.get(db, Config.KEY_CURRENT_DAY)
         run = get_current_run(db, day, competitor)
 
         # Check for duplicate for this competitor on this stage

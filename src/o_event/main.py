@@ -12,12 +12,8 @@ Session = sessionmaker(bind=engine)
 session = Session()
 
 
-Config.set(session, "name", "O-Halloween")
-Config.set(session, "start_date", date(2025, 11, 15))
-Config.set(session, "current_day", 1)
-Config.set(session, "judge", "John Doe")
-Config.set(session, "secretary", "Jane Smith")
-Config.set(session, "place", "Kyiv")
+Config.create(session, "O-Halloween", date(2025, 11, 15), "John Doe", "Jane Smith", "Kyiv")
+Config.set(session, Config.KEY_CURRENT_DAY, 1)
 
 importer = IOFImporter(session)
 

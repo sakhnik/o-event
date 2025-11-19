@@ -16,6 +16,13 @@ class Config(Base):
     value = Column(String, nullable=False)
     type = Column(String, nullable=False)  # "str", "int", "date"
 
+    KEY_NAME = "name"
+    KEY_DATE = "date"
+    KEY_CURRENT_DAY = "current_day"
+    KEY_JUDGE = "judge"
+    KEY_SECRETARY = "secretary"
+    KEY_PLACE = "place"
+
     @staticmethod
     def set(db, key, value):
         if isinstance(value, int):
@@ -52,6 +59,14 @@ class Config(Base):
             return date.fromisoformat(c.value)
         else:
             return c.value
+
+    @staticmethod
+    def create(db, name: str, start_date: date, judge: str, secretary: str, place: str):
+        Config.set(db, Config.KEY_NAME, name)
+        Config.set(db, Config.KEY_DATE, start_date)
+        Config.set(db, Config.KEY_JUDGE, judge)
+        Config.set(db, Config.KEY_SECRETARY, secretary)
+        Config.set(db, Config.KEY_PLACE, place)
 
 
 class Stage(Base):
