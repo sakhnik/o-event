@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 
+from o_event.csv_importer import CSVImporter
+from o_event.models import Base
+
 import argparse
-import csv
 from pathlib import Path
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-
-from models import Base, Competitor, Run, Status
 
 
 def open_db(path: Path):
@@ -14,47 +14,6 @@ def open_db(path: Path):
     engine = create_engine(f"sqlite:///{path}", future=True)
     Base.metadata.create_all(engine)
     return sessionmaker(bind=engine, expire_on_commit=False)
-
-
-def import_competitors(session, csv_path: Path):
-    """Import competitors from CSV into the race DB."""
-    with csv_path.open(newline='', encoding="utf-8") as f:
-        reader = csv.DictReader(f)
-
-        for row in reader:
-            days_raw = row["Days"].strip()
-            declared_days = (
-                [int(x) for x in days_raw.split(",")]
-                if days_raw else []
-            )
-
-            comp = Competitor(
-                reg=row["Reg"].strip() or None,
-                group=row["Group"].strip().replace(' ', ''),
-                sid=int(row["SID"]),
-                first_name=row["First name"].strip(),
-                last_name=row["Last name"].strip(),
-                notes=(row["Notes"].strip() or None),
-                money=int(row["Money"]),
-                declared_days=declared_days,
-            )
-
-            session.add(comp)
-            session.flush()  # comp.id available
-
-            for day in declared_days:
-                session.add(
-                    Run(
-                        competitor_id=comp.id,
-                        day=day,
-                        start=None,
-                        finish=None,
-                        result=None,
-                        status=Status.DNS,
-                    )
-                )
-
-        session.commit()
 
 
 def main():
@@ -76,7 +35,7 @@ def main():
     if args.cmd == "import-competitors":
         Session = open_db(args.db)
         session = Session()
-        import_competitors(session, args.csv)
+        CSVImporter.import_competitors(session, args.csv)
         print("Imported competitors.")
 
     else:

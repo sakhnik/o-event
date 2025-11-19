@@ -1,0 +1,3331 @@
+<?xml version='1.0' encoding='utf-8'?>
+<CourseData xmlns="http://www.orienteering.org/datastandard/3.0" iofVersion="3.0" createTime="2025-11-13T15:09:56" creator="Condes version 10.8.6">
+
+	<Event>
+		<Name>15.11.2025</Name>
+	</Event>
+
+	<RaceCourseData>
+		<Map>
+			<Scale>1000</Scale>
+			<MapPositionTopLeft x="-9575.15" y="2958.27" />
+			<MapPositionBottomRight x="-9458.37" y="2658.21" />
+		</Map>
+
+		<Control type="Start" modifyTime="2025-11-12T18:30:00">
+			<Id>S</Id>
+			<Position lng="30.3427374127" lat="50.4771458791" />
+			<MapPosition x="-9534.02" y="3057.62" />
+		</Control>
+
+		<Control type="Control" modifyTime="2025-11-05T20:32:15">
+			<Id>49</Id>
+			<Position lng="30.3437254890" lat="50.4765816044" />
+			<MapPosition x="-9466.17" y="2992.38" />
+		</Control>
+		<Control type="Control" modifyTime="2025-11-05T20:33:39">
+			<Id>50</Id>
+			<Position lng="30.3434268110" lat="50.4764656721" />
+			<MapPosition x="-9487.82" y="2980.25" />
+		</Control>
+		<Control type="Control" modifyTime="2025-11-09T02:16:57">
+			<Id>51</Id>
+			<Position lng="30.3437487040" lat="50.4764818387" />
+			<MapPosition x="-9464.92" y="2981.23" />
+		</Control>
+		<Control type="Control" modifyTime="2025-11-10T22:12:06">
+			<Id>52</Id>
+			<Position lng="30.3436136965" lat="50.4772956045" />
+			<MapPosition x="-9471.26" y="3072.04" />
+		</Control>
+		<Control type="Control" modifyTime="2025-11-10T22:12:25">
+			<Id>53</Id>
+			<Position lng="30.3433057883" lat="50.4788067724" />
+			<MapPosition x="-9487.09" y="3240.82" />
+		</Control>
+		<Control type="Control" modifyTime="2025-11-05T20:08:15">
+			<Id>54</Id>
+			<Position lng="30.3429176986" lat="50.4784174133" />
+			<MapPosition x="-9516.17" y="3198.52" />
+		</Control>
+		<Control type="Control" modifyTime="2025-11-05T20:20:57">
+			<Id>55</Id>
+			<Position lng="30.3434025860" lat="50.4773474525" />
+			<MapPosition x="-9486.03" y="3078.34" />
+		</Control>
+		<Control type="Control" modifyTime="2025-11-12T18:39:02">
+			<Id>56</Id>
+			<Position lng="30.3423916826" lat="50.4779815450" />
+			<MapPosition x="-9555.22" y="3151.40" />
+		</Control>
+		<Control type="Control" modifyTime="2025-11-10T02:32:51">
+			<Id>57</Id>
+			<Position lng="30.3434058111" lat="50.4784083233" />
+			<MapPosition x="-9481.58" y="3196.27" />
+		</Control>
+		<Control type="Control" modifyTime="2025-11-05T20:08:49">
+			<Id>58</Id>
+			<Position lng="30.3428579573" lat="50.4780978004" />
+			<MapPosition x="-9521.68" y="3163.14" />
+		</Control>
+		<Control type="Control" modifyTime="2025-11-12T18:42:23">
+			<Id>59</Id>
+			<Position lng="30.3434858677" lat="50.4766417066" />
+			<MapPosition x="-9482.93" y="2999.67" />
+		</Control>
+		<Control type="Control" modifyTime="2025-11-08T01:07:36">
+			<Id>60</Id>
+			<Position lng="30.3434572153" lat="50.4765443544" />
+			<MapPosition x="-9485.35" y="2988.92" />
+		</Control>
+		<Control type="Control" modifyTime="2025-11-09T02:16:43">
+			<Id>61</Id>
+			<Position lng="30.3434803719" lat="50.4763048928" />
+			<MapPosition x="-9484.66" y="2962.24" />
+		</Control>
+		<Control type="Control" modifyTime="2025-11-07T19:24:24">
+			<Id>62</Id>
+			<Position lng="30.3434535356" lat="50.4764114121" />
+			<MapPosition x="-9486.14" y="2974.15" />
+		</Control>
+		<Control type="Control" modifyTime="2025-11-12T18:41:15">
+			<Id>63</Id>
+			<Position lng="30.3437570712" lat="50.4766971036" />
+			<MapPosition x="-9463.47" y="3005.14" />
+		</Control>
+		<Control type="Control" modifyTime="2025-11-12T18:40:15">
+			<Id>64</Id>
+			<Position lng="30.3434955996" lat="50.4767446534" />
+			<MapPosition x="-9481.83" y="3011.09" />
+		</Control>
+		<Control type="Control" modifyTime="2025-11-07T19:24:50">
+			<Id>65</Id>
+			<Position lng="30.3431043682" lat="50.4769820046" />
+			<MapPosition x="-9508.64" y="3038.47" />
+		</Control>
+		<Control type="Control" modifyTime="2025-11-07T19:25:00">
+			<Id>67</Id>
+			<Position lng="30.3426295621" lat="50.4770808090" />
+			<MapPosition x="-9541.93" y="3050.66" />
+		</Control>
+		<Control type="Control" modifyTime="2025-11-10T22:12:55">
+			<Id>69</Id>
+			<Position lng="30.3433790975" lat="50.4772057822" />
+			<MapPosition x="-9488.26" y="3062.65" />
+		</Control>
+		<Control type="Control" modifyTime="2025-11-08T01:05:06">
+			<Id>70</Id>
+			<Position lng="30.3425649820" lat="50.4772344099" />
+			<MapPosition x="-9545.90" y="3067.90" />
+		</Control>
+		<Control type="Control" modifyTime="2025-11-12T18:31:40">
+			<Id>71</Id>
+			<Position lng="30.3430220512" lat="50.4777206945" />
+			<MapPosition x="-9511.54" y="3120.80" />
+		</Control>
+		<Control type="Control" modifyTime="2025-11-12T18:35:49">
+			<Id>72</Id>
+			<Position lng="30.3433357300" lat="50.4781196877" />
+			<MapPosition x="-9487.70" y="3164.36" />
+		</Control>
+		<Control type="Control" modifyTime="2025-11-07T19:25:57">
+			<Id>73</Id>
+			<Position lng="30.3426246340" lat="50.4786560159" />
+			<MapPosition x="-9536.01" y="3225.79" />
+		</Control>
+		<Control type="Control" modifyTime="2025-11-12T18:38:16">
+			<Id>74</Id>
+			<Position lng="30.3435424716" lat="50.4786861560" />
+			<MapPosition x="-9470.78" y="3226.81" />
+		</Control>
+		<Control type="Control" modifyTime="2025-11-10T22:12:44">
+			<Id>75</Id>
+			<Position lng="30.3424711133" lat="50.4782466476" />
+			<MapPosition x="-9548.53" y="3180.67" />
+		</Control>
+		<Control type="Control" modifyTime="2025-11-12T18:38:31">
+			<Id>76</Id>
+			<Position lng="30.3428812333" lat="50.4788839679" />
+			<MapPosition x="-9516.90" y="3250.48" />
+		</Control>
+		<Control type="Control" modifyTime="2025-11-12T18:38:07">
+			<Id>77</Id>
+			<Position lng="30.3436201463" lat="50.4783392782" />
+			<MapPosition x="-9466.65" y="3188.05" />
+		</Control>
+		<Control type="Control" modifyTime="2025-11-12T18:33:00">
+			<Id>78</Id>
+			<Position lng="30.3434065595" lat="50.4776686698" />
+			<MapPosition x="-9484.47" y="3114.04" />
+		</Control>
+		<Control type="Control" modifyTime="2025-11-12T18:32:21">
+			<Id>79</Id>
+			<Position lng="30.3426000555" lat="50.4777926402" />
+			<MapPosition x="-9541.19" y="3129.87" />
+		</Control>
+		<Control type="Control" modifyTime="2025-11-10T22:08:48">
+			<Id>31</Id>
+			<Position lng="30.3415704719" lat="50.4763833215" />
+			<MapPosition x="151.93" y="11.58" />
+		</Control>
+		<Control type="Control" modifyTime="2025-11-10T22:06:29">
+			<Id>32</Id>
+			<Position lng="30.3413138481" lat="50.4760556996" />
+			<MapPosition x="146.19" y="-3.67" />
+		</Control>
+		<Control type="Control" modifyTime="2025-11-10T22:06:37">
+			<Id>33</Id>
+			<Position lng="30.3408280796" lat="50.4761113391" />
+			<MapPosition x="132.22" y="-2.64" />
+		</Control>
+		<Control type="Control" modifyTime="2025-11-10T22:05:58">
+			<Id>34</Id>
+			<Position lng="30.3410410772" lat="50.4759730956" />
+			<MapPosition x="138.87" y="-8.13" />
+		</Control>
+		<Control type="Control" modifyTime="2025-11-10T22:05:36">
+			<Id>35</Id>
+			<Position lng="30.3397298999" lat="50.4770016641" />
+			<MapPosition x="97.10" y="33.53" />
+		</Control>
+		<Control type="Control" modifyTime="2025-11-02T23:29:52">
+			<Id>36</Id>
+			<Position lng="30.3412005881" lat="50.4761950541" />
+			<MapPosition x="142.35" y="2.16" />
+		</Control>
+		<Control type="Control" modifyTime="2025-11-10T22:06:33">
+			<Id>37</Id>
+			<Position lng="30.3408824350" lat="50.4763759597" />
+			<MapPosition x="132.53" y="9.23" />
+		</Control>
+		<Control type="Control" modifyTime="2025-11-12T19:40:34">
+			<Id>38</Id>
+			<Position lng="30.3424487346" lat="50.4754849866" />
+			<MapPosition x="180.88" y="-25.59" />
+		</Control>
+		<Control type="Control" modifyTime="2025-11-12T19:40:37">
+			<Id>39</Id>
+			<Position lng="30.3417350083" lat="50.4754131773" />
+			<MapPosition x="161.05" y="-30.87" />
+		</Control>
+		<Control type="Control" modifyTime="2025-11-02T23:30:32">
+			<Id>40</Id>
+			<Position lng="30.3420355176" lat="50.4763277450" />
+			<MapPosition x="165.32" y="10.49" />
+		</Control>
+		<Control type="Control" modifyTime="2025-11-10T22:05:53">
+			<Id>41</Id>
+			<Position lng="30.3403463256" lat="50.4755758173" />
+			<MapPosition x="121.08" y="-27.76" />
+		</Control>
+		<Control type="Control" modifyTime="2025-11-10T22:05:41">
+			<Id>42</Id>
+			<Position lng="30.3407606234" lat="50.4765847408" />
+			<MapPosition x="128.13" y="18.11" />
+		</Control>
+		<Control type="Control" modifyTime="2025-11-10T22:06:42">
+			<Id>43</Id>
+			<Position lng="30.3412886335" lat="50.4770925335" />
+			<MapPosition x="140.70" y="42.14" />
+		</Control>
+		<Control type="Control" modifyTime="2025-11-10T22:06:49">
+			<Id>44</Id>
+			<Position lng="30.3420309242" lat="50.4774244181" />
+			<MapPosition x="160.13" y="59.01" />
+		</Control>
+		<Control type="Control" modifyTime="2025-11-12T19:39:46">
+			<Id>45</Id>
+			<Position lng="30.3389843595" lat="50.4768334020" />
+			<MapPosition x="76.82" y="23.89" />
+		</Control>
+		<Control type="Control" modifyTime="2025-11-10T22:06:45">
+			<Id>46</Id>
+			<Position lng="30.3416893156" lat="50.4769933899" />
+			<MapPosition x="152.47" y="38.93" />
+		</Control>
+		<Control type="Control" modifyTime="2025-11-10T22:05:50">
+			<Id>47</Id>
+			<Position lng="30.3392940633" lat="50.4754480376" />
+			<MapPosition x="91.95" y="-36.51" />
+		</Control>
+		<Control type="Control" modifyTime="2025-11-10T22:09:07">
+			<Id>48</Id>
+			<Position lng="30.3422561858" lat="50.4760803835" />
+			<MapPosition x="172.69" y="0.19" />
+		</Control>
+		<Control type="Control" modifyTime="2025-11-12T19:40:15">
+			<Id>100</Id>
+			<Position lng="30.3416008002" lat="50.4761594058" />
+			<MapPosition x="153.82" y="1.76" />
+		</Control>
+		<Control type="Finish" modifyTime="2025-11-12T19:40:01">
+			<Id>F</Id>
+			<Position lng="30.3414563984" lat="50.4761730163" />
+			<MapPosition x="149.68" y="1.94" />
+		</Control>
+		<Course modifyTime="2025-11-13T01:32:36">
+			<Name>Ж10</Name>
+			<Length>525</Length>
+			<Climb>0</Climb>
+			<CourseControl type="Start">
+				<Control>S</Control>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>70</Control>
+				<LegLength>16</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>55</Control>
+				<LegLength>61</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>72</Control>
+				<LegLength>86</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>58</Control>
+				<LegLength>34</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>71</Control>
+				<LegLength>44</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>52</Control>
+				<LegLength>63</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>63</Control>
+				<LegLength>67</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>59</Control>
+				<LegLength>20</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>51</Control>
+				<LegLength>26</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>62</Control>
+				<LegLength>22</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>60</Control>
+				<LegLength>15</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>40</Control>
+				<LegLength>28</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>31</Control>
+				<LegLength>34</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>33</Control>
+				<LegLength>61</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>34</Control>
+				<LegLength>22</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>36</Control>
+				<LegLength>27</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>100</Control>
+				<LegLength>29</LegLength>
+			</CourseControl>
+			<CourseControl type="Finish">
+				<Control>F</Control>
+				<LegLength>10</LegLength>
+			</CourseControl>
+		</Course>
+
+		<Course modifyTime="2025-11-13T01:32:56">
+			<Name>Ж12</Name>
+			<Length>550</Length>
+			<Climb>0</Climb>
+			<CourseControl type="Start">
+				<Control>S</Control>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>55</Control>
+				<LegLength>52</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>71</Control>
+				<LegLength>50</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>58</Control>
+				<LegLength>44</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>56</Control>
+				<LegLength>36</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>79</Control>
+				<LegLength>26</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>72</Control>
+				<LegLength>64</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>78</Control>
+				<LegLength>50</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>52</Control>
+				<LegLength>44</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>64</Control>
+				<LegLength>62</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>59</Control>
+				<LegLength>11</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>49</Control>
+				<LegLength>18</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>51</Control>
+				<LegLength>11</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>60</Control>
+				<LegLength>22</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>32</Control>
+				<LegLength>34</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>33</Control>
+				<LegLength>35</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>34</Control>
+				<LegLength>22</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>36</Control>
+				<LegLength>27</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>31</Control>
+				<LegLength>34</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>40</Control>
+				<LegLength>34</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>48</Control>
+				<LegLength>32</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>100</Control>
+				<LegLength>47</LegLength>
+			</CourseControl>
+			<CourseControl type="Finish">
+				<Control>F</Control>
+				<LegLength>10</LegLength>
+			</CourseControl>
+		</Course>
+
+		<Course modifyTime="2025-11-13T01:53:14">
+			<Name>Ж14</Name>
+			<Length>575</Length>
+			<Climb>0</Climb>
+			<CourseControl type="Start">
+				<Control>S</Control>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>79</Control>
+				<LegLength>73</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>56</Control>
+				<LegLength>26</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>58</Control>
+				<LegLength>36</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>71</Control>
+				<LegLength>44</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>70</Control>
+				<LegLength>63</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>67</Control>
+				<LegLength>18</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>65</Control>
+				<LegLength>35</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>69</Control>
+				<LegLength>32</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>55</Control>
+				<LegLength>16</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>52</Control>
+				<LegLength>16</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>64</Control>
+				<LegLength>62</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>49</Control>
+				<LegLength>24</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>61</Control>
+				<LegLength>35</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>50</Control>
+				<LegLength>18</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>60</Control>
+				<LegLength>9</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>40</Control>
+				<LegLength>28</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>46</Control>
+				<LegLength>78</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>35</Control>
+				<LegLength>139</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>45</Control>
+				<LegLength>56</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>33</Control>
+				<LegLength>154</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>36</Control>
+				<LegLength>28</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>32</Control>
+				<LegLength>17</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>100</Control>
+				<LegLength>23</LegLength>
+			</CourseControl>
+			<CourseControl type="Finish">
+				<Control>F</Control>
+				<LegLength>10</LegLength>
+			</CourseControl>
+		</Course>
+
+		<Course modifyTime="2025-11-13T01:33:14">
+			<Name>Ж16</Name>
+			<Length>775</Length>
+			<Climb>0</Climb>
+			<CourseControl type="Start">
+				<Control>S</Control>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>55</Control>
+				<LegLength>52</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>52</Control>
+				<LegLength>16</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>63</Control>
+				<LegLength>67</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>59</Control>
+				<LegLength>20</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>65</Control>
+				<LegLength>47</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>67</Control>
+				<LegLength>35</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>70</Control>
+				<LegLength>18</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>72</Control>
+				<LegLength>113</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>58</Control>
+				<LegLength>34</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>56</Control>
+				<LegLength>36</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>79</Control>
+				<LegLength>26</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>69</Control>
+				<LegLength>86</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>64</Control>
+				<LegLength>52</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>49</Control>
+				<LegLength>24</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>62</Control>
+				<LegLength>27</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>61</Control>
+				<LegLength>12</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>51</Control>
+				<LegLength>27</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>60</Control>
+				<LegLength>22</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>37</Control>
+				<LegLength>56</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>42</Control>
+				<LegLength>25</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>47</Control>
+				<LegLength>164</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>41</Control>
+				<LegLength>76</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>33</Control>
+				<LegLength>69</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>34</Control>
+				<LegLength>22</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>39</Control>
+				<LegLength>79</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>38</Control>
+				<LegLength>51</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>40</Control>
+				<LegLength>98</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>31</Control>
+				<LegLength>34</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>36</Control>
+				<LegLength>34</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>32</Control>
+				<LegLength>17</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>100</Control>
+				<LegLength>23</LegLength>
+			</CourseControl>
+			<CourseControl type="Finish">
+				<Control>F</Control>
+				<LegLength>10</LegLength>
+			</CourseControl>
+		</Course>
+
+		<Course modifyTime="2025-11-13T02:15:54">
+			<Name>Ж21А</Name>
+			<Length>1100</Length>
+			<Climb>0</Climb>
+			<CourseControl type="Start">
+				<Control>S</Control>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>69</Control>
+				<LegLength>46</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>64</Control>
+				<LegLength>52</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>65</Control>
+				<LegLength>38</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>58</Control>
+				<LegLength>125</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>57</Control>
+				<LegLength>52</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>76</Control>
+				<LegLength>65</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>73</Control>
+				<LegLength>31</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>72</Control>
+				<LegLength>78</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>79</Control>
+				<LegLength>64</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>56</Control>
+				<LegLength>26</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>75</Control>
+				<LegLength>30</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>53</Control>
+				<LegLength>86</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>74</Control>
+				<LegLength>22</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>77</Control>
+				<LegLength>39</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>78</Control>
+				<LegLength>76</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>55</Control>
+				<LegLength>36</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>63</Control>
+				<LegLength>77</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>59</Control>
+				<LegLength>20</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>51</Control>
+				<LegLength>26</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>62</Control>
+				<LegLength>22</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>60</Control>
+				<LegLength>15</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>35</Control>
+				<LegLength>159</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>45</Control>
+				<LegLength>56</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>41</Control>
+				<LegLength>170</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>36</Control>
+				<LegLength>92</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>37</Control>
+				<LegLength>30</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>43</Control>
+				<LegLength>85</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>44</Control>
+				<LegLength>64</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>46</Control>
+				<LegLength>54</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>32</Control>
+				<LegLength>108</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>40</Control>
+				<LegLength>60</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>48</Control>
+				<LegLength>32</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>39</Control>
+				<LegLength>83</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>38</Control>
+				<LegLength>51</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>100</Control>
+				<LegLength>96</LegLength>
+			</CourseControl>
+			<CourseControl type="Finish">
+				<Control>F</Control>
+				<LegLength>10</LegLength>
+			</CourseControl>
+		</Course>
+
+		<Course modifyTime="2025-11-13T02:22:20">
+			<Name>Ж21Е</Name>
+			<Length>1400</Length>
+			<Climb>0</Climb>
+			<CourseControl type="Start">
+				<Control>S</Control>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>64</Control>
+				<LegLength>70</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>49</Control>
+				<LegLength>24</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>61</Control>
+				<LegLength>35</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>62</Control>
+				<LegLength>12</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>67</Control>
+				<LegLength>95</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>57</Control>
+				<LegLength>158</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>73</Control>
+				<LegLength>62</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>75</Control>
+				<LegLength>47</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>71</Control>
+				<LegLength>70</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>55</Control>
+				<LegLength>50</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>69</Control>
+				<LegLength>16</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>70</Control>
+				<LegLength>58</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>79</Control>
+				<LegLength>62</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>56</Control>
+				<LegLength>26</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>74</Control>
+				<LegLength>113</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>53</Control>
+				<LegLength>22</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>76</Control>
+				<LegLength>31</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>54</Control>
+				<LegLength>52</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>77</Control>
+				<LegLength>51</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>72</Control>
+				<LegLength>32</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>78</Control>
+				<LegLength>50</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>52</Control>
+				<LegLength>44</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>63</Control>
+				<LegLength>67</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>59</Control>
+				<LegLength>20</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>51</Control>
+				<LegLength>26</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>50</Control>
+				<LegLength>23</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>60</Control>
+				<LegLength>9</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>47</Control>
+				<LegLength>191</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>35</Control>
+				<LegLength>176</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>40</Control>
+				<LegLength>180</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>39</Control>
+				<LegLength>104</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>41</Control>
+				<LegLength>100</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>43</Control>
+				<LegLength>182</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>44</Control>
+				<LegLength>64</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>46</Control>
+				<LegLength>54</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>36</Control>
+				<LegLength>95</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>33</Control>
+				<LegLength>28</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>34</Control>
+				<LegLength>22</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>32</Control>
+				<LegLength>21</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>38</Control>
+				<LegLength>103</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>48</Control>
+				<LegLength>68</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>100</Control>
+				<LegLength>47</LegLength>
+			</CourseControl>
+			<CourseControl type="Finish">
+				<Control>F</Control>
+				<LegLength>10</LegLength>
+			</CourseControl>
+		</Course>
+
+		<Course modifyTime="2025-11-13T02:28:17">
+			<Name>Ж35</Name>
+			<Length>1100</Length>
+			<Climb>0</Climb>
+			<CourseControl type="Start">
+				<Control>S</Control>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>69</Control>
+				<LegLength>46</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>64</Control>
+				<LegLength>52</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>49</Control>
+				<LegLength>24</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>51</Control>
+				<LegLength>11</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>61</Control>
+				<LegLength>27</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>67</Control>
+				<LegLength>105</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>70</Control>
+				<LegLength>18</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>55</Control>
+				<LegLength>61</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>79</Control>
+				<LegLength>75</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>56</Control>
+				<LegLength>26</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>74</Control>
+				<LegLength>113</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>53</Control>
+				<LegLength>22</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>76</Control>
+				<LegLength>31</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>73</Control>
+				<LegLength>31</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>54</Control>
+				<LegLength>34</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>72</Control>
+				<LegLength>44</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>58</Control>
+				<LegLength>34</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>57</Control>
+				<LegLength>52</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>77</Control>
+				<LegLength>17</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>78</Control>
+				<LegLength>76</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>52</Control>
+				<LegLength>44</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>63</Control>
+				<LegLength>67</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>59</Control>
+				<LegLength>20</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>60</Control>
+				<LegLength>11</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>41</Control>
+				<LegLength>121</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>45</Control>
+				<LegLength>170</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>35</Control>
+				<LegLength>56</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>36</Control>
+				<LegLength>138</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>33</Control>
+				<LegLength>28</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>42</Control>
+				<LegLength>53</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>46</Control>
+				<LegLength>80</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>43</Control>
+				<LegLength>31</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>44</Control>
+				<LegLength>64</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>31</Control>
+				<LegLength>120</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>40</Control>
+				<LegLength>34</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>39</Control>
+				<LegLength>104</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>38</Control>
+				<LegLength>51</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>48</Control>
+				<LegLength>68</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>100</Control>
+				<LegLength>47</LegLength>
+			</CourseControl>
+			<CourseControl type="Finish">
+				<Control>F</Control>
+				<LegLength>10</LegLength>
+			</CourseControl>
+		</Course>
+
+		<Course modifyTime="2025-11-13T01:37:37">
+			<Name>Ж45</Name>
+			<Length>1150</Length>
+			<Climb>0</Climb>
+			<CourseControl type="Start">
+				<Control>S</Control>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>53</Control>
+				<LegLength>189</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>74</Control>
+				<LegLength>22</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>75</Control>
+				<LegLength>90</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>56</Control>
+				<LegLength>30</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>55</Control>
+				<LegLength>101</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>65</Control>
+				<LegLength>46</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>67</Control>
+				<LegLength>35</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>70</Control>
+				<LegLength>18</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>79</Control>
+				<LegLength>62</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>58</Control>
+				<LegLength>39</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>73</Control>
+				<LegLength>64</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>57</Control>
+				<LegLength>62</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>72</Control>
+				<LegLength>32</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>52</Control>
+				<LegLength>94</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>49</Control>
+				<LegLength>80</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>59</Control>
+				<LegLength>18</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>64</Control>
+				<LegLength>11</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>63</Control>
+				<LegLength>19</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>51</Control>
+				<LegLength>24</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>61</Control>
+				<LegLength>27</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>50</Control>
+				<LegLength>18</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>60</Control>
+				<LegLength>9</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>36</Control>
+				<LegLength>33</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>43</Control>
+				<LegLength>100</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>47</Control>
+				<LegLength>231</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>41</Control>
+				<LegLength>76</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>45</Control>
+				<LegLength>170</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>35</Control>
+				<LegLength>56</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>37</Control>
+				<LegLength>107</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>33</Control>
+				<LegLength>30</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>34</Control>
+				<LegLength>22</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>32</Control>
+				<LegLength>21</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>31</Control>
+				<LegLength>41</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>42</Control>
+				<LegLength>62</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>46</Control>
+				<LegLength>80</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>40</Control>
+				<LegLength>78</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>48</Control>
+				<LegLength>32</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>100</Control>
+				<LegLength>47</LegLength>
+			</CourseControl>
+			<CourseControl type="Finish">
+				<Control>F</Control>
+				<LegLength>10</LegLength>
+			</CourseControl>
+		</Course>
+
+		<Course modifyTime="2025-11-13T01:38:20">
+			<Name>Ж55</Name>
+			<Length>1150</Length>
+			<Climb>0</Climb>
+			<CourseControl type="Start">
+				<Control>S</Control>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>56</Control>
+				<LegLength>96</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>57</Control>
+				<LegLength>86</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>76</Control>
+				<LegLength>65</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>73</Control>
+				<LegLength>31</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>74</Control>
+				<LegLength>65</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>77</Control>
+				<LegLength>39</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>72</Control>
+				<LegLength>32</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>70</Control>
+				<LegLength>113</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>67</Control>
+				<LegLength>18</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>59</Control>
+				<LegLength>78</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>64</Control>
+				<LegLength>11</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>69</Control>
+				<LegLength>52</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>79</Control>
+				<LegLength>86</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>58</Control>
+				<LegLength>39</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>52</Control>
+				<LegLength>104</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>63</Control>
+				<LegLength>67</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>49</Control>
+				<LegLength>13</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>62</Control>
+				<LegLength>27</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>61</Control>
+				<LegLength>12</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>51</Control>
+				<LegLength>27</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>60</Control>
+				<LegLength>22</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>46</Control>
+				<LegLength>81</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>43</Control>
+				<LegLength>31</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>44</Control>
+				<LegLength>64</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>40</Control>
+				<LegLength>122</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>35</Control>
+				<LegLength>180</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>45</Control>
+				<LegLength>56</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>41</Control>
+				<LegLength>170</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>33</Control>
+				<LegLength>69</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>37</Control>
+				<LegLength>30</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>36</Control>
+				<LegLength>30</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>34</Control>
+				<LegLength>27</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>32</Control>
+				<LegLength>21</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>100</Control>
+				<LegLength>23</LegLength>
+			</CourseControl>
+			<CourseControl type="Finish">
+				<Control>F</Control>
+				<LegLength>10</LegLength>
+			</CourseControl>
+		</Course>
+
+		<Course modifyTime="2025-11-13T01:32:21">
+			<Name>ЖНдіти</Name>
+			<Length>375</Length>
+			<Climb>0</Climb>
+			<CourseControl type="Start">
+				<Control>S</Control>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>65</Control>
+				<LegLength>32</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>67</Control>
+				<LegLength>35</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>70</Control>
+				<LegLength>18</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>55</Control>
+				<LegLength>61</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>69</Control>
+				<LegLength>16</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>52</Control>
+				<LegLength>19</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>64</Control>
+				<LegLength>62</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>63</Control>
+				<LegLength>19</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>49</Control>
+				<LegLength>13</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>62</Control>
+				<LegLength>27</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>50</Control>
+				<LegLength>6</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>60</Control>
+				<LegLength>9</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>48</Control>
+				<LegLength>47</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>40</Control>
+				<LegLength>32</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>31</Control>
+				<LegLength>34</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>36</Control>
+				<LegLength>34</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>33</Control>
+				<LegLength>28</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>34</Control>
+				<LegLength>22</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>32</Control>
+				<LegLength>21</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>100</Control>
+				<LegLength>23</LegLength>
+			</CourseControl>
+			<CourseControl type="Finish">
+				<Control>F</Control>
+				<LegLength>10</LegLength>
+			</CourseControl>
+		</Course>
+
+		<Course modifyTime="2025-11-13T01:31:30">
+			<Name>Жстуденти</Name>
+			<Length>1050</Length>
+			<Climb>0</Climb>
+			<CourseControl type="Start">
+				<Control>S</Control>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>52</Control>
+				<LegLength>64</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>71</Control>
+				<LegLength>63</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>53</Control>
+				<LegLength>122</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>76</Control>
+				<LegLength>31</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>75</Control>
+				<LegLength>77</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>72</Control>
+				<LegLength>63</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>77</Control>
+				<LegLength>32</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>57</Control>
+				<LegLength>17</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>56</Control>
+				<LegLength>86</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>79</Control>
+				<LegLength>26</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>69</Control>
+				<LegLength>86</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>65</Control>
+				<LegLength>32</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>67</Control>
+				<LegLength>35</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>70</Control>
+				<LegLength>18</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>55</Control>
+				<LegLength>61</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>63</Control>
+				<LegLength>77</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>50</Control>
+				<LegLength>35</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>62</Control>
+				<LegLength>6</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>51</Control>
+				<LegLength>22</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>59</Control>
+				<LegLength>26</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>60</Control>
+				<LegLength>11</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>31</Control>
+				<LegLength>14</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>43</Control>
+				<LegLength>81</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>44</Control>
+				<LegLength>64</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>46</Control>
+				<LegLength>54</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>35</Control>
+				<LegLength>139</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>45</Control>
+				<LegLength>56</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>41</Control>
+				<LegLength>170</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>33</Control>
+				<LegLength>69</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>36</Control>
+				<LegLength>28</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>32</Control>
+				<LegLength>17</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>38</Control>
+				<LegLength>103</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>39</Control>
+				<LegLength>51</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>48</Control>
+				<LegLength>83</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>40</Control>
+				<LegLength>32</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>100</Control>
+				<LegLength>36</LegLength>
+			</CourseControl>
+			<CourseControl type="Finish">
+				<Control>F</Control>
+				<LegLength>10</LegLength>
+			</CourseControl>
+		</Course>
+
+		<Course modifyTime="2025-11-09T02:27:22">
+			<Name>Ч10</Name>
+			<Length>375</Length>
+			<Climb>0</Climb>
+			<CourseControl type="Start">
+				<Control>S</Control>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>67</Control>
+				<LegLength>11</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>70</Control>
+				<LegLength>18</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>69</Control>
+				<LegLength>58</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>55</Control>
+				<LegLength>16</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>52</Control>
+				<LegLength>16</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>49</Control>
+				<LegLength>80</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>50</Control>
+				<LegLength>25</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>61</Control>
+				<LegLength>18</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>51</Control>
+				<LegLength>27</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>59</Control>
+				<LegLength>26</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>60</Control>
+				<LegLength>11</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>31</Control>
+				<LegLength>14</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>32</Control>
+				<LegLength>41</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>34</Control>
+				<LegLength>21</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>33</Control>
+				<LegLength>22</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>36</Control>
+				<LegLength>28</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>100</Control>
+				<LegLength>29</LegLength>
+			</CourseControl>
+			<CourseControl type="Finish">
+				<Control>F</Control>
+				<LegLength>10</LegLength>
+			</CourseControl>
+		</Course>
+
+		<Course modifyTime="2025-11-13T03:00:52">
+			<Name>Ч12</Name>
+			<Length>600</Length>
+			<Climb>0</Climb>
+			<CourseControl type="Start">
+				<Control>S</Control>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>79</Control>
+				<LegLength>73</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>58</Control>
+				<LegLength>39</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>78</Control>
+				<LegLength>62</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>69</Control>
+				<LegLength>52</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>65</Control>
+				<LegLength>32</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>67</Control>
+				<LegLength>35</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>70</Control>
+				<LegLength>18</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>52</Control>
+				<LegLength>75</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>63</Control>
+				<LegLength>67</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>59</Control>
+				<LegLength>20</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>49</Control>
+				<LegLength>18</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>62</Control>
+				<LegLength>27</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>60</Control>
+				<LegLength>15</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>40</Control>
+				<LegLength>28</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>48</Control>
+				<LegLength>32</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>31</Control>
+				<LegLength>59</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>36</Control>
+				<LegLength>34</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>34</Control>
+				<LegLength>27</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>33</Control>
+				<LegLength>22</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>32</Control>
+				<LegLength>35</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>100</Control>
+				<LegLength>23</LegLength>
+			</CourseControl>
+			<CourseControl type="Finish">
+				<Control>F</Control>
+				<LegLength>10</LegLength>
+			</CourseControl>
+		</Course>
+
+		<Course modifyTime="2025-11-13T00:52:54">
+			<Name>Ч14</Name>
+			<Length>725</Length>
+			<Climb>0</Climb>
+			<CourseControl type="Start">
+				<Control>S</Control>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>71</Control>
+				<LegLength>67</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>52</Control>
+				<LegLength>63</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>65</Control>
+				<LegLength>50</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>67</Control>
+				<LegLength>35</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>58</Control>
+				<LegLength>114</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>56</Control>
+				<LegLength>36</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>79</Control>
+				<LegLength>26</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>55</Control>
+				<LegLength>75</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>63</Control>
+				<LegLength>77</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>49</Control>
+				<LegLength>13</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>50</Control>
+				<LegLength>25</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>61</Control>
+				<LegLength>18</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>51</Control>
+				<LegLength>27</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>59</Control>
+				<LegLength>26</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>60</Control>
+				<LegLength>11</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>31</Control>
+				<LegLength>14</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>46</Control>
+				<LegLength>68</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>43</Control>
+				<LegLength>31</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>44</Control>
+				<LegLength>64</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>40</Control>
+				<LegLength>122</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>48</Control>
+				<LegLength>32</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>39</Control>
+				<LegLength>83</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>41</Control>
+				<LegLength>100</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>37</Control>
+				<LegLength>97</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>36</Control>
+				<LegLength>30</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>33</Control>
+				<LegLength>28</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>34</Control>
+				<LegLength>22</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>32</Control>
+				<LegLength>21</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>100</Control>
+				<LegLength>23</LegLength>
+			</CourseControl>
+			<CourseControl type="Finish">
+				<Control>F</Control>
+				<LegLength>10</LegLength>
+			</CourseControl>
+		</Course>
+
+		<Course modifyTime="2025-11-13T03:14:04">
+			<Name>Ч16</Name>
+			<Length>850</Length>
+			<Climb>0</Climb>
+			<CourseControl type="Start">
+				<Control>S</Control>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>59</Control>
+				<LegLength>77</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>63</Control>
+				<LegLength>20</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>69</Control>
+				<LegLength>63</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>79</Control>
+				<LegLength>86</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>72</Control>
+				<LegLength>64</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>58</Control>
+				<LegLength>34</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>56</Control>
+				<LegLength>36</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>78</Control>
+				<LegLength>80</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>55</Control>
+				<LegLength>36</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>71</Control>
+				<LegLength>50</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>70</Control>
+				<LegLength>63</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>67</Control>
+				<LegLength>18</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>65</Control>
+				<LegLength>35</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>64</Control>
+				<LegLength>38</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>49</Control>
+				<LegLength>24</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>51</Control>
+				<LegLength>11</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>61</Control>
+				<LegLength>27</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>60</Control>
+				<LegLength>27</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>40</Control>
+				<LegLength>28</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>46</Control>
+				<LegLength>78</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>35</Control>
+				<LegLength>139</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>45</Control>
+				<LegLength>56</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>39</Control>
+				<LegLength>251</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>38</Control>
+				<LegLength>51</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>48</Control>
+				<LegLength>68</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>31</Control>
+				<LegLength>59</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>36</Control>
+				<LegLength>34</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>32</Control>
+				<LegLength>17</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>100</Control>
+				<LegLength>23</LegLength>
+			</CourseControl>
+			<CourseControl type="Finish">
+				<Control>F</Control>
+				<LegLength>10</LegLength>
+			</CourseControl>
+		</Course>
+
+		<Course modifyTime="2025-11-13T03:17:53">
+			<Name>Ч21А</Name>
+			<Length>1175</Length>
+			<Climb>0</Climb>
+			<CourseControl type="Start">
+				<Control>S</Control>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>67</Control>
+				<LegLength>11</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>59</Control>
+				<LegLength>78</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>63</Control>
+				<LegLength>20</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>69</Control>
+				<LegLength>63</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>70</Control>
+				<LegLength>58</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>79</Control>
+				<LegLength>62</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>56</Control>
+				<LegLength>26</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>57</Control>
+				<LegLength>86</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>73</Control>
+				<LegLength>62</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>76</Control>
+				<LegLength>31</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>74</Control>
+				<LegLength>52</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>54</Control>
+				<LegLength>53</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>58</Control>
+				<LegLength>36</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>72</Control>
+				<LegLength>34</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>77</Control>
+				<LegLength>32</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>53</Control>
+				<LegLength>57</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>75</Control>
+				<LegLength>86</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>71</Control>
+				<LegLength>70</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>55</Control>
+				<LegLength>50</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>52</Control>
+				<LegLength>16</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>64</Control>
+				<LegLength>62</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>49</Control>
+				<LegLength>24</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>51</Control>
+				<LegLength>11</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>62</Control>
+				<LegLength>22</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>60</Control>
+				<LegLength>15</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>31</Control>
+				<LegLength>14</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>46</Control>
+				<LegLength>68</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>45</Control>
+				<LegLength>193</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>39</Control>
+				<LegLength>251</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>38</Control>
+				<LegLength>51</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>40</Control>
+				<LegLength>98</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>44</Control>
+				<LegLength>122</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>43</Control>
+				<LegLength>64</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>47</Control>
+				<LegLength>231</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>41</Control>
+				<LegLength>76</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>36</Control>
+				<LegLength>92</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>37</Control>
+				<LegLength>30</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>33</Control>
+				<LegLength>30</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>34</Control>
+				<LegLength>22</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>32</Control>
+				<LegLength>21</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>100</Control>
+				<LegLength>23</LegLength>
+			</CourseControl>
+			<CourseControl type="Finish">
+				<Control>F</Control>
+				<LegLength>10</LegLength>
+			</CourseControl>
+		</Course>
+
+		<Course modifyTime="2025-11-13T01:08:22">
+			<Name>Ч21Е</Name>
+			<Length>1250</Length>
+			<Climb>0</Climb>
+			<CourseControl type="Start">
+				<Control>S</Control>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>70</Control>
+				<LegLength>16</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>56</Control>
+				<LegLength>84</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>75</Control>
+				<LegLength>30</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>53</Control>
+				<LegLength>86</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>74</Control>
+				<LegLength>22</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>54</Control>
+				<LegLength>53</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>73</Control>
+				<LegLength>34</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>76</Control>
+				<LegLength>31</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>57</Control>
+				<LegLength>65</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>77</Control>
+				<LegLength>17</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>58</Control>
+				<LegLength>60</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>79</Control>
+				<LegLength>39</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>65</Control>
+				<LegLength>97</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>69</Control>
+				<LegLength>32</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>55</Control>
+				<LegLength>16</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>52</Control>
+				<LegLength>16</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>63</Control>
+				<LegLength>67</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>49</Control>
+				<LegLength>13</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>61</Control>
+				<LegLength>35</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>67</Control>
+				<LegLength>105</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>71</Control>
+				<LegLength>76</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>78</Control>
+				<LegLength>28</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>64</Control>
+				<LegLength>103</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>59</Control>
+				<LegLength>11</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>51</Control>
+				<LegLength>26</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>50</Control>
+				<LegLength>23</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>60</Control>
+				<LegLength>9</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>42</Control>
+				<LegLength>73</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>47</Control>
+				<LegLength>164</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>39</Control>
+				<LegLength>173</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>34</Control>
+				<LegLength>79</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>37</Control>
+				<LegLength>46</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>35</Control>
+				<LegLength>107</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>45</Control>
+				<LegLength>56</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>33</Control>
+				<LegLength>154</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>36</Control>
+				<LegLength>28</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>32</Control>
+				<LegLength>17</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>38</Control>
+				<LegLength>103</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>48</Control>
+				<LegLength>68</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>44</Control>
+				<LegLength>150</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>43</Control>
+				<LegLength>64</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>46</Control>
+				<LegLength>31</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>31</Control>
+				<LegLength>68</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>40</Control>
+				<LegLength>34</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>100</Control>
+				<LegLength>36</LegLength>
+			</CourseControl>
+			<CourseControl type="Finish">
+				<Control>F</Control>
+				<LegLength>10</LegLength>
+			</CourseControl>
+		</Course>
+
+		<Course modifyTime="2025-11-13T03:37:24">
+			<Name>Ч45</Name>
+			<Length>1275</Length>
+			<Climb>0</Climb>
+			<CourseControl type="Start">
+				<Control>S</Control>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>69</Control>
+				<LegLength>46</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>52</Control>
+				<LegLength>19</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>64</Control>
+				<LegLength>62</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>63</Control>
+				<LegLength>19</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>49</Control>
+				<LegLength>13</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>67</Control>
+				<LegLength>96</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>70</Control>
+				<LegLength>18</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>72</Control>
+				<LegLength>113</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>73</Control>
+				<LegLength>78</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>53</Control>
+				<LegLength>51</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>74</Control>
+				<LegLength>22</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>58</Control>
+				<LegLength>82</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>75</Control>
+				<LegLength>32</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>76</Control>
+				<LegLength>77</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>57</Control>
+				<LegLength>65</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>77</Control>
+				<LegLength>17</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>79</Control>
+				<LegLength>95</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>56</Control>
+				<LegLength>26</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>78</Control>
+				<LegLength>80</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>55</Control>
+				<LegLength>36</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>65</Control>
+				<LegLength>46</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>59</Control>
+				<LegLength>47</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>51</Control>
+				<LegLength>26</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>62</Control>
+				<LegLength>22</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>60</Control>
+				<LegLength>15</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>40</Control>
+				<LegLength>28</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>39</Control>
+				<LegLength>104</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>45</Control>
+				<LegLength>251</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>35</Control>
+				<LegLength>56</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>37</Control>
+				<LegLength>107</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>41</Control>
+				<LegLength>97</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>47</Control>
+				<LegLength>76</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>43</Control>
+				<LegLength>231</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>46</Control>
+				<LegLength>31</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>36</Control>
+				<LegLength>95</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>33</Control>
+				<LegLength>28</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>34</Control>
+				<LegLength>22</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>32</Control>
+				<LegLength>21</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>31</Control>
+				<LegLength>41</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>48</Control>
+				<LegLength>59</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>100</Control>
+				<LegLength>47</LegLength>
+			</CourseControl>
+			<CourseControl type="Finish">
+				<Control>F</Control>
+				<LegLength>10</LegLength>
+			</CourseControl>
+		</Course>
+
+		<Course modifyTime="2025-11-13T01:21:02">
+			<Name>Ч55</Name>
+			<Length>1100</Length>
+			<Climb>0</Climb>
+			<CourseControl type="Start">
+				<Control>S</Control>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>52</Control>
+				<LegLength>64</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>71</Control>
+				<LegLength>63</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>57</Control>
+				<LegLength>81</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>77</Control>
+				<LegLength>17</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>78</Control>
+				<LegLength>76</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>56</Control>
+				<LegLength>80</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>75</Control>
+				<LegLength>30</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>74</Control>
+				<LegLength>90</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>53</Control>
+				<LegLength>22</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>73</Control>
+				<LegLength>51</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>58</Control>
+				<LegLength>64</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>79</Control>
+				<LegLength>39</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>70</Control>
+				<LegLength>62</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>67</Control>
+				<LegLength>18</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>65</Control>
+				<LegLength>35</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>69</Control>
+				<LegLength>32</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>63</Control>
+				<LegLength>63</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>59</Control>
+				<LegLength>20</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>64</Control>
+				<LegLength>11</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>49</Control>
+				<LegLength>24</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>50</Control>
+				<LegLength>25</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>61</Control>
+				<LegLength>18</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>51</Control>
+				<LegLength>27</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>60</Control>
+				<LegLength>22</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>46</Control>
+				<LegLength>81</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>43</Control>
+				<LegLength>31</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>44</Control>
+				<LegLength>64</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>40</Control>
+				<LegLength>122</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>35</Control>
+				<LegLength>180</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>45</Control>
+				<LegLength>56</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>41</Control>
+				<LegLength>170</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>33</Control>
+				<LegLength>69</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>37</Control>
+				<LegLength>30</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>36</Control>
+				<LegLength>30</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>34</Control>
+				<LegLength>27</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>32</Control>
+				<LegLength>21</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>38</Control>
+				<LegLength>103</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>39</Control>
+				<LegLength>51</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>48</Control>
+				<LegLength>83</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>100</Control>
+				<LegLength>47</LegLength>
+			</CourseControl>
+			<CourseControl type="Finish">
+				<Control>F</Control>
+				<LegLength>10</LegLength>
+			</CourseControl>
+		</Course>
+
+		<Course modifyTime="2025-11-13T01:24:42">
+			<Name>ЧЖНдорослі</Name>
+			<Length>975</Length>
+			<Climb>0</Climb>
+			<CourseControl type="Start">
+				<Control>S</Control>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>70</Control>
+				<LegLength>16</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>69</Control>
+				<LegLength>58</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>65</Control>
+				<LegLength>32</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>67</Control>
+				<LegLength>35</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>58</Control>
+				<LegLength>114</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>75</Control>
+				<LegLength>32</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>56</Control>
+				<LegLength>30</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>79</Control>
+				<LegLength>26</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>72</Control>
+				<LegLength>64</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>77</Control>
+				<LegLength>32</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>57</Control>
+				<LegLength>17</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>74</Control>
+				<LegLength>32</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>53</Control>
+				<LegLength>22</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>54</Control>
+				<LegLength>51</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>71</Control>
+				<LegLength>78</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>55</Control>
+				<LegLength>50</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>52</Control>
+				<LegLength>16</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>63</Control>
+				<LegLength>67</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>50</Control>
+				<LegLength>35</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>61</Control>
+				<LegLength>18</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>51</Control>
+				<LegLength>27</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>49</Control>
+				<LegLength>11</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>64</Control>
+				<LegLength>24</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>60</Control>
+				<LegLength>22</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>48</Control>
+				<LegLength>47</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>39</Control>
+				<LegLength>83</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>41</Control>
+				<LegLength>100</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>33</Control>
+				<LegLength>69</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>34</Control>
+				<LegLength>22</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>32</Control>
+				<LegLength>21</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>36</Control>
+				<LegLength>17</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>37</Control>
+				<LegLength>30</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>42</Control>
+				<LegLength>25</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>43</Control>
+				<LegLength>68</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>46</Control>
+				<LegLength>31</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>31</Control>
+				<LegLength>68</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>40</Control>
+				<LegLength>34</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>100</Control>
+				<LegLength>36</LegLength>
+			</CourseControl>
+			<CourseControl type="Finish">
+				<Control>F</Control>
+				<LegLength>10</LegLength>
+			</CourseControl>
+		</Course>
+
+		<Course modifyTime="2025-11-13T01:25:18">
+			<Name>ЧНдіти</Name>
+			<Length>350</Length>
+			<Climb>0</Climb>
+			<CourseControl type="Start">
+				<Control>S</Control>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>70</Control>
+				<LegLength>16</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>67</Control>
+				<LegLength>18</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>65</Control>
+				<LegLength>35</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>69</Control>
+				<LegLength>32</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>55</Control>
+				<LegLength>16</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>52</Control>
+				<LegLength>16</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>63</Control>
+				<LegLength>67</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>49</Control>
+				<LegLength>13</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>51</Control>
+				<LegLength>11</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>61</Control>
+				<LegLength>27</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>62</Control>
+				<LegLength>12</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>60</Control>
+				<LegLength>15</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>48</Control>
+				<LegLength>47</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>40</Control>
+				<LegLength>32</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>31</Control>
+				<LegLength>34</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>33</Control>
+				<LegLength>61</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>34</Control>
+				<LegLength>22</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>36</Control>
+				<LegLength>27</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>32</Control>
+				<LegLength>17</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>100</Control>
+				<LegLength>23</LegLength>
+			</CourseControl>
+			<CourseControl type="Finish">
+				<Control>F</Control>
+				<LegLength>10</LegLength>
+			</CourseControl>
+		</Course>
+
+		<Course modifyTime="2025-11-13T01:26:24">
+			<Name>Чстуденти</Name>
+			<Length>1050</Length>
+			<Climb>0</Climb>
+			<CourseControl type="Start">
+				<Control>S</Control>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>70</Control>
+				<LegLength>16</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>79</Control>
+				<LegLength>62</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>56</Control>
+				<LegLength>26</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>74</Control>
+				<LegLength>113</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>53</Control>
+				<LegLength>22</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>75</Control>
+				<LegLength>86</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>58</Control>
+				<LegLength>32</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>57</Control>
+				<LegLength>52</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>77</Control>
+				<LegLength>17</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>72</Control>
+				<LegLength>32</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>71</Control>
+				<LegLength>50</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>67</Control>
+				<LegLength>76</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>61</Control>
+				<LegLength>105</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>51</Control>
+				<LegLength>27</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>59</Control>
+				<LegLength>26</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>63</Control>
+				<LegLength>20</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>65</Control>
+				<LegLength>56</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>55</Control>
+				<LegLength>46</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>52</Control>
+				<LegLength>16</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>64</Control>
+				<LegLength>62</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>49</Control>
+				<LegLength>24</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>60</Control>
+				<LegLength>19</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>35</Control>
+				<LegLength>159</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>47</Control>
+				<LegLength>176</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>33</Control>
+				<LegLength>132</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>46</Control>
+				<LegLength>116</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>43</Control>
+				<LegLength>31</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>44</Control>
+				<LegLength>64</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>40</Control>
+				<LegLength>122</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>31</Control>
+				<LegLength>34</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>36</Control>
+				<LegLength>34</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>32</Control>
+				<LegLength>17</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>34</Control>
+				<LegLength>21</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>39</Control>
+				<LegLength>79</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>38</Control>
+				<LegLength>51</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>48</Control>
+				<LegLength>68</LegLength>
+			</CourseControl>
+			<CourseControl type="Control">
+				<Control>100</Control>
+				<LegLength>47</LegLength>
+			</CourseControl>
+			<CourseControl type="Finish">
+				<Control>F</Control>
+				<LegLength>10</LegLength>
+			</CourseControl>
+		</Course>
+
+
+	</RaceCourseData>
+
+</CourseData>

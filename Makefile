@@ -1,2 +1,2 @@
 all:
-	@pytest -q
+	python -m pytest

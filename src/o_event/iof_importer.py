@@ -1,5 +1,5 @@
 import xml.etree.ElementTree as ET
-from models import Stage, MapInfo, Control, Course, CourseControl
+from o_event.models import Stage, MapInfo, Control, Course, CourseControl
 
 
 class IOFImporter:
