@@ -51,12 +51,18 @@ class Receipt:
     # ------------------------------------------------------------
     # Time calculations
     # ------------------------------------------------------------
+    def _fmt_min(self, seconds):
+        if seconds is None:
+            return ""
+        m, s = divmod(seconds, 60)
+        return f"{m:d}:{s:02d}"
+
     def _fmt(self, seconds):
         if seconds is None:
             return ""
         m, s = divmod(seconds, 60)
         h, m = divmod(m, 60)
-        return f"{h:>2d}:{m:02d}:{s:02d}" if h else f"{m:>2d}:{s:02d}"
+        return f"{h:d}:{m:02d}:{s:02d}" if h else f"{m:d}:{s:02d}"
 
     def _compute_times(self):
         card = self.card
@@ -79,7 +85,7 @@ class Receipt:
         # Splits
         self.splits = []
         last = 0
-        for (code, time) in self.result.visited:
+        for i, (code, time) in enumerate(self.result.visited):
             leg = time - last
             last = time
 
@@ -88,13 +94,18 @@ class Receipt:
             #     prev_leg = self.splits[-1][2]
             #     loss = leg - prev_leg if leg > prev_leg else 0
 
-            self.splits.append((code, time, leg, loss))
+            control = self.controls[i + 1]   # skip start
+            pace_sec = None
+            if control.leg_length:
+                pace_sec = round(leg * 1000.0 / control.leg_length)
+
+            self.splits.append((code, time, leg, loss, pace_sec))
 
         # Pace
         km = self.course.length / 1000.0
         if self.total and km > 0:
             pace_sec = int(self.total / km)
-            self.pace = self._fmt(pace_sec)
+            self.pace = self._fmt_min(pace_sec)
         else:
             self.pace = ""
 
@@ -130,20 +141,21 @@ class Receipt:
         p.text("=" * 48 + "\n")
 
         # Splits
-        for i, (code, cum, leg, loss) in enumerate(self.splits, 1):
+        for i, (code, cum, leg, loss, pace_sec) in enumerate(self.splits, 1):
             cum_s = self._fmt(cum)
             leg_s = self._fmt(leg)
             loss_s = f"+{self._fmt(loss)}" if loss > 0 else ""
             if i == len(self.splits):
                 p.underline2_on()
-            p.text(f"{i:>2}. {code:>3}{cum_s:>11}{leg_s:>10}{loss_s:>10}\n")
+            pace_s = ('~' + self._fmt_min(pace_sec)) if pace_sec else ''
+            p.text(f"{i:>2}. {code:>3}{cum_s:>10}{leg_s:>10}{loss_s:>10}{pace_s:>10}\n")
             if i == len(self.splits):
                 p.underline_off()
 
         # Total
         p.underline2_on()
         p.bold_on()
-        p.text(f"     OK {self.total_str:>10}\n")
+        p.text(f"     OK{self.total_str:>10}\n")
         p.bold_off()
         p.underline_off()
 
