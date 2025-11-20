@@ -89,12 +89,12 @@ class Analysis:
         all_visited = (len(matches) == n)
         order_correct = all_visited
 
-        # Build "visited" with times or -1
+        # Build "visited" with times or None
         visited = []
         for req_i, code in enumerate(required):
             match = next((pj for (ri, pj) in matches if ri == req_i), None)
             if match is None:
-                visited.append((code, -1))
+                visited.append((code, None))
             else:
                 visited.append((code, punches[match][1]))
 

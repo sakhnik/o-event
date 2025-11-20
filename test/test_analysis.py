@@ -35,7 +35,7 @@ def test_missing():
     assert not res.order_correct
     assert res.missing == [45]
     assert res.extra == []
-    assert res.visited == [(31, 100), (45, -1), (72, 200), (100, 300)]
+    assert res.visited == [(31, 100), (45, None), (72, 200), (100, 300)]
 
 
 def test_random():
@@ -46,4 +46,4 @@ def test_random():
     assert not res.order_correct
     assert res.missing == [31]
     assert res.extra == [(31, 15), (31, 20), (31, 50), (45, 70)]
-    assert res.visited == [(31, -1), (45, 12), (72, 40), (100, 60)]
+    assert res.visited == [(31, None), (45, 12), (72, 40), (100, 60)]
