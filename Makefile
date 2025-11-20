@@ -7,4 +7,4 @@ else
 endif
 
 all:
-	$(PYTEST)
+	$(PYTEST) -v
