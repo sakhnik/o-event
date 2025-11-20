@@ -1,5 +1,6 @@
 from o_event.receipt import Receipt
 from o_event.printer import Printer
+from o_event.analysis import Analysis
 from o_event.models import (
     Card,
     Competitor,
@@ -63,15 +64,6 @@ def get_course_for_card(db, day, competitor):
     return course
 
 
-def determine_status(required_codes, actual_codes):
-    """Return OK if required course codes match in order, MP otherwise."""
-    ptr = 0
-    for c in actual_codes:
-        if ptr < len(required_codes) and c == required_codes[ptr]:
-            ptr += 1
-    return Status.OK if ptr == len(required_codes) else Status.MP
-
-
 class CardProcessor:
     def handle_card(self, db, readout: PunchReadout, printer: Printer) -> Card:
         # build storage object
@@ -87,16 +79,9 @@ class CardProcessor:
         db.add(card)
         db.flush()  # create card.id for details
 
-        # store the nested punches
-        actual_codes = []
+        actual_punches = []
         for item in readout.punches:
-            actual_codes.append(item.code)
-            pd = Punch(
-                card_id=card.id,
-                code=item.code,
-                punch_time=item.time,
-            )
-            db.add(pd)
+            actual_punches.append((item.code, item.time - readout.startTime))
 
         # competitor lookup
         competitor = (
@@ -140,10 +125,19 @@ class CardProcessor:
         )
         required_codes = [int(c.control_code) for c in controls if c.control_code.isdigit()]
 
-        card.status = determine_status(required_codes, actual_codes)
+        result = Analysis().analyse_order(required_codes, actual_punches)
+        card.status = Status.OK if result.all_visited and result.order_correct else Status.MP
+
+        for (code, time) in result.visited:
+            pd = Punch(
+                card_id=card.id,
+                code=code,
+                punch_time=time,
+            )
+            db.add(pd)
 
         db.commit()
 
-        Receipt(db, card.id).print(printer)
+        Receipt(db, result, card, course, controls).print(printer)
 
         return {"status": card.status.value}

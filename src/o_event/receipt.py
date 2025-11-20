@@ -1,16 +1,19 @@
+from o_event.analysis import Analysis
 from o_event.printer import Printer
-from o_event.models import Card, Competitor, Config, Run, Stage, Course
+from o_event.models import Card, Competitor, Config, Course, CourseControl
 from datetime import date
+from typing import List
 
 
 class Receipt:
     WIDTH = 48
 
-    def __init__(self, db, card_id):
+    def __init__(self, db, result: Analysis.Result, card: Card, course: Course, controls: List[CourseControl]):
         self.db = db
-        self.card = db.query(Card).filter_by(id=card_id).first()
-        if not self.card:
-            raise ValueError("Card not found")
+        self.result = result
+        self.card = card
+        self.course = course
+        self.controls = controls
 
         self._load_all()
 
@@ -39,35 +42,9 @@ class Receipt:
 
         self.day = day
 
-        self.run = (
-            self.db.query(Run)
-            .filter_by(competitor_id=competitor.id, day=day)
-            .first()
-        )
-        if not self.run:
-            raise ValueError("Run not found")
-
-        self.stage = (
-            self.db.query(Stage)
-            .filter_by(day=day)
-            .first()
-        )
-        if not self.stage:
-            raise ValueError("Stage not found")
-
-        self.course = (
-            self.db.query(Course)
-            .filter_by(stage_id=self.stage.id, name=self.category)
-            .first()
-        )
-        if not self.course:
-            raise ValueError("Course not found for category")
-
         self.race_name = Config.get(self.db, Config.KEY_NAME, "")
         self.place = Config.get(self.db, Config.KEY_PLACE, "")
         self.race_date = Config.get(self.db, Config.KEY_DATE, date.today())
-
-        self.punches = sorted(card.punches, key=lambda p: p.punch_time)
 
         self._compute_times()
 
@@ -101,23 +78,17 @@ class Receipt:
 
         # Splits
         self.splits = []
-        last = self.start
-        for p in self.punches:
-            cum = p.punch_time - self.start
-            leg = p.punch_time - last
-            last = p.punch_time
+        last = 0
+        for (code, time) in self.result.visited:
+            leg = time - last
+            last = time
 
             loss = 0
-            if self.splits:
-                prev_leg = self.splits[-1][2]
-                loss = leg - prev_leg if leg > prev_leg else 0
+            # if self.splits:
+            #     prev_leg = self.splits[-1][2]
+            #     loss = leg - prev_leg if leg > prev_leg else 0
 
-            self.splits.append((
-                p.code,
-                cum,
-                leg,
-                loss
-            ))
+            self.splits.append((code, time, leg, loss))
 
         # Pace
         km = self.course.length / 1000.0
