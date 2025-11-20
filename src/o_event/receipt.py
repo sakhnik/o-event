@@ -142,8 +142,12 @@ class Receipt:
         # Pace
         km = self.course.length / 1000.0
         pace = self._fmt_min(int(total / km)) if km > 0 else ""
+        if self.result.visited:
+            finish_leg = self._fmt(total - self.result.visited[-1][1])
+        else:
+            finish_leg = ''
 
-        p.text(f"     {status}{total_str:>10}\n")
+        p.text(f"     {status}{total_str:>10}{finish_leg:>10}\n")
         p.bold_off()
         p.underline_off()
 
