@@ -126,7 +126,11 @@ class CardProcessor:
         required_codes = [int(c.control_code) for c in controls if c.control_code.isdigit()]
 
         result = Analysis().analyse_order(required_codes, actual_punches)
-        card.status = Status.OK if result.all_visited and result.order_correct else Status.MP
+        if result.all_visited and result.order_correct:
+            card.status = Status.OK
+            run.result = card.finish_time - card.start_time
+        else:
+            card.status = Status.MP
 
         for (code, time) in result.visited:
             pd = Punch(

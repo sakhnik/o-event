@@ -1,6 +1,6 @@
 from o_event.analysis import Analysis
 from o_event.printer import Printer
-from o_event.models import Card, Competitor, Config, Course, CourseControl
+from o_event.models import Card, Competitor, Config, Course, CourseControl, Run
 from datetime import date
 from typing import List
 
@@ -84,8 +84,27 @@ class Receipt:
 
             self.splits.append((code, time, leg, loss, pace_sec))
 
-        self.standing = "—"
-        self.current_gap = "—"
+    def get_standing(self, total):
+        # All results in this group for this day
+        q = (
+            self.db.query(Run.result)
+            .join(Competitor)
+            .filter(
+                Competitor.group == self.competitor.group,
+                Run.day == self.day,
+                Run.result != None,    # noqa: E711
+            )
+        )
+
+        # Best result in the group
+        best = q.order_by(Run.result.asc()).first()[0]
+
+        all_count = q.count()
+
+        # Count how many have STRICTLY better results
+        better_count = q.filter(Run.result < total).count()
+
+        return total - best, better_count + 1, all_count
 
     # ------------------------------------------------------------
     # Printer output
@@ -154,8 +173,10 @@ class Receipt:
         p.text("=" * 48 + "\n")
 
         # Footer
-        p.text(f"поточне відставання: {self.current_gap}\n")
-        p.text(f"турнірна таблиця: {self.standing:<10}{pace}min/km\n")
+        loss, place, all_count = self.get_standing(total)
+        standing = f"{place}/{all_count}"
+        p.text(f"поточне відставання: +{self._fmt(loss)}\n")
+        p.text(f"турнірна таблиця: {standing:<10}{pace:>13}min/km\n")
 
         p.feed(3)
         p.cut()
