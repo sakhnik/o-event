@@ -1,5 +1,5 @@
-from printer import Printer
-from models import Card, Competitor, Config, Run, Stage, Course
+from o_event.printer import Printer
+from o_event.models import Card, Competitor, Config, Run, Stage, Course
 from datetime import date
 
 
@@ -79,7 +79,7 @@ class Receipt:
             return ""
         m, s = divmod(seconds, 60)
         h, m = divmod(m, 60)
-        return f"{h:02d}:{m:02d}:{s:02d}" if h else f"{m:02d}:{s:02d}"
+        return f"{h:>2d}:{m:02d}:{s:02d}" if h else f"{m:>2d}:{s:02d}"
 
     def _compute_times(self):
         card = self.card
@@ -165,14 +165,14 @@ class Receipt:
             loss_s = f"+{self._fmt(loss)}" if loss > 0 else ""
             if i == len(self.splits):
                 p.underline2_on()
-            p.text(f"{i:>2}. {code:<4}{cum_s:>10}{leg_s:>10}{loss_s:>10}\n")
+            p.text(f"{i:>2}. {code:>3}{cum_s:>11}{leg_s:>10}{loss_s:>10}\n")
             if i == len(self.splits):
                 p.underline_off()
 
         # Total
         p.underline2_on()
         p.bold_on()
-        p.text(f"    OK  {self.total_str:>10}\n")
+        p.text(f"     OK {self.total_str:>10}\n")
         p.bold_off()
         p.underline_off()
 

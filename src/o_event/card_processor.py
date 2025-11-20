@@ -82,7 +82,7 @@ class CardProcessor:
             start_time=readout.startTime,
             finish_time=readout.finishTime,
             check_time=readout.checkTime,
-            raw_json=readout.dict(),
+            raw_json=readout.model_dump(),
         )
         db.add(card)
         db.flush()  # create card.id for details
@@ -146,4 +146,4 @@ class CardProcessor:
 
         Receipt(db, card.id).print(printer)
 
-        return {"status": card.status}
+        return {"status": card.status.value}
