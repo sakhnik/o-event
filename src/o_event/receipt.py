@@ -65,23 +65,6 @@ class Receipt:
         return f"{h:d}:{m:02d}:{s:02d}" if h else f"{m:d}:{s:02d}"
 
     def _compute_times(self):
-        card = self.card
-
-        self.start = card.start_time
-        self.finish = card.finish_time
-        self.check = card.check_time
-
-        self.start_str = self._fmt(self.start)
-        self.finish_str = self._fmt(self.finish)
-        self.check_str = self._fmt(self.check)
-
-        if self.start and self.finish:
-            self.total = self.finish - self.start
-            self.total_str = self._fmt(self.total)
-        else:
-            self.total = None
-            self.total_str = ""
-
         # Splits
         self.splits = []
         last = 0
@@ -100,14 +83,6 @@ class Receipt:
                 pace_sec = round(leg * 1000.0 / control.leg_length)
 
             self.splits.append((code, time, leg, loss, pace_sec))
-
-        # Pace
-        km = self.course.length / 1000.0
-        if self.total and km > 0:
-            pace_sec = int(self.total / km)
-            self.pace = self._fmt_min(pace_sec)
-        else:
-            self.pace = ""
 
         self.standing = "—"
         self.current_gap = "—"
@@ -135,8 +110,12 @@ class Receipt:
         p.text(f"{self.category:<35}{km:.3f}km {self.course.climb}m\n")
         p.underline_off()
 
-        p.text(f"Check: {self.check_str:<20}Finish: {self.finish_str}\n")
-        p.text(f"Start: {self.start_str:<20}SI:{self.card.card_number}\n")
+        start_str = self._fmt(self.card.start_time)
+        finish_str = self._fmt(self.card.finish_time)
+        check_str = self._fmt(self.card.check_time)
+
+        p.text(f"Check: {check_str:<20}Finish: {finish_str}\n")
+        p.text(f"Start: {start_str:<20}SI:{self.card.card_number}\n")
 
         p.text("=" * 48 + "\n")
 
@@ -155,7 +134,16 @@ class Receipt:
         # Total
         p.underline2_on()
         p.bold_on()
-        p.text(f"     OK{self.total_str:>10}\n")
+        status = "OK" if self.result.all_visited and self.result.order_correct else "MP"
+
+        total = self.card.finish_time - self.card.start_time
+        total_str = self._fmt(total)
+
+        # Pace
+        km = self.course.length / 1000.0
+        pace = self._fmt_min(int(total / km)) if km > 0 else ""
+
+        p.text(f"     {status}{total_str:>10}\n")
         p.bold_off()
         p.underline_off()
 
@@ -163,7 +151,7 @@ class Receipt:
 
         # Footer
         p.text(f"поточне відставання: {self.current_gap}\n")
-        p.text(f"турнірна таблиця: {self.standing:<10}{self.pace}min/km\n")
+        p.text(f"турнірна таблиця: {self.standing:<10}{pace}min/km\n")
 
         p.feed(3)
         p.cut()
