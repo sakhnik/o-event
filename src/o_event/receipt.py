@@ -69,6 +69,7 @@ class Receipt:
         # Splits
         self.splits = []
         last = 0
+        self.cum_loss = 0
         for seq, (code, time) in enumerate(self.result.visited):
             if time is not None:
                 leg = time - last if last is not None else None
@@ -80,6 +81,7 @@ class Receipt:
                 )
 
                 loss = 0 if leg is None or best is None or best >= leg else leg - best
+                self.cum_loss += loss
 
                 control = self.controls[seq + 1]   # skip start
                 pace_sec = None
@@ -107,15 +109,12 @@ class Receipt:
             )
         )
 
-        # Best result in the group
-        best = q.order_by(Run.result.asc()).first()[0]
-
         all_count = q.count()
 
         # Count how many have STRICTLY better results
         better_count = q.filter(Run.result < total).count()
 
-        return total - best, better_count + 1, all_count
+        return better_count + 1, all_count
 
     # ------------------------------------------------------------
     # Printer output
@@ -188,13 +187,9 @@ class Receipt:
         p.text("=" * 48 + "\n")
 
         # Footer
-        loss, place, all_count = self.get_standing(total)
-        if status != "OK":
-            loss = 0
-            standing_s = ''
-        else:
-            standing_s = f"турнірна таблиця: {place}/{all_count}"
-        p.text(f"поточне відставання: +{self._fmt(loss)}\n")
+        place, all_count = self.get_standing(total)
+        p.text(f"поточне відставання: +{self._fmt(self.cum_loss)}\n")
+        standing_s = f"турнірна таблиця: {place}/{all_count}" if status == 'OK' else ''
         p.text(f"{standing_s:<28}{pace:>14}min/km\n")
 
         p.feed(3)

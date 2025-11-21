@@ -133,8 +133,6 @@ def test_all():
         ]
         assert printer.get_output() == receipt16
 
-    # 149, 32, 15, 101, 82, 114, 64
-
     runner149 = """
         {"stationNumber":1,"cardNumber":149,"startTime":59737,"finishTime":61836,"checkTime":59737,"punches":[
             {"cardNumber":149,"code":70,"time":59755},{"cardNumber":149,"code":56,"time":59793},{"cardNumber":149,"code":75,"time":59846},
@@ -157,8 +155,6 @@ def test_all():
     readout = PunchReadout.model_validate_json(runner149)
     with MockPrinter() as printer:
         assert CardProcessor().handle_card(session, readout, printer) == {"status": "MP"}
-        #with open("/tmp/c.txt", "w") as f:
-        #    f.write(printer.get_output())
         receipt149 = [
             '================================================',
             'E1 - O-Halloween',
@@ -216,8 +212,96 @@ def test_all():
             '45. 100     34:57      0:31     +0:01    ~14:21',
             '   DISQ     34:59      0:02',
             '================================================',
-            'поточне відставання: +0:00',
+            'поточне відставання: +5:03',
             '                                     27:59min/km',
             ''
         ]
         assert printer.get_output() == receipt149
+
+    # 32, 15, 101, 82, 114, 64
+
+    runner32 = """
+        {"stationNumber":1,"cardNumber":32,"startTime":60025,"finishTime":61931,"checkTime":60025,"punches":[
+            {"cardNumber":32,"code":70,"time":60055},{"cardNumber":32,"code":56,"time":60127},{"cardNumber":32,"code":75,"time":60207},
+            {"cardNumber":32,"code":53,"time":60244},{"cardNumber":32,"code":74,"time":60265},{"cardNumber":32,"code":54,"time":60290},
+            {"cardNumber":32,"code":73,"time":60306},{"cardNumber":32,"code":76,"time":60318},{"cardNumber":32,"code":57,"time":60349},
+            {"cardNumber":32,"code":77,"time":60361},{"cardNumber":32,"code":58,"time":60420},{"cardNumber":32,"code":79,"time":60467},
+            {"cardNumber":32,"code":65,"time":60498},{"cardNumber":32,"code":69,"time":60526},{"cardNumber":32,"code":55,"time":60543},
+            {"cardNumber":32,"code":52,"time":60548},{"cardNumber":32,"code":63,"time":60581},{"cardNumber":32,"code":49,"time":60599},
+            {"cardNumber":32,"code":61,"time":60624},{"cardNumber":32,"code":67,"time":60679},{"cardNumber":32,"code":71,"time":60743},
+            {"cardNumber":32,"code":78,"time":60756},{"cardNumber":32,"code":64,"time":60806},{"cardNumber":32,"code":59,"time":60824},
+            {"cardNumber":32,"code":51,"time":60849},{"cardNumber":32,"code":50,"time":60865},{"cardNumber":32,"code":60,"time":60872},
+            {"cardNumber":32,"code":42,"time":60965},{"cardNumber":32,"code":47,"time":61044},{"cardNumber":32,"code":39,"time":61133},
+            {"cardNumber":32,"code":34,"time":61182},{"cardNumber":32,"code":37,"time":61245},{"cardNumber":32,"code":35,"time":61303},
+            {"cardNumber":32,"code":45,"time":61395},{"cardNumber":32,"code":33,"time":61529},{"cardNumber":32,"code":36,"time":61546},
+            {"cardNumber":32,"code":32,"time":61570},{"cardNumber":32,"code":38,"time":61624},{"cardNumber":32,"code":48,"time":61675},
+            {"cardNumber":32,"code":44,"time":61754},{"cardNumber":32,"code":43,"time":61797},{"cardNumber":32,"code":46,"time":61818},
+            {"cardNumber":32,"code":31,"time":61876},{"cardNumber":32,"code":40,"time":61898},{"cardNumber":32,"code":100,"time":61929}
+        ]}"""
+    readout = PunchReadout.model_validate_json(runner32)
+    with MockPrinter() as printer:
+        assert CardProcessor().handle_card(session, readout, printer) == {"status": "OK"}
+        #with open("/tmp/c.txt", "w") as f:
+        #    f.write(printer.get_output())
+        receipt32 = [
+            '================================================',
+            'E1 - O-Halloween',
+            '2025-11-15 Kyiv',
+            '------------------------------------------------',
+            'Артур Король                                Ч21Е',
+            'Ч21Е                                   1.25km 0m',
+            'Check: 16:40:25                 Finish: 17:12:11',
+            'Start: 16:40:25                            SI:32',
+            '================================================',
+            ' 1.  70      0:30      0:30     +0:12    ~31:15',
+            ' 2.  56      1:42      1:12     +0:34    ~14:17',
+            ' 3.  75      3:02      1:20     +0:27    ~44:27',
+            ' 4.  53      3:39      0:37     +0:02     ~7:10',
+            ' 5.  74      4:00      0:21     +0:02    ~15:55',
+            ' 6.  54      4:25      0:25     +0:08     ~7:52',
+            ' 7.  73      4:41      0:16               ~7:51',
+            ' 8.  76      4:53      0:12               ~6:27',
+            ' 9.  57      5:24      0:31               ~7:57',
+            '10.  77      5:36      0:12     +0:01    ~11:46',
+            '11.  58      6:35      0:59     +0:04    ~16:23',
+            '12.  79      7:22      0:47              ~20:05',
+            '13.  65      7:53      0:31     +0:06     ~5:20',
+            '14.  69      8:21      0:28              ~14:35',
+            '15.  55      8:38      0:17              ~17:42',
+            '16.  52      8:43      0:05               ~5:12',
+            '17.  63      9:16      0:33               ~8:13',
+            '18.  49      9:34      0:18     +0:06    ~23:05',
+            '19.  61      9:59      0:25     +0:10    ~11:54',
+            '20.  67     10:54      0:55     +0:01     ~8:44',
+            '21.  71     11:58      1:04     +0:25    ~14:02',
+            '22.  78     12:11      0:13     +0:01     ~7:44',
+            '23.  64     13:01      0:50               ~8:05',
+            '24.  59     13:19      0:18     +0:01    ~27:16',
+            '25.  51     13:44      0:25     +0:06    ~16:02',
+            '26.  50     14:00      0:16              ~11:36',
+            '27.  60     14:07      0:07              ~12:58',
+            '28.  42     15:40      1:33              ~21:14',
+            '29.  47     16:59      1:19               ~8:02',
+            '30.  39     18:28      1:29     +0:08     ~8:34',
+            '31.  34     19:17      0:49     +0:02    ~10:20',
+            '32.  37     20:20      1:03              ~22:50',
+            '33.  35     21:18      0:58     +0:03     ~9:02',
+            '34.  45     22:50      1:32     +0:06    ~27:23',
+            '35.  33     25:04      2:14     +0:09    ~14:30',
+            '36.  36     25:21      0:17              ~10:07',
+            '37.  32     25:45      0:24     +0:02    ~23:32',
+            '38.  38     26:39      0:54               ~8:44',
+            '39.  48     27:30      0:51     +0:03    ~12:30',
+            '40.  44     28:49      1:19     +0:02     ~8:47',
+            '41.  43     29:32      0:43     +0:05    ~11:12',
+            '42.  46     29:53      0:21     +0:01    ~11:17',
+            '43.  31     30:51      0:58     +0:02    ~14:13',
+            '44.  40     31:13      0:22     +0:02    ~10:47',
+            '45. 100     31:44      0:31     +0:01    ~14:21',
+            '     OK     31:46      0:02',
+            '================================================',
+            'поточне відставання: +3:12',
+            'турнірна таблиця: 1/3                25:24min/km',
+            ''
+        ]
+        assert printer.get_output() == receipt32

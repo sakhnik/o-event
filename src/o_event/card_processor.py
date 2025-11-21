@@ -129,9 +129,9 @@ class CardProcessor:
         result = Analysis().analyse_order(required_codes, actual_punches)
         if result.all_visited and result.order_correct:
             card.status = Status.OK
-            run.result = card.finish_time - card.start_time
         else:
             card.status = Status.MP
+        run.result = card.finish_time - card.start_time
 
         for (code, time) in result.visited:
             pd = Punch(
