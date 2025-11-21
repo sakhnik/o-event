@@ -184,6 +184,23 @@ class Run(Base):
     competitor = relationship("Competitor", back_populates="runs")
 
 
+class RunSplit(Base):
+    __tablename__ = "run_splits"
+
+    id = Column(Integer, primary_key=True)
+
+    run_id = Column(Integer, ForeignKey("runs.id"), nullable=False)
+    course_id = Column(Integer, ForeignKey("courses.id"), nullable=False)
+
+    seq = Column(Integer, nullable=False)           # leg/control sequence in course
+    control_code = Column(String, nullable=False)  # the control code
+    leg_time = Column(Integer, nullable=True)      # time between previous and this control
+    cum_time = Column(Integer, nullable=True)      # cumulative from start
+
+    run = relationship("Run", backref="splits")
+    course = relationship("Course")
+
+
 class Card(Base):
     __tablename__ = "cards"
 

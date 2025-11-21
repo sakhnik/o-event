@@ -49,7 +49,6 @@ def test_all():
     data_path = Path(__file__).parent / "data" / "runners.csv"
     CSVImporter.import_competitors(session, data_path)
 
-    # 16, 149, 32, 15, 101, 82, 114, 64
     runner16 = """
         {"stationNumber":1,"cardNumber":16,"startTime":60386,"finishTime":62341,"checkTime":60386,"punches":[
             {"cardNumber":16,"code":70,"time":60419},{"cardNumber":16,"code":56,"time":60463},{"cardNumber":16,"code":75,"time":60516},
@@ -71,8 +70,6 @@ def test_all():
     readout = PunchReadout.model_validate_json(runner16)
     with MockPrinter() as printer:
         assert CardProcessor().handle_card(session, readout, printer) == {"status": "OK"}
-        #with open("/tmp/c.txt", "w") as f:
-        #    f.write(printer.get_output())
         receipt16 = [
             '================================================',
             'E1 - O-Halloween',
@@ -135,3 +132,92 @@ def test_all():
             ''
         ]
         assert printer.get_output() == receipt16
+
+    # 149, 32, 15, 101, 82, 114, 64
+
+    runner149 = """
+        {"stationNumber":1,"cardNumber":149,"startTime":59737,"finishTime":61836,"checkTime":59737,"punches":[
+            {"cardNumber":149,"code":70,"time":59755},{"cardNumber":149,"code":56,"time":59793},{"cardNumber":149,"code":75,"time":59846},
+            {"cardNumber":149,"code":53,"time":59897},{"cardNumber":149,"code":54,"time":59950},{"cardNumber":149,"code":73,"time":59967},
+            {"cardNumber":149,"code":76,"time":59989},{"cardNumber":149,"code":57,"time":60020},{"cardNumber":149,"code":77,"time":60042},
+            {"cardNumber":149,"code":58,"time":60097},{"cardNumber":149,"code":71,"time":60134},{"cardNumber":149,"code":79,"time":60152},
+            {"cardNumber":149,"code":65,"time":60177},{"cardNumber":149,"code":69,"time":60215},{"cardNumber":149,"code":55,"time":60233},
+            {"cardNumber":149,"code":52,"time":60239},{"cardNumber":149,"code":49,"time":60276},{"cardNumber":149,"code":63,"time":60315},
+            {"cardNumber":149,"code":49,"time":60327},{"cardNumber":149,"code":61,"time":60342},{"cardNumber":149,"code":67,"time":60415},
+            {"cardNumber":149,"code":71,"time":60454},{"cardNumber":149,"code":78,"time":60466},{"cardNumber":149,"code":64,"time":60537},
+            {"cardNumber":149,"code":59,"time":60554},{"cardNumber":149,"code":51,"time":60573},{"cardNumber":149,"code":50,"time":60589},
+            {"cardNumber":149,"code":60,"time":60653},{"cardNumber":149,"code":42,"time":60747},{"cardNumber":149,"code":47,"time":60845},
+            {"cardNumber":149,"code":39,"time":60947},{"cardNumber":149,"code":34,"time":61002},{"cardNumber":149,"code":37,"time":61081},
+            {"cardNumber":149,"code":35,"time":61148},{"cardNumber":149,"code":45,"time":61251},{"cardNumber":149,"code":33,"time":61400},
+            {"cardNumber":149,"code":36,"time":61419},{"cardNumber":149,"code":32,"time":61447},{"cardNumber":149,"code":38,"time":61510},
+            {"cardNumber":149,"code":48,"time":61564},{"cardNumber":149,"code":44,"time":61654},{"cardNumber":149,"code":43,"time":61692},
+            {"cardNumber":149,"code":46,"time":61720},{"cardNumber":149,"code":31,"time":61782},{"cardNumber":149,"code":40,"time":61803},
+            {"cardNumber":149,"code":100,"time":61834}
+        ]}"""
+    readout = PunchReadout.model_validate_json(runner149)
+    with MockPrinter() as printer:
+        assert CardProcessor().handle_card(session, readout, printer) == {"status": "MP"}
+        #with open("/tmp/c.txt", "w") as f:
+        #    f.write(printer.get_output())
+        receipt149 = [
+            '================================================',
+            'E1 - O-Halloween',
+            '2025-11-15 Kyiv',
+            '------------------------------------------------',
+            'Юрій Поліщук                                Ч21Е',
+            'Ч21Е                                   1.25km 0m',
+            'Check: 16:35:37                 Finish: 17:10:36',
+            'Start: 16:35:37                           SI:149',
+            '================================================',
+            ' 1.  70      0:18      0:18              ~18:45',
+            ' 2.  56      0:56      0:38               ~7:32',
+            ' 3.  75      1:49      0:53              ~29:27',
+            ' 4.  53      2:40      0:51     +0:16     ~9:53',
+            ' 5.  74     -----     -----',
+            ' 6.  54      3:33     -----',
+            ' 7.  73      3:50      0:17               ~8:20',
+            ' 8.  76      4:12      0:22     +0:05    ~11:50',
+            ' 9.  57      4:43      0:31               ~7:57',
+            '10.  77      5:05      0:22     +0:11    ~21:34',
+            '11.  58      6:00      0:55              ~15:17',
+            '12.  79      6:55      0:55              ~23:30',
+            '13.  65      7:20      0:25               ~4:18',
+            '14.  69      7:58      0:38              ~19:48',
+            '15.  55      8:16      0:18              ~18:45',
+            '16.  52      8:22      0:06               ~6:15',
+            '17.  63      9:38      1:16     +0:42    ~18:54',
+            '18.  49      9:50      0:12              ~15:23',
+            '19.  61     10:05      0:15               ~7:09',
+            '20.  67     11:18      1:13     +0:19    ~11:35',
+            '21.  71     11:57      0:39               ~8:33',
+            '22.  78     12:09      0:12               ~7:09',
+            '23.  64     13:20      1:11     +0:07    ~11:29',
+            '24.  59     13:37      0:17              ~25:45',
+            '25.  51     13:56      0:19              ~12:11',
+            '26.  50     14:12      0:16              ~11:36',
+            '27.  60     15:16      1:04     +0:45   ~118:31',
+            '28.  42     16:50      1:34              ~21:28',
+            '29.  47     18:28      1:38     +0:11     ~9:58',
+            '30.  39     20:10      1:42     +0:21     ~9:50',
+            '31.  34     21:05      0:55     +0:08    ~11:36',
+            '32.  37     22:24      1:19     +0:15    ~28:37',
+            '33.  35     23:31      1:07     +0:12    ~10:26',
+            '34.  45     25:14      1:43     +0:17    ~30:39',
+            '35.  33     27:43      2:29     +0:24    ~16:08',
+            '36.  36     28:02      0:19              ~11:19',
+            '37.  32     28:30      0:28     +0:06    ~27:27',
+            '38.  38     29:33      1:03     +0:09    ~10:12',
+            '39.  48     30:27      0:54     +0:06    ~13:14',
+            '40.  44     31:57      1:30     +0:13    ~10:00',
+            '41.  43     32:35      0:38               ~9:54',
+            '42.  46     33:03      0:28     +0:08    ~15:03',
+            '43.  31     34:05      1:02     +0:06    ~15:12',
+            '44.  40     34:26      0:21     +0:01    ~10:18',
+            '45. 100     34:57      0:31     +0:01    ~14:21',
+            '   DISQ     34:59      0:02',
+            '================================================',
+            'поточне відставання: +0:00',
+            '                                     27:59min/km',
+            ''
+        ]
+        assert printer.get_output() == receipt149

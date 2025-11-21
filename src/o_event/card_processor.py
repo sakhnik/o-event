@@ -9,6 +9,7 @@ from o_event.models import (
     CourseControl,
     Punch,
     Run,
+    RunSplit,
     Stage,
     Status,
 )
@@ -140,8 +141,32 @@ class CardProcessor:
             )
             db.add(pd)
 
+        self.store_run_splits(db, run, card, course, result)
+
         db.commit()
 
         Receipt(db, result, card, course, controls).print(printer)
 
         return {"status": card.status.value}
+
+    def store_run_splits(self, db, run, card, course, result):
+        prev_time = 0
+
+        for seq, (code, time) in enumerate(result.visited):
+            if time is not None and time >= 0:
+                # Normal punch
+                leg_time = time - prev_time
+                prev_time = time
+            else:
+                # Missing control
+                leg_time = None
+
+            split = RunSplit(
+                run_id=run.id,
+                course_id=course.id,
+                seq=seq,
+                control_code=code,
+                leg_time=leg_time,
+                cum_time=time,
+            )
+            db.add(split)

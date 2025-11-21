@@ -1,8 +1,9 @@
 from o_event.analysis import Analysis
 from o_event.printer import Printer
-from o_event.models import Card, Competitor, Config, Course, CourseControl, Run
+from o_event.models import Card, Competitor, Config, Course, CourseControl, Run, RunSplit
 from datetime import date
 from typing import List
+from sqlalchemy import func
 
 
 class Receipt:
@@ -68,21 +69,31 @@ class Receipt:
         # Splits
         self.splits = []
         last = 0
-        for i, (code, time) in enumerate(self.result.visited):
-            leg = time - last
-            last = time
+        for seq, (code, time) in enumerate(self.result.visited):
+            if time is not None:
+                leg = time - last if last is not None else None
 
-            loss = 0
-            # if self.splits:
-            #     prev_leg = self.splits[-1][2]
-            #     loss = leg - prev_leg if leg > prev_leg else 0
+                best = (
+                    self.db.query(func.min(RunSplit.leg_time))
+                    .filter_by(course_id=self.course.id, seq=seq)
+                    .scalar()
+                )
 
-            control = self.controls[i + 1]   # skip start
-            pace_sec = None
-            if control.leg_length:
-                pace_sec = round(leg * 1000.0 / control.leg_length)
+                loss = 0 if leg is None or best is None or best >= leg else leg - best
+
+                control = self.controls[seq + 1]   # skip start
+                pace_sec = None
+                if control.leg_length and leg is not None:
+                    pace_sec = round(leg * 1000.0 / control.leg_length)
+                else:
+                    pace_sec = None
+            else:
+                leg = None
+                loss = None
+                pace_sec = None
 
             self.splits.append((code, time, leg, loss, pace_sec))
+            last = time
 
     def get_standing(self, total):
         # All results in this group for this day
@@ -142,12 +153,14 @@ class Receipt:
 
         # Splits
         for i, (code, cum, leg, loss, pace_sec) in enumerate(self.splits, 1):
-            cum_s = self._fmt(cum)
-            leg_s = self._fmt(leg)
-            loss_s = f"+{self._fmt(loss)}" if loss > 0 else ""
+            cum_s = '-----' if cum is None else self._fmt(cum)
+            leg_s = '-----' if leg is None else self._fmt(leg)
+
+            loss_s = '' if loss is None or loss <= 0 else f"+{self._fmt(loss)}"
+            pace_s = '' if not pace_sec else '~' + self._fmt_min(pace_sec)
+
             if i == len(self.splits):
                 p.underline2_on()
-            pace_s = ('~' + self._fmt_min(pace_sec)) if pace_sec else ''
             p.text(f"{i:>2}. {code:>3}{cum_s:>10}{leg_s:>10}{loss_s:>10}{pace_s:>10}\n")
             if i == len(self.splits):
                 p.underline_off()
@@ -155,7 +168,7 @@ class Receipt:
         # Total
         p.underline2_on()
         p.bold_on()
-        status = "OK" if self.result.all_visited and self.result.order_correct else "MP"
+        status = "OK" if self.result.all_visited and self.result.order_correct else "DISQ"
 
         total = self.card.finish_time - self.card.start_time
         total_str = self._fmt(total)
@@ -168,7 +181,7 @@ class Receipt:
         else:
             finish_leg = ''
 
-        p.text(f"     {status}{total_str:>10}{finish_leg:>10}\n")
+        p.text(f"   {status:>4}{total_str:>10}{finish_leg:>10}\n")
         p.bold_off()
         p.underline_off()
 
@@ -176,9 +189,13 @@ class Receipt:
 
         # Footer
         loss, place, all_count = self.get_standing(total)
-        standing = f"{place}/{all_count}"
+        if status != "OK":
+            loss = 0
+            standing_s = ''
+        else:
+            standing_s = f"турнірна таблиця: {place}/{all_count}"
         p.text(f"поточне відставання: +{self._fmt(loss)}\n")
-        p.text(f"турнірна таблиця: {standing:<10}{pace:>14}min/km\n")
+        p.text(f"{standing_s:<28}{pace:>14}min/km\n")
 
         p.feed(3)
         p.cut()
