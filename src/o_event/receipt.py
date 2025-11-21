@@ -70,32 +70,38 @@ class Receipt:
         self.splits = []
         last = 0
         self.cum_loss = 0
-        for seq, (code, time) in enumerate(self.result.visited):
-            if time is not None:
-                leg = time - last if last is not None else None
 
-                best = (
-                    self.db.query(func.min(RunSplit.leg_time))
-                    .filter_by(course_id=self.course.id, seq=seq)
-                    .scalar()
-                )
+        def calc_leg_loss_pace(seq, time):
+            if time is None:
+                return None, None, None
+            leg = time - last if last is not None else None
 
-                loss = 0 if leg is None or best is None or best >= leg else leg - best
-                self.cum_loss += loss
+            best = (
+                self.db.query(func.min(RunSplit.leg_time))
+                .filter_by(course_id=self.course.id, seq=seq)
+                .scalar()
+            )
 
-                control = self.controls[seq + 1]   # skip start
-                pace_sec = None
-                if control.leg_length and leg is not None:
-                    pace_sec = round(leg * 1000.0 / control.leg_length)
-                else:
-                    pace_sec = None
+            loss = 0 if leg is None or best is None or best >= leg else leg - best
+            self.cum_loss += loss
+
+            control = self.controls[seq + 1]   # skip start
+            pace_sec = None
+            if control.leg_length and leg is not None:
+                pace_sec = round(leg * 1000.0 / control.leg_length)
             else:
-                leg = None
-                loss = None
                 pace_sec = None
+            return leg, loss, pace_sec
 
+        for seq, (code, time) in enumerate(self.result.visited):
+            leg, loss, pace_sec = calc_leg_loss_pace(seq, time)
             self.splits.append((code, time, leg, loss, pace_sec))
             last = time
+
+        self.run_time = self.card.finish_time - self.card.start_time
+        leg, loss, pace_sec = calc_leg_loss_pace(len(self.result.visited), self.run_time)
+        self.finish_leg = leg
+        self.finish_loss = loss
 
     def get_standing(self, total):
         # All results in this group for this day
@@ -167,20 +173,17 @@ class Receipt:
         # Total
         p.underline2_on()
         p.bold_on()
-        status = "OK" if self.result.all_visited and self.result.order_correct else "DISQ"
+        status = "OK" if self.result.all_visited and self.result.order_correct else "DSQ"
 
-        total = self.card.finish_time - self.card.start_time
-        total_str = self._fmt(total)
+        total_str = self._fmt(self.run_time)
 
         # Pace
         km = self.course.length / 1000.0
-        pace = self._fmt_min(int(total / km)) if km > 0 else ""
-        if self.result.visited:
-            finish_leg = self._fmt(total - self.result.visited[-1][1])
-        else:
-            finish_leg = ''
+        pace = self._fmt_min(int(self.run_time / km)) if km > 0 else ""
+        finish_leg_s = '' if self.finish_leg is None else self._fmt(self.finish_leg)
+        finish_loss_s = '' if self.finish_loss is None or self.finish_loss <= 0 else f'+{self._fmt(self.finish_loss)}'
 
-        p.text(f"   {status:>4}{total_str:>10}{finish_leg:>10}\n")
+        p.text(f"   {status:>4}{total_str:>10}{finish_leg_s:>10}{finish_loss_s:>10}{'':>10}\n")
         p.bold_off()
         p.underline_off()
 
@@ -188,10 +191,10 @@ class Receipt:
 
         # Footer
         cum_loss_s = f"+{self._fmt(self.cum_loss)}"
-        p.text(f"поточне відставання: {cum_loss_s:>16}\n")
-        place, all_count = self.get_standing(total)
+        p.text(f"поточне відставання: {cum_loss_s:>16}{'min/km':>10}\n")
+        place, all_count = self.get_standing(self.run_time)
         standing_s = f"турнірна таблиця: {place}/{all_count}" if status == 'OK' else ''
-        p.text(f"{standing_s:<28}{pace:>14}min/km\n")
+        p.text(f"{standing_s:<28}{pace:>19}\n")
 
         p.feed(3)
         p.cut()
