@@ -187,8 +187,9 @@ class Receipt:
         p.text("=" * 48 + "\n")
 
         # Footer
+        cum_loss_s = f"+{self._fmt(self.cum_loss)}"
+        p.text(f"поточне відставання: {cum_loss_s:>16}\n")
         place, all_count = self.get_standing(total)
-        p.text(f"поточне відставання: +{self._fmt(self.cum_loss)}\n")
         standing_s = f"турнірна таблиця: {place}/{all_count}" if status == 'OK' else ''
         p.text(f"{standing_s:<28}{pace:>14}min/km\n")
 
