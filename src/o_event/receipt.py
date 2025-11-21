@@ -189,6 +189,14 @@ class Receipt:
 
         p.text("=" * 48 + "\n")
 
+        if self.result.extra:
+            p.text('додатк: ' + ', '.join(f'{c}/{self._fmt(t)}' for c, t in self.result.extra))
+            p.text('\n')
+
+        if self.result.missing:
+            p.text('пропуск: ' + ', '.join(f'{c}' for c in self.result.missing))
+            p.text('\n')
+
         # Footer
         cum_loss_s = f"+{self._fmt(self.cum_loss)}"
         p.text(f"поточне відставання: {cum_loss_s:>16}{'min/km':>10}\n")
