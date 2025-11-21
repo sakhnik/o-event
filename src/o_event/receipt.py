@@ -120,21 +120,23 @@ class Receipt:
 
         # Name + club
         p.bold_on()
-        p.text(f"{self.name:<35}{self.club}\n")
+        p.text(f"{self.name:<35}{self.club:>13}\n")
         p.bold_off()
 
         # Category + distance
         km = self.course.length / 1000.0
         p.underline2_on()
-        p.text(f"{self.category:<35}{km:.3f}km {self.course.climb}m\n")
+        dist_s = f"{km}km {self.course.climb}m"
+        p.text(f"{self.category:<35}{dist_s:>13}\n")
         p.underline_off()
 
-        start_str = self._fmt(self.card.start_time)
-        finish_str = self._fmt(self.card.finish_time)
-        check_str = self._fmt(self.card.check_time)
+        check_str = f"Check: {self._fmt(self.card.check_time)}"
+        start_str = f"Start: {self._fmt(self.card.start_time)}"
+        finish_str = f"Finish: {self._fmt(self.card.finish_time)}"
+        si_str = f"SI:{self.card.card_number}"
 
-        p.text(f"Check: {check_str:<20}Finish: {finish_str}\n")
-        p.text(f"Start: {start_str:<20}SI:{self.card.card_number}\n")
+        p.text(f"{check_str:<20}{finish_str:>28}\n")
+        p.text(f"{start_str:<20}{si_str:>28}\n")
 
         p.text("=" * 48 + "\n")
 
@@ -176,7 +178,7 @@ class Receipt:
         loss, place, all_count = self.get_standing(total)
         standing = f"{place}/{all_count}"
         p.text(f"поточне відставання: +{self._fmt(loss)}\n")
-        p.text(f"турнірна таблиця: {standing:<10}{pace:>13}min/km\n")
+        p.text(f"турнірна таблиця: {standing:<10}{pace:>14}min/km\n")
 
         p.feed(3)
         p.cut()
