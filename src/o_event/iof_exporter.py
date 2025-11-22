@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 from o_event.models import Competitor, Run, RunSplit, Stage, Course, Status, Config
+from o_event.ranking import Ranking
 from datetime import datetime, time
 from dataclasses import dataclass
 from typing import List, Optional
@@ -272,33 +273,12 @@ class IOFExporter:
         )
 
     def map_class(self, group_name: str, course: Course, runs: list[Run]) -> ClassResultDTO:
-
-        # Ranking: OK runners only, sorted by result
-        ok_runs = [r for r in runs if r.status == Status.OK]
-        ok_runs_sorted = sorted(ok_runs, key=lambda r: r.result)
-        dsq_runs = [r for r in runs if r.status != Status.OK]
-        dsq_runs_sorted = sorted(dsq_runs, key=lambda r: r.result)
-
-        best_time = ok_runs_sorted[0].result if ok_runs_sorted else None
-
         persons = []
-
-        for i, run in enumerate(ok_runs_sorted, 1):
-            position = i
-            time_behind = run.result - best_time
-
+        for position, time_behind, run in Ranking().rank(runs):
             persons.append(
                 PersonResultDTO(
                     person=self.map_person(run.competitor),
                     result=self.map_result(run, position, time_behind),
-                )
-            )
-
-        for run in dsq_runs_sorted:
-            persons.append(
-                PersonResultDTO(
-                    person=self.map_person(run.competitor),
-                    result=self.map_result(run, None, None),
                 )
             )
 
