@@ -33,7 +33,7 @@ class Receipt:
             raise ValueError("No competitor with this SID")
 
         self.competitor = competitor
-        self.name = f"{competitor.last_name} {competitor.first_name}"
+        self.name = f"{competitor.first_name} {competitor.last_name}"
         self.club = competitor.group
         self.category = competitor.group
 

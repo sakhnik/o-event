@@ -321,8 +321,8 @@ def test_all():
         assert len(cl.persons) == 3
 
         p1 = cl.persons[0].person
-        assert p1.given == 'Король'
-        assert p1.family == 'Артур'
+        assert p1.family == 'Король'
+        assert p1.given == 'Артур'
         assert p1.clubShort == 'CPK'
         r1 = cl.persons[0].result
         assert r1.timeBehind == 0
@@ -330,8 +330,8 @@ def test_all():
         assert r1.status == 'OK'
 
         p1 = cl.persons[1].person
-        assert p1.given == 'Лисенко'
-        assert p1.family == 'Віктор'
+        assert p1.family == 'Лисенко'
+        assert p1.given == 'Віктор'
         assert p1.clubShort is None
         r1 = cl.persons[1].result
         assert r1.timeBehind == 49
@@ -339,8 +339,8 @@ def test_all():
         assert r1.status == 'OK'
 
         p1 = cl.persons[2].person
-        assert p1.given == 'Поліщук'
-        assert p1.family == 'Юрій'
+        assert p1.family == 'Поліщук'
+        assert p1.given == 'Юрій'
         assert p1.clubShort == 'ZLS'
         r1 = cl.persons[2].result
         assert r1.timeBehind is None
