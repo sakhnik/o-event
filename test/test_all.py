@@ -2,10 +2,11 @@ from o_event.models import Base, Config
 from o_event.iof_importer import IOFImporter
 from o_event.csv_importer import CSVImporter
 from o_event.card_processor import CardProcessor, PunchReadout
+from o_event.iof_exporter import IOFExporter
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
-from datetime import date
+from datetime import date, datetime
 from pathlib import Path
 
 
@@ -42,9 +43,12 @@ def test_all():
     importer = IOFImporter(session)
 
     data_path = Path(__file__).parent / "data" / "15.xml"
-    importer.import_stage(data_path, day=1, stage_name="Спринт")
+    stage = importer.import_stage(data_path, day=1, stage_name="Спринт")
+    stage.date = datetime(2025, 11, 15, 16, 0, 0)
     data_path = Path(__file__).parent / "data" / "16.xml"
-    importer.import_stage(data_path, day=2, stage_name="Середня")
+    stage = importer.import_stage(data_path, day=2, stage_name="Середня")
+    stage.date = datetime(2025, 11, 16, 17, 0, 0)
+    session.commit()
 
     data_path = Path(__file__).parent / "data" / "runners.csv"
     CSVImporter.import_competitors(session, data_path)
@@ -307,3 +311,38 @@ def test_all():
             ''
         ]
         assert printer.get_output() == receipt32
+
+        iof_exporter = IOFExporter()
+        result = iof_exporter.map_result_list(session, day=1)
+        assert result.event.name == 'O-Halloween'
+        assert len(result.classes) == 1
+        cl = result.classes[0]
+        assert cl.className == 'Ч21Е'
+        assert len(cl.persons) == 3
+
+        p1 = cl.persons[0].person
+        assert p1.given == 'Король'
+        assert p1.family == 'Артур'
+        assert p1.clubShort == 'CPK'
+        r1 = cl.persons[0].result
+        assert r1.timeBehind == 0
+        assert r1.position == 1
+        assert r1.status == 'OK'
+
+        p1 = cl.persons[1].person
+        assert p1.given == 'Лисенко'
+        assert p1.family == 'Віктор'
+        assert p1.clubShort is None
+        r1 = cl.persons[1].result
+        assert r1.timeBehind == 49
+        assert r1.position == 2
+        assert r1.status == 'OK'
+
+        p1 = cl.persons[2].person
+        assert p1.given == 'Поліщук'
+        assert p1.family == 'Юрій'
+        assert p1.clubShort == 'ZLS'
+        r1 = cl.persons[2].result
+        assert r1.timeBehind is None
+        assert r1.position is None
+        assert r1.status == 'MissingPunch'

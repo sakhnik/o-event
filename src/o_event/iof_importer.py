@@ -18,9 +18,9 @@ class IOFImporter:
         self.session.add(stage)
 
         # Stage date from <Event>/<Name>
-        event_name = root.find("iof:Event/iof:Name", self.ns)
-        if event_name is not None:
-            stage.date = event_name.text.strip()
+        # event_name = root.find("iof:Event/iof:Name", self.ns)
+        # if event_name is not None:
+        #    stage.date = event_name.text.strip()
 
         # ----- Map -----
         map_elem = root.find("iof:RaceCourseData/iof:Map", self.ns)

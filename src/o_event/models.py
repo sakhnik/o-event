@@ -75,7 +75,7 @@ class Stage(Base):
     id = Column(Integer, primary_key=True)
     day = Column(Integer)            # 1-based: stage number
     name = Column(String)         # Optional (e.g. "Sprint")
-    start_time = Column(DateTime)     # time-of-day when start is allowed
+    date = Column(DateTime, nullable=True)
 
     map = relationship("MapInfo", uselist=False, back_populates="stage",
                        cascade="all, delete-orphan")
@@ -176,6 +176,7 @@ class Run(Base):
     competitor_id = Column(Integer, ForeignKey("competitors.id"))
     day = Column(Integer)
 
+    start_slot = Column(Integer, nullable=True)
     start = Column(Integer, nullable=True)
     finish = Column(Integer, nullable=True)
     result = Column(Integer, nullable=True)
