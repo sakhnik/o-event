@@ -217,17 +217,3 @@ class Card(Base):
     readout_datetime = Column(DateTime)
 
     raw_json = Column(JSON)
-
-    punches = relationship("Punch", back_populates="card",
-                           cascade="all, delete-orphan")
-
-
-class Punch(Base):
-    __tablename__ = "punches"
-
-    id = Column(Integer, primary_key=True)
-    card_id = Column(Integer, ForeignKey("cards.id"), nullable=False)
-    code = Column(Integer)
-    punch_time = Column(Integer)
-
-    card = relationship("Card", back_populates="punches")

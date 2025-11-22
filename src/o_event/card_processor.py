@@ -7,7 +7,6 @@ from o_event.models import (
     Config,
     Course,
     CourseControl,
-    Punch,
     Run,
     RunSplit,
     Stage,
@@ -137,14 +136,6 @@ class CardProcessor:
         else:
             run.status = Status.MP
             card.status = Status.MP
-
-        for (code, time) in result.visited:
-            pd = Punch(
-                card_id=card.id,
-                code=code,
-                punch_time=time,
-            )
-            db.add(pd)
 
         self.store_run_splits(db, run, card, course, result)
 
