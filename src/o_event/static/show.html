@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<title>Orienteering — Live Results (Kiosk)</title>
+<style>
+  //:root {
+  //  --bg: #f8f9fb;          /* light page background */
+  //  --panel: #ffffff;        /* table/group background */
+  //  --text: #222;            /* main text */
+  //  --muted: #666;           /* header / secondary text */
+  //  --accent: #0069d9;       /* highlight / buttons */
+  //  --border: #ddd;          /* table borders */
+  //  --row-alt: #f3f4f7;      /* alternate row background */
+  //}
+  :root{
+    --bg: #0f1720;
+    --panel: #0b1220;
+    --text: #e6eef8;
+    --muted: #9fb1c9;
+    --accent: #3db4ff;
+  }
+  html,body { height:100%; margin:0; background:var(--bg); color:var(--text); font-family: Inter, Roboto, "Helvetica Neue", Arial, sans-serif; }
+  .topbar {
+    position:fixed; top:0; left:0; right:0; height:56px; display:flex; align-items:center; gap:12px;
+    padding:8px 14px; background:linear-gradient(180deg, rgba(0,0,0,0.4), rgba(0,0,0,0.25)); z-index:200;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.4);
+  }
+  .title { font-size:18px; font-weight:700; color:var(--text) }
+  .controls { margin-left:auto; display:flex; gap:6px; align-items:center; }
+  button { background:transparent; color:var(--text); border:1px solid rgba(255,255,255,0.06); padding:6px 10px; border-radius:6px; cursor:pointer; }
+  button:hover { border-color: rgba(255,255,255,0.12); }
+  .small { font-size:13px; color:var(--muted); margin-left:8px }
+  .speed { width:140px; }
+
+  /* Container that scrolls */
+  #viewport {
+    position: absolute;
+    top:56px; bottom:0; left:0; right:0;
+    overflow-y:auto;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+    padding:20px;
+  }
+
+  .group {
+    background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    border-radius:12px;
+    padding:14px;
+    margin-bottom:18px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.45);
+  }
+  .group h2 { margin:0 0 8px 0; font-size:20px; display:flex; gap:12px; align-items:baseline; }
+  .group h2 .group-name { font-weight:800; font-size:20px; color:var(--accent); }
+  .group h2 .meta { font-size:13px; color:var(--muted); font-weight:600 }
+
+  table { width:100%; border-collapse:collapse; table-layout:fixed; }
+  th, td {
+    text-align:left;
+    padding:8px 10px;
+    border-bottom:1px solid rgba(255,255,255,0.03);
+    white-space:nowrap; overflow:hidden; text-overflow:ellipsis;
+    font-variant-numeric: tabular-nums;
+  }
+  th { font-size:13px; color:var(--muted); font-weight:700; }
+  td.name { font-weight:700; font-size:15px; color:var(--text); width:40%; }
+  td.pos { width:60px; font-size:16px; font-weight:800; color:var(--accent); }
+  td.result { width:120px; text-align:left; font-weight:700; }
+  td.status { color:#ffb86b; font-weight:800; text-align:left; width:90px }
+  .ok { color:#9be6a8; font-weight:700 }
+  .behind { color:var(--muted); text-align:left }
+
+  /* large-screen tweaks */
+  @media (min-width:1000px){
+    .group { padding:18px; margin-bottom:20px }
+    .group h2 { font-size:22px }
+    th, td { padding:10px 12px }
+  }
+
+  /* Kiosk hint */
+  .hint { position:fixed; left:14px; bottom:14px; background:rgba(0,0,0,0.35); padding:8px 12px; border-radius:9px; color:var(--muted); font-size:13px; }
+</style>
+</head>
+<body>
+  <div class="topbar">
+    <div class="title">Orienteering — Live Results</div>
+    <div class="small" id="dayDisplay">Day: 1</div>
+
+    <div class="controls">
+      <button id="playPause">⏸ Pause</button>
+      <button id="revBtn">⟲ Reverse</button>
+      <label style="display:flex;align-items:center;gap:8px;">
+        <span style="font-size:13px;color:var(--muted)">Speed</span>
+        <input id="speed" class="speed" type="range" min="5" max="200" value="30" />
+      </label>
+      <button id="topBtn">⇞ Top</button>
+      <button id="botBtn">⇟ Bottom</button>
+      <button id="refreshBtn">🔁 Refresh</button>
+    </div>
+  </div>
+
+  <div id="viewport" tabindex="0" aria-label="Results viewport">
+    <!-- groups rendered here -->
+  </div>
+
+  <div class="hint">Controls: Play/Pause · Reverse · Speed slider · Refresh · Hover to pause</div>
+
+<script>
+(() => {
+  const API = "/results";      // backend endpoint
+  const DAY = 1;               // change or make UI to choose
+  const REFRESH_MS = 7000;     // how often to refresh data (ms)
+  const viewport = document.getElementById("viewport");
+  const playPauseBtn = document.getElementById("playPause");
+  const revBtn = document.getElementById("revBtn");
+  const speedRange = document.getElementById("speed");
+  const topBtn = document.getElementById("topBtn");
+  const botBtn = document.getElementById("botBtn");
+  const refreshBtn = document.getElementById("refreshBtn");
+  const dayDisplay = document.getElementById("dayDisplay");
+
+  let auto = true;            // playing
+  let reversed = false;
+  let pixelsPerSecond = Number(speedRange.value); // px/sec
+  let lastFrameTime = null;
+  let rafId = null;
+  let groupsOrder = [];       // keys order
+  let pausedBecauseHover = false;
+
+  function formatTime(sec){
+    if (sec == null) return "";
+    sec = Number(sec);
+    if (isNaN(sec)) return "";
+    const h = Math.floor(sec / 3600);
+    const m = Math.floor((sec % 3600) / 60);
+    const s = Math.floor(sec % 60);
+    if (h > 0) return `${h}:${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}`;
+    return `${m}:${String(s).padStart(2,"0")}`;
+  }
+
+  async function loadAndRender(){
+    try {
+      const res = await fetch(`${API}?day=${DAY}`, {cache: "no-store"});
+      if (!res.ok) throw new Error("Failed to fetch results");
+      const data = await res.json();
+      renderGroups(data);
+    } catch (err) {
+      console.error("Load error:", err);
+    }
+  }
+
+  function renderGroups(data){
+    // data: { groupName: [ entries... ], ... }
+    // Keep current scroll ratio to avoid jumpy behavior
+    const prevScroll = viewport.scrollTop;
+    const prevHeight = viewport.scrollHeight;
+
+    viewport.innerHTML = "";
+    groupsOrder = Object.keys(data);
+
+    // Sort groups alphabetically (you can change ordering)
+    groupsOrder.sort((a,b) => a.localeCompare(b, undefined, {sensitivity:"base"}));
+
+    groupsOrder.forEach(groupName => {
+      const table = data[groupName];
+      const div = document.createElement("div");
+      div.className = "group";
+      // header with meta count
+      const header = document.createElement("h2");
+      const nameSpan = document.createElement("span");
+      nameSpan.className = "group-name";
+      nameSpan.textContent = groupName || "(no group)";
+      const meta = document.createElement("span");
+      meta.className = "meta";
+      meta.textContent = `${table.length} entries`;
+      header.appendChild(nameSpan);
+      header.appendChild(meta);
+      div.appendChild(header);
+
+      const tbl = document.createElement("table");
+      const thead = document.createElement("thead");
+      thead.innerHTML = `<tr><th class="num" style="width:60px">#</th><th class="name">Name</th><th class="result" style="width:140px">Result</th><th class="behind" style="width:120px">Behind</th><th class="status" style="width:120px">Status</th></tr>`;
+      tbl.appendChild(thead);
+      const tbody = document.createElement("tbody");
+
+      table.forEach(row => {
+        const tr = document.createElement("tr");
+        const pos = document.createElement("td");
+        pos.className = "pos";
+        pos.textContent = row.position ?? "";
+
+        const name = document.createElement("td");
+        name.className = "name";
+        name.textContent = row.name ?? "";
+
+        const result = document.createElement("td");
+        result.className = "result";
+        result.textContent = row.result != null ? formatTime(row.result) : "";
+
+        const behind = document.createElement("td");
+        behind.className = "behind";
+        behind.textContent = (row.behind && row.behind > 0) ? "+" + formatTime(row.behind) : "";
+
+        const status = document.createElement("td");
+        status.className = "status";
+        if (row.status && row.status !== "OK") {
+          status.textContent = row.status;
+          status.style.color = "#ffb86b";
+        } else {
+          status.textContent = "";
+          status.style.color = "#9be6a8";
+        }
+
+        tr.appendChild(pos);
+        tr.appendChild(name);
+        tr.appendChild(result);
+        tr.appendChild(behind);
+        tr.appendChild(status);
+
+        tbody.appendChild(tr);
+      });
+
+      tbl.appendChild(tbody);
+      div.appendChild(tbl);
+      viewport.appendChild(div);
+    });
+
+    // restore scroll proportionally so reloads don't jump
+    if (prevHeight > 0) {
+      const ratio = prevScroll / Math.max(prevHeight - viewport.clientHeight, 1);
+      viewport.scrollTop = Math.round(ratio * Math.max(viewport.scrollHeight - viewport.clientHeight, 1));
+    } else {
+      viewport.scrollTop = 0;
+    }
+  }
+
+  // Automatic smooth continuous scroll using requestAnimationFrame
+  function animateScroll(ts){
+    if (!lastFrameTime) lastFrameTime = ts;
+    const dt = (ts - lastFrameTime) / 1000; // seconds
+    lastFrameTime = ts;
+    if (auto && !pausedBecauseHover) {
+      const delta = pixelsPerSecond * dt * (reversed ? -1 : 1);
+      // Apply delta
+      viewport.scrollTop += delta;
+
+      // Wrap-around: when reaching bottom/top, loop
+      if (!reversed && (viewport.scrollTop + viewport.clientHeight >= viewport.scrollHeight - 2)) {
+        viewport.scrollTop = 0;
+      } else if (reversed && viewport.scrollTop <= 2) {
+        viewport.scrollTop = viewport.scrollHeight - viewport.clientHeight;
+      }
+    }
+    rafId = requestAnimationFrame(animateScroll);
+  }
+
+  // Controls wiring
+  playPauseBtn.addEventListener("click", () => {
+    auto = !auto;
+    playPauseBtn.textContent = auto ? "⏸ Pause" : "▶ Play";
+  });
+
+  revBtn.addEventListener("click", () => {
+    reversed = !reversed;
+    revBtn.style.opacity = reversed ? "0.8" : "1";
+  });
+
+  speedRange.addEventListener("input", (e) => {
+    pixelsPerSecond = Number(e.target.value);
+  });
+
+  topBtn.addEventListener("click", () => { viewport.scrollTop = 0; });
+
+  botBtn.addEventListener("click", () => { viewport.scrollTop = viewport.scrollHeight - viewport.clientHeight; });
+
+  refreshBtn.addEventListener("click", () => { loadAndRender(); });
+
+  // Pause on mouse hover so staff can inspect
+  viewport.addEventListener("mouseenter", () => { pausedBecauseHover = true; });
+  viewport.addEventListener("mouseleave", () => { pausedBecauseHover = false; });
+
+  // Keyboard shortcuts
+  window.addEventListener("keydown", (ev) => {
+    if (ev.key === " ") { ev.preventDefault(); auto = !auto; playPauseBtn.textContent = auto ? "⏸ Pause" : "▶ Play"; }
+    if (ev.key === "ArrowUp") { viewport.scrollTop -= 200; }
+    if (ev.key === "ArrowDown") { viewport.scrollTop += 200; }
+    if (ev.key === "r") { loadAndRender(); }
+  });
+
+  // Periodic refresh
+  setInterval(() => { loadAndRender(); }, REFRESH_MS);
+
+  // initial fetch + start animation
+  loadAndRender().then(() => {
+    lastFrameTime = null;
+    rafId = requestAnimationFrame(animateScroll);
+  });
+
+  // expose some helpers for debugging
+  window.kiosk = {
+    pause: () => { auto = false; playPauseBtn.textContent = "▶ Play"; },
+    play: () => { auto = true; playPauseBtn.textContent = "⏸ Pause"; },
+    setSpeed: (v) => { speedRange.value = v; pixelsPerSecond = Number(v); }
+  };
+
+})();
+</script>
+</body>
+</html>

@@ -2,25 +2,21 @@
 
 from o_event.card_processor import PunchReadout, CardProcessor
 from o_event.printer import Printer
+from o_event.db import SessionLocal
 
 import uvicorn
 from fastapi import FastAPI, HTTPException
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
 
 # -----------------------------------------------------------------------------------
 # DB Setup
 # -----------------------------------------------------------------------------------
-
-engine = create_engine("sqlite:///race.db", echo=False)
-Session = sessionmaker(bind=engine)
 
 app = FastAPI(title="Card Listener")
 
 
 @app.post("/card")
 def receive_card(readout: PunchReadout):
-    db = Session()
+    db = SessionLocal()
 
     try:
         with Printer() as printer:

@@ -5,9 +5,9 @@ class Ranking:
     def rank(self, runs: list[Run]) -> list[(int, int, Run)]:
         # Ranking: OK runners only, sorted by result
         ok_runs = [r for r in runs if r.status == Status.OK]
-        ok_runs_sorted = sorted(ok_runs, key=lambda r: r.result)
+        ok_runs_sorted = sorted(ok_runs, key=lambda r: r.result if r.result is not None else -1)
         dsq_runs = [r for r in runs if r.status != Status.OK]
-        dsq_runs_sorted = sorted(dsq_runs, key=lambda r: r.result)
+        dsq_runs_sorted = sorted(dsq_runs, key=lambda r: r.result if r.result is not None else -1)
 
         best_time = ok_runs_sorted[0].result if ok_runs_sorted else None
 
