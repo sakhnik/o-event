@@ -12,3 +12,4 @@ Orienteering competition management
     - registration select and print
     - early summary print
     - count of competitors still racing
+    - i18n
