@@ -8,6 +8,7 @@ from prompt_toolkit import PromptSession
 from prompt_toolkit.completion import WordCompleter
 from prompt_toolkit.formatted_text import HTML
 from rapidfuzz import fuzz
+from sqlalchemy.inspection import inspect
 
 from db import SessionLocal
 from models import Competitor, Run, Status, Config
@@ -33,33 +34,26 @@ def resolve_command(cmd, commands):
         return None  # ambiguous or unknown
 
 
+def get_columns(model):
+    return [c.key for c in inspect(model).mapper.column_attrs]
+
+
 # ---------- Utilities ----------
 def competitor_to_dict(c: Competitor):
-    return {
-        "id": c.id,
-        "reg": c.reg,
-        "group": c.group,
-        "sid": c.sid,
-        "first_name": c.first_name,
-        "last_name": c.last_name,
-        "notes": c.notes,
-        "money": c.money,
-        "declared_days": c.declared_days,
-        "runs": [
-            {
-                "id": r.id,
-                "day": r.day,
-                "start_slot": r.start_slot,
-                "start": r.start,
-                "finish": r.finish,
-                "result": r.result,
-                "status": r.status.value if r.status else None
-            } for r in c.runs
-        ]
-    }
+    comp_dict = {col: getattr(c, col) for col in get_columns(Competitor)}
+    comp_dict["runs"] = [
+        {col: getattr(r, col) if col != "status" else (r.status.value if r.status else None)
+         for col in get_columns(Run)}
+        for r in c.runs
+    ]
+    return comp_dict
 
 
 def update_competitor_from_dict(d: dict):
+    comp_columns = get_columns(Competitor)
+    run_columns = get_columns(Run)
+
+    # Create or fetch competitor
     if "id" not in d or d["id"] is None:
         comp = Competitor()
         db.add(comp)
@@ -69,13 +63,15 @@ def update_competitor_from_dict(d: dict):
         if comp is None:
             raise ValueError(f"Competitor id {d['id']} not found")
 
-    for k in ("reg", "group", "sid", "first_name", "last_name", "notes", "money", "declared_days"):
-        if k in d:
-            setattr(comp, k, d[k])
+    # Update competitor fields dynamically
+    for col in comp_columns:
+        if col in d and col != "id":  # don't overwrite primary key
+            setattr(comp, col, d[col])
 
-    # update runs
+    # Update runs
     existing_by_id = {r.id: r for r in comp.runs if r.id is not None}
     seen_existing_ids = set()
+
     for rd in d.get("runs", []):
         if "id" in rd and rd["id"] in existing_by_id:
             r = existing_by_id[rd["id"]]
@@ -84,18 +80,24 @@ def update_competitor_from_dict(d: dict):
             r = Run()
             r.competitor = comp
             db.add(r)
-        for fk in ("day", "start_slot", "start", "finish", "result"):
-            if fk in rd:
-                setattr(r, fk, rd[fk])
+
+        for col in run_columns:
+            if col in rd and col != "id":  # don't overwrite primary key
+                setattr(r, col, rd[col])
+
+        # Handle enum status separately
         st = rd.get("status")
-        if st is None:
-            r.status = None
-        else:
-            r.status = Status(st) if st in Status._value2member_map_ else None
-    # remove deleted runs
+        if hasattr(Run, "status"):
+            if st is None:
+                r.status = None
+            else:
+                r.status = Status(st) if st in Status._value2member_map_ else None
+
+    # Remove deleted runs
     for r in list(comp.runs):
         if r.id is not None and r.id not in seen_existing_ids:
             db.delete(r)
+
     db.flush()
     return comp
 
