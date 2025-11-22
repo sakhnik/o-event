@@ -141,6 +141,7 @@ def ls_competitors(query: str = None):
         name = f"{c.last_name or ''} {c.first_name or ''}"
         group = c.group or ""
         notes = c.notes or ""
+        reg = c.reg or ""
         declared = c.declared_days or []
 
         # If no query, include everything
@@ -153,9 +154,10 @@ def ls_competitors(query: str = None):
             fuzz.partial_ratio(query.lower(), name.lower()),
             fuzz.partial_ratio(query.lower(), group.lower()),
             fuzz.partial_ratio(query.lower(), notes.lower()),
+            fuzz.partial_ratio(query.lower(), reg.lower()),
         )
 
-        if score >= 50:  # threshold for matching
+        if score >= 75:  # threshold for matching
             results.append((score, c))
 
     results.sort(key=lambda x: x[0])
