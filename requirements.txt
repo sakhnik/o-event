@@ -2,3 +2,6 @@ sqlalchemy
 fastapi
 uvicorn
 pytest
+PyYAML
+prompt_toolkit
+rapidfuzz
