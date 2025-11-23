@@ -64,7 +64,7 @@
     font-variant-numeric: tabular-nums;
   }
   th { font-size:13px; color:var(--muted); font-weight:700; }
-  td.name { font-weight:700; font-size:15px; color:var(--text); width:40%; }
+  td.name, td.club { font-weight:700; font-size:15px; color:var(--text); width:40%; }
   td.pos { width:60px; font-size:16px; font-weight:800; color:var(--accent); }
   td.result { width:120px; text-align:left; font-weight:700; }
   td.status { color:#ffb86b; font-weight:800; text-align:left; width:90px }
@@ -92,7 +92,7 @@
       <button id="revBtn">⟲ Reverse</button>
       <label style="display:flex;align-items:center;gap:8px;">
         <span style="font-size:13px;color:var(--muted)">Speed</span>
-        <input id="speed" class="speed" type="range" min="5" max="200" value="30" />
+        <input id="speed" class="speed" type="range" min="5" max="1000" value="30" />
       </label>
       <button id="topBtn">⇞ Top</button>
       <button id="botBtn">⇟ Bottom</button>
@@ -180,7 +180,7 @@
 
       const tbl = document.createElement("table");
       const thead = document.createElement("thead");
-      thead.innerHTML = `<tr><th class="num" style="width:60px">#</th><th class="name">Name</th><th class="result" style="width:140px">Result</th><th class="behind" style="width:120px">Behind</th><th class="status" style="width:120px">Status</th></tr>`;
+      thead.innerHTML = `<tr><th class="num" style="width:60px">Місце</th><th class="name">Ім’я</th><th class="club">Клуб</th><th class="result" style="width:140px">Результат</th><th class="behind" style="width:120px">Відставання</th><th class="status" style="width:120px">Статус</th></tr>`;
       tbl.appendChild(thead);
       const tbody = document.createElement("tbody");
 
@@ -193,6 +193,10 @@
         const name = document.createElement("td");
         name.className = "name";
         name.textContent = row.name ?? "";
+
+        const club = document.createElement("td");
+        club.className = "club";
+        club.textContent = row.club ?? "";
 
         const result = document.createElement("td");
         result.className = "result";
@@ -214,6 +218,7 @@
 
         tr.appendChild(pos);
         tr.appendChild(name);
+        tr.appendChild(club);
         tr.appendChild(result);
         tr.appendChild(behind);
         tr.appendChild(status);

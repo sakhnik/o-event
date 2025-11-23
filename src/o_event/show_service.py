@@ -53,6 +53,7 @@ def compute_group_results(db: Session, day: int):
             table.append({
                 "position": position,
                 "name": f"{comp.last_name} {comp.first_name}",
+                "club": comp.club_name,
                 "result": run.result,
                 "behind": time_behind,
                 "status": run.status,
