@@ -4,7 +4,6 @@ Orienteering competition management
 
 ## TODO
 
-    - split report
     - summary report over multiple days
     - start arrangement
     - start protocol for judges
