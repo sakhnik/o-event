@@ -169,13 +169,14 @@ class CardProcessor:
 
         if result.visited:
             last_time = result.visited[-1][1]
-            leg_time = None if last_time is None else card.finish_time - last_time
+            run_time = card.finish_time - card.start_time
+            leg_time = None if last_time is None else run_time - last_time
             split = RunSplit(
                 run_id=run.id,
                 course_id=course.id,
                 seq=len(result.visited),
                 control_code='F',
                 leg_time=leg_time,
-                cum_time=card.finish_time - card.start_time,
+                cum_time=run_time,
             )
             db.add(split)
