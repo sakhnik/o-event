@@ -2,7 +2,7 @@ from datetime import date
 from sqlalchemy import (
     Column, Integer, String, Float, DateTime, ForeignKey, Enum, JSON
 )
-from sqlalchemy.orm import declarative_base, relationship
+from sqlalchemy.orm import declarative_base, relationship, object_session
 import enum
 
 Base = declarative_base()
@@ -167,6 +167,18 @@ class Competitor(Base):
     declared_days = Column(JSON)   # e.g. [1,2]
 
     runs = relationship("Run", back_populates="competitor")
+
+    @property
+    def club_name(self):
+        c = object_session(self).get(Club, self.reg)
+        return c.name if c else ""
+
+
+class Club(Base):
+    __tablename__ = "clubs"
+
+    reg = Column(String(20), primary_key=True)
+    name = Column(String(200), nullable=False)
 
 
 class Run(Base):

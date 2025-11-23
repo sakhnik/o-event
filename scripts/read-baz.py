@@ -159,5 +159,9 @@ with open('runners.csv', 'w', newline='') as csvfile:
 # 5. Save assigned reg codes for logging
 #######################################
 with open("clubs.csv", "w") as f:
-    for reg_code, club in regs.items():
-        f.write(f"{reg_code},{club}\n")
+    writer = csv.writer(f, delimiter=',',
+                        quotechar='"', quoting=csv.QUOTE_MINIMAL)
+    writer.writerow(["Reg", "Club"])
+
+    for reg, club in regs.items():
+        writer.writerow([reg, club])

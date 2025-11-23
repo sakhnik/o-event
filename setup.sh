@@ -1,11 +1,6 @@
-#!/bin/bash
-
-this_dir=$(dirname $(readlink -f ${BASH_SOURCE[0]}))
-cd $this_dir
-
-virtualenv venv
+this_dir=$(dirname "$(readlink -f "${BASH_SOURCE[0]}")")
+cd "$this_dir"
+[ ! -d venv ] && python3 -m venv venv
 source venv/bin/activate
-pip install -r requirements.txt
-
-export PYTHONPATH=$this_dir
-bash
+export PYTHONPATH="$this_dir/src:$PYTHONPATH"
+echo "Bash env ready. Run 'source venv/bin/activate' to activate venv."
