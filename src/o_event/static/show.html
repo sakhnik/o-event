@@ -252,9 +252,11 @@
 
       // Wrap-around: when reaching bottom/top, loop
       if (!reversed && (viewport.scrollTop + viewport.clientHeight >= viewport.scrollHeight - 2)) {
-        viewport.scrollTop = 0;
+        reversed = true;
+        //viewport.scrollTop = 0;
       } else if (reversed && viewport.scrollTop <= 2) {
-        viewport.scrollTop = viewport.scrollHeight - viewport.clientHeight;
+        reversed = false;
+        //viewport.scrollTop = viewport.scrollHeight - viewport.clientHeight;
       }
     }
     rafId = requestAnimationFrame(animateScroll);
