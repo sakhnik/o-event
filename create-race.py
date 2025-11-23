@@ -1,15 +1,13 @@
 #!/usr/bin/env python3
 
-from sqlalchemy import create_engine
-from sqlalchemy.orm import sessionmaker
-from models import Base, Config
-from iof_importer import IOFImporter
+from o_event.models import Config, Base
+from o_event.iof_importer import IOFImporter
+from o_event.db import SessionLocal, ENGINE
+
 from datetime import date
 
-engine = create_engine("sqlite:///race.db")
-Base.metadata.create_all(engine)
-Session = sessionmaker(bind=engine)
-session = Session()
+Base.metadata.create_all(ENGINE)
+session = SessionLocal()
 
 
 Config.create(session, "O-Halloween", date(2025, 11, 15), "John Doe", "Jane Smith", "Kyiv")
