@@ -249,7 +249,7 @@ class IOFExporter:
             family=c.last_name,
             given=c.first_name,
             clubShort=c.reg,
-            clubName=None,       # add clubs later
+            clubName=c.club_name,
         )
 
     def map_status_string(self, status: Status):

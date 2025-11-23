@@ -34,7 +34,7 @@ class Receipt:
 
         self.competitor = competitor
         self.name = f"{competitor.first_name} {competitor.last_name}"
-        self.club = competitor.group
+        self.club = competitor.reg
         self.category = competitor.group
 
         day = card.raw_json.get("day") or Config.get(self.db, Config.KEY_CURRENT_DAY)

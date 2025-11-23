@@ -50,8 +50,10 @@ def test_all():
     stage.date = datetime(2025, 11, 16, 17, 0, 0)
     session.commit()
 
-    data_path = Path(__file__).parent / "data" / "runners.csv"
-    CSVImporter.import_competitors(session, data_path)
+    runners_path = Path(__file__).parent / "data" / "runners.csv"
+    CSVImporter().import_competitors(session, runners_path)
+    clubs_path = Path(__file__).parent / "data" / "clubs.csv"
+    CSVImporter().import_clubs(session, clubs_path)
 
     runner16 = """
         {"stationNumber":1,"cardNumber":16,"startTime":60386,"finishTime":62341,"checkTime":60386,"punches":[
@@ -79,7 +81,7 @@ def test_all():
             'E1 - O-Halloween',
             '2025-11-15 Kyiv',
             '------------------------------------------------',
-            'Віктор Лисенко                              Ч21Е',
+            'Віктор Лисенко                                  ',
             'Ч21Е                                   1.25km 0m',
             'Check: 16:46:26                 Finish: 17:19:01',
             'Start: 16:46:26                            SI:16',
@@ -164,7 +166,7 @@ def test_all():
             'E1 - O-Halloween',
             '2025-11-15 Kyiv',
             '------------------------------------------------',
-            'Юрій Поліщук                                Ч21Е',
+            'Юрій Поліщук                                 ZLS',
             'Ч21Е                                   1.25km 0m',
             'Check: 16:35:37                 Finish: 17:10:36',
             'Start: 16:35:37                           SI:149',
@@ -254,7 +256,7 @@ def test_all():
             'E1 - O-Halloween',
             '2025-11-15 Kyiv',
             '------------------------------------------------',
-            'Артур Король                                Ч21Е',
+            'Артур Король                                 CPK',
             'Ч21Е                                   1.25km 0m',
             'Check: 16:40:25                 Finish: 17:12:11',
             'Start: 16:40:25                            SI:32',
@@ -320,29 +322,32 @@ def test_all():
         assert cl.className == 'Ч21Е'
         assert len(cl.persons) == 3
 
-        p1 = cl.persons[0].person
-        assert p1.family == 'Король'
-        assert p1.given == 'Артур'
-        assert p1.clubShort == 'CPK'
-        r1 = cl.persons[0].result
-        assert r1.timeBehind == 0
-        assert r1.position == 1
-        assert r1.status == 'OK'
+        p = cl.persons[0].person
+        assert p.family == 'Король'
+        assert p.given == 'Артур'
+        assert p.clubShort == 'CPK'
+        assert p.clubName == 'ЦПО КМР ТКВ'
+        r = cl.persons[0].result
+        assert r.timeBehind == 0
+        assert r.position == 1
+        assert r.status == 'OK'
 
-        p1 = cl.persons[1].person
-        assert p1.family == 'Лисенко'
-        assert p1.given == 'Віктор'
-        assert p1.clubShort is None
-        r1 = cl.persons[1].result
-        assert r1.timeBehind == 49
-        assert r1.position == 2
-        assert r1.status == 'OK'
+        p = cl.persons[1].person
+        assert p.family == 'Лисенко'
+        assert p.given == 'Віктор'
+        assert p.clubShort == ''
+        assert p.clubName == ''
+        r = cl.persons[1].result
+        assert r.timeBehind == 49
+        assert r.position == 2
+        assert r.status == 'OK'
 
-        p1 = cl.persons[2].person
-        assert p1.family == 'Поліщук'
-        assert p1.given == 'Юрій'
-        assert p1.clubShort == 'ZLS'
-        r1 = cl.persons[2].result
-        assert r1.timeBehind is None
-        assert r1.position is None
-        assert r1.status == 'MissingPunch'
+        p = cl.persons[2].person
+        assert p.family == 'Поліщук'
+        assert p.given == 'Юрій'
+        assert p.clubShort == 'ZLS'
+        assert p.clubName == 'Зелеста'
+        r = cl.persons[2].result
+        assert r.timeBehind is None
+        assert r.position is None
+        assert r.status == 'MissingPunch'

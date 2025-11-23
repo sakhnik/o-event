@@ -4,7 +4,6 @@ Orienteering competition management
 
 ## TODO
 
-    - club support
     - split report
     - summary report over multiple days
     - start arrangement
