@@ -5,7 +5,7 @@ from sqlalchemy.orm import Session
 from html import escape
 from datetime import timedelta
 
-from o_event.models import Run, RunSplit, Competitor, Stage, Course, CourseControl
+from o_event.models import Run, RunSplit, Competitor, Stage, Course, CourseControl, Status
 from o_event.ranking import Ranking
 from o_event.db import SessionLocal
 
@@ -57,6 +57,10 @@ th, td {{
     text-align: right;
 }}
 
+th.name {{
+    text-align: left;
+}}
+
 th {{
     background: #eee;
 }}
@@ -93,7 +97,7 @@ def export_results(db: Session, day: int, include_splits: bool):
     # Load all groups for today
     q = (db.query(Run)
          .join(Run.competitor)
-         .filter(Run.day == day)
+         .filter(Run.day == day, Run.status != Status.DNS)
          .order_by(Competitor.group, Run.result.asc().nullslast()))
 
     runs = q.all()
@@ -121,7 +125,7 @@ def export_results(db: Session, day: int, include_splits: bool):
         html.append(f'<h2 id="grp-{escape(g)}">{escape(g)}</h2>')
 
         html.append("<table>")
-        html.append("<tr><th>#</th><th>Name</th><th>Result</th><th>Behind</th></tr>")
+        html.append('<tr><th>Місце</th><th class="name">Ім’я</th><th>Результат</th><th>Відставання</th></tr>')
 
         runs_g = groups[g]
         ranked_runs = Ranking().rank(runs_g)
@@ -129,14 +133,14 @@ def export_results(db: Session, day: int, include_splits: bool):
         for pos, behind, r in ranked_runs:
             name = escape(f"{r.competitor.last_name} {r.competitor.first_name}")
             res = fmt(r.result)
-            behind_s = f'+{fmt(behind)}' if behind else ''
+            behind_s = f'+{fmt(behind)}' if behind is not None else ''
 
             html.append(
                 f"<tr>"
                 f"<td>{pos if pos is not None else ''}</td>"
                 f"<td class='name'>{name}</td>"
                 f"<td>{res}</td>"
-                f"<td>{behind_s}</td>"
+                f"<td>{behind_s if behind is not None else r.status.value}</td>"
                 f"</tr>"
             )
 
@@ -190,12 +194,12 @@ def export_results(db: Session, day: int, include_splits: bool):
                 required_codes = ['-'] * max_seq
 
             # Render table
-            html.append(f"<h3>Splits – {escape(g)}</h3>")
+            html.append(f"<h3>Проміжки – {escape(g)}</h3>")
             # header row with control codes
 
             # header
             html.append("<table>")
-            html.append("<tr><th>Name</th>")
+            html.append("<tr><th>Ім’я</th>")
             for seq in range(1, max_seq):
                 html.append(f"<th>{seq}<br/>{required_codes[seq - 1]}</th>")
             html.append(f"<th>{max_seq}<br/>F</th>")

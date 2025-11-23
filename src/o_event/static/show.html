@@ -180,7 +180,7 @@
 
       const tbl = document.createElement("table");
       const thead = document.createElement("thead");
-      thead.innerHTML = `<tr><th class="num" style="width:60px">Місце</th><th class="name">Ім’я</th><th class="club">Клуб</th><th class="result" style="width:140px">Результат</th><th class="behind" style="width:120px">Відставання</th><th class="status" style="width:120px">Статус</th></tr>`;
+      thead.innerHTML = `<tr><th class="num" style="width:60px">Місце</th><th class="name">Ім’я</th><th class="club">Клуб</th><th class="result" style="width:140px">Результат</th><th class="behind" style="width:120px">Відставання</th></tr>`;
       tbl.appendChild(thead);
       const tbody = document.createElement("tbody");
 
@@ -203,17 +203,13 @@
         result.textContent = row.result != null ? formatTime(row.result) : "";
 
         const behind = document.createElement("td");
-        behind.className = "behind";
-        behind.textContent = (row.behind && row.behind > 0) ? "+" + formatTime(row.behind) : "";
-
-        const status = document.createElement("td");
-        status.className = "status";
         if (row.status && row.status !== "OK") {
-          status.textContent = row.status;
-          status.style.color = "#ffb86b";
+          behind.className = "status";
+          behind.textContent = row.status;
+          behind.style.color = "#ffb86b";
         } else {
-          status.textContent = "";
-          status.style.color = "#9be6a8";
+          behind.className = "behind";
+          behind.textContent = (row.behind && row.behind > 0) ? "+" + formatTime(row.behind) : "";
         }
 
         tr.appendChild(pos);
@@ -221,7 +217,6 @@
         tr.appendChild(club);
         tr.appendChild(result);
         tr.appendChild(behind);
-        tr.appendChild(status);
 
         tbody.appendChild(tr);
       });
