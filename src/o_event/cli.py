@@ -9,18 +9,37 @@ from prompt_toolkit.completion import WordCompleter
 from prompt_toolkit.formatted_text import HTML
 from rapidfuzz import fuzz
 from sqlalchemy.inspection import inspect
+from dataclasses import dataclass
+from typing import List
+from tabulate import tabulate
 
 from db import SessionLocal
 from models import Competitor, Run, Status, Config
 
-db = SessionLocal()
+
+@dataclass
+class Command:
+    command: str
+    synopsis: str
+    description: str
+
 
 # Commands
-commands = ['ls', 'edit', 'add', 'day', 'quit']
+commands_def: List[Command] = [
+    Command('help', 'help', 'List commands'),
+    Command('day', 'day <day>', 'Set current stage day'),
+    Command('ls', 'ls <query>', 'List competitors matching query'),
+    Command('edit', 'edit <competitor_id>', 'Edit competitor with ID <competitor_id>'),
+    Command('add', 'add', 'Add new competitor'),
+    Command('quit', 'quit', 'Quit the CLI')
+]
+commands = [c.command for c in commands_def]
 cmd_completer = WordCompleter(commands, ignore_case=True)
 
+db = SessionLocal()
 
-def resolve_command(cmd, commands):
+
+def resolve_command(cmd):
     """
     Resolve a possibly abbreviated command to full command.
     If multiple matches exist, return None (ambiguous).
@@ -230,7 +249,7 @@ def main():
                 continue
             parts = text.strip().split()
             cmd_input = parts[0].lower()
-            cmd = resolve_command(cmd_input, commands)
+            cmd = resolve_command(cmd_input)
             args = parts[1:]
 
             if cmd == 'quit':
@@ -249,7 +268,8 @@ def main():
                 except ValueError:
                     print("Usage: edit <competitor_id>")
             elif cmd == 'help':
-                print("Commands: ls <query>, add, edit <id>, quit")
+                print("Commands:")
+                print(tabulate([[c.synopsis, c.description] for c in commands_def]))
             else:
                 print("Unknown command, type 'help'")
         except KeyboardInterrupt:
