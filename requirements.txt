@@ -1,7 +1,8 @@
-sqlalchemy
-fastapi
-uvicorn
-pytest
 PyYAML
+fastapi
 prompt_toolkit
+pytest
 rapidfuzz
+sqlalchemy
+tabulate
+uvicorn
