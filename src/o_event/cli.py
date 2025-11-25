@@ -1,20 +1,22 @@
 #!/usr/bin/env python3
 
-import os
-import yaml
-import tempfile
-import subprocess
+from dataclasses import dataclass
+from datetime import datetime
 from prompt_toolkit import PromptSession
 from prompt_toolkit.completion import WordCompleter
 from prompt_toolkit.formatted_text import HTML
 from rapidfuzz import fuzz
 from sqlalchemy.inspection import inspect
-from dataclasses import dataclass
-from typing import List
 from tabulate import tabulate
+from typing import List, Tuple
+import os
+import subprocess
+import tempfile
+import yaml
 
-from db import SessionLocal
-from models import Competitor, Run, Status, Config
+from o_event.db import SessionLocal
+from o_event.models import Competitor, Run, Status, Config
+from o_event.printer import Printer
 
 
 @dataclass
@@ -31,6 +33,7 @@ commands_def: List[Command] = [
     Command('ls', 'ls <query>', 'List competitors matching query'),
     Command('edit', 'edit <competitor_id>', 'Edit competitor with ID <competitor_id>'),
     Command('add', 'add', 'Add new competitor'),
+    Command('register', 'register <query>', 'Register competitors for start'),
     Command('quit', 'quit', 'Quit the CLI')
 ]
 commands = [c.command for c in commands_def]
@@ -121,15 +124,15 @@ def update_competitor_from_dict(d: dict):
     return comp
 
 
-def edit_competitor_in_editor(comp_dict: dict):
+def edit_yaml_in_editor(comp_dict: dict) -> Tuple[dict, bool]:
     editor = os.environ.get("EDITOR", "vi")
     with tempfile.NamedTemporaryFile(mode="w+", suffix=".yaml", delete=False) as tf:
         path = tf.name
-        yaml.safe_dump(comp_dict, tf, sort_keys=False, allow_unicode=True)
+        yaml.safe_dump(comp_dict, tf, sort_keys=False, allow_unicode=True, width=float('inf'))
         tf.flush()
     try:
         # Save original text
-        original_text = yaml.safe_dump(comp_dict, sort_keys=False, allow_unicode=True)
+        original_text = yaml.safe_dump(comp_dict, sort_keys=False, allow_unicode=True, width=float('inf'))
 
         # Launch editor
         subprocess.call([editor, path])
@@ -138,13 +141,12 @@ def edit_competitor_in_editor(comp_dict: dict):
         with open(path, "r", encoding="utf-8") as f:
             edited_text = f.read()
 
-        # If nothing changed, return None
         if edited_text.strip() == original_text.strip():
-            return None
+            return comp_dict, False
 
         # Otherwise parse YAML and return
         edited = yaml.safe_load(edited_text)
-        return edited
+        return edited, True
 
     finally:
         try:
@@ -153,8 +155,7 @@ def edit_competitor_in_editor(comp_dict: dict):
             pass
 
 
-# ---------- Commands ----------
-def ls_competitors(query: str = None):
+def get_competitors(query: str = None) -> List[Tuple[int, Competitor]]:
     comps = db.query(Competitor).all()
     results = []
 
@@ -163,7 +164,6 @@ def ls_competitors(query: str = None):
         group = c.group or ""
         notes = c.notes or ""
         reg = c.reg or ""
-        declared = c.declared_days or []
 
         # If no query, include everything
         if not query:
@@ -182,8 +182,12 @@ def ls_competitors(query: str = None):
             results.append((score, c))
 
     results.sort(key=lambda x: x[0])
+    return results
 
-    for score, c in results:
+
+# ---------- Commands ----------
+def ls_competitors(query: str = None):
+    for score, c in get_competitors(query):
         name = f"{c.last_name or ''} {c.first_name or ''}"
         group = c.group or ""
         declared = c.declared_days or []
@@ -204,8 +208,8 @@ def add_competitor():
         "declared_days": [],
         "runs": [],
     }
-    edited = edit_competitor_in_editor(skeleton)
-    if edited:  # only update DB if user actually changed something
+    edited, changed = edit_yaml_in_editor(skeleton)
+    if not changed:
         update_competitor_from_dict(edited)
         db.commit()
         print("Added new competitor.")
@@ -219,11 +223,13 @@ def edit_competitor(cid: int):
         print(f"No competitor with ID {cid}")
         return
     comp_dict = competitor_to_dict(comp)
-    edited = edit_competitor_in_editor(comp_dict)
-    if edited:
+    edited, changed = edit_yaml_in_editor(comp_dict)
+    if changed:
         update_competitor_from_dict(edited)
         db.commit()
         print(f"Competitor {cid} updated.")
+    else:
+        print("No changes made. Aborted.")
 
 
 def get_current_day():
@@ -235,6 +241,67 @@ def set_current_day(arg):
         Config.set(db, Config.KEY_CURRENT_DAY, int(arg))
     except Exception:
         ...
+
+
+def register(query: str = None):
+    subset = get_competitors(query)
+    updated_money = {}
+    while True:
+        selection = []
+        for _, c in subset:
+            name = f"{c.last_name or ''} {c.first_name or ''}"
+            group = c.group or ""
+            declared = c.declared_days or []
+            notes = c.notes or ''
+            money = updated_money.get(c.id, c.money)
+            info = f"{c.id:3} | {money:5} | {c.reg or '':6} | {name:20} | {group:6} | {declared} | {notes}"
+            selection.append(info)
+        edited, changed = edit_yaml_in_editor(selection)
+        subset = []
+        for s in edited:
+            parts = [p.strip() for p in s.split("|")]
+            id_ = int(parts[0])
+            comp = db.get(Competitor, id_)
+            if comp is None:
+                raise ValueError(f"Competitor id {id_} not found")
+            if comp.registered is not None:
+                print(f'{comp.sid} {comp.group} {comp.last_name} {comp.first_name} вже зареєстровано!')
+            money = int(parts[1])
+            updated_money[id_] = money
+            subset.append((money, comp))
+        report = [[comp.sid, comp.group, f'{comp.last_name} {comp.first_name}', money] for money, comp in subset]
+        print(tabulate(report))
+        total = sum(money for money, _ in subset)
+        print(f"Всього: {total}")
+        ans = input('Прийняти [Y/n/q]? ').strip().lower()
+        if ans in ('q', 'quit'):
+            break
+        if ans in ('', 'y', 'yes', 'т', 'так'):
+            try:
+                with Printer() as p:
+                    for money, comp in subset:
+                        p.bold_on()
+                        p.text(f'{comp.sid:>3}')
+                        p.bold_off()
+                        p.text(f' {comp.group:<8}')
+                        name = f'{comp.last_name} {comp.first_name}'
+                        p.text(f' {name:<21}')
+                        p.text(f' {money:>5}')
+                        p.text('\n')
+                    p.text('\n')
+                    summary = f"Всього: {total}"
+                    p.bold_on()
+                    p.text(f"{summary:>40}")
+                    p.bold_off()
+                    p.feed(3)
+                    p.cut()
+            except Exception as ex:
+                print(ex)
+            for money, comp in subset:
+                comp.money = money
+                comp.registered = datetime.now()
+            db.commit()
+            break
 
 
 # ---------- Main CLI Loop ----------
@@ -267,6 +334,9 @@ def main():
                     edit_competitor(cid)
                 except ValueError:
                     print("Usage: edit <competitor_id>")
+            elif cmd == 'register':
+                query = ' '.join(args) if args else None
+                register(query)
             elif cmd == 'help':
                 print("Commands:")
                 print(tabulate([[c.synopsis, c.description] for c in commands_def]))
