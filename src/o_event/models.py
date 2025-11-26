@@ -163,7 +163,7 @@ class Competitor(Base):
     last_name = Column(String(100))
     notes = Column(String(500))
     money = Column(Integer)
-    #registered = Column(DateTime, nullable=True)
+    money_paid = Column(Integer, nullable=True)
 
     declared_days = Column(JSON)   # e.g. [1,2]
 

@@ -265,8 +265,8 @@ def register(query: str = None):
             comp = db.get(Competitor, id_)
             if comp is None:
                 raise ValueError(f"Competitor id {id_} not found")
-            if comp.registered is not None:
-                print(f'{comp.sid} {comp.group} {comp.last_name} {comp.first_name} вже зареєстровано!')
+            if comp.money_paid is not None:
+                print(f'{comp.sid} {comp.group} {comp.last_name} {comp.first_name} вже заплатив {comp.money_paid}!')
             money = int(parts[1])
             updated_money[id_] = money
             subset.append((money, comp))
@@ -299,8 +299,7 @@ def register(query: str = None):
             except Exception as ex:
                 print(ex)
             for money, comp in subset:
-                comp.money = money
-                comp.registered = datetime.now()
+                comp.money_paid = money
             db.commit()
             break
 
