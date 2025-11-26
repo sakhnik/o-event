@@ -17,6 +17,7 @@ import yaml
 from o_event.db import SessionLocal
 from o_event.models import Competitor, Run, Status, Config
 from o_event.printer import Printer
+from o_event.ranking import Ranking
 
 
 @dataclass
@@ -26,7 +27,6 @@ class Command:
     description: str
 
 
-# Commands
 commands_def: List[Command] = [
     Command('help', 'help', 'List commands'),
     Command('day', 'day <day>', 'Set current stage day'),
@@ -34,6 +34,7 @@ commands_def: List[Command] = [
     Command('edit', 'edit <competitor_id>', 'Edit competitor with ID <competitor_id>'),
     Command('add', 'add', 'Add new competitor'),
     Command('register', 'register <query>', 'Register competitors for start'),
+    Command('summary', 'summary <max place>', 'Print summary result'),
     Command('quit', 'quit', 'Quit the CLI')
 ]
 commands = [c.command for c in commands_def]
@@ -304,6 +305,86 @@ def register(query: str = None):
             break
 
 
+# Format seconds → "h:mm:ss"
+def format_time(seconds: int | None) -> str:
+    if seconds is None:
+        return ""
+    h, remainder = divmod(seconds, 3600)
+    m, s = divmod(remainder, 60)
+    if not h:
+        return f"{m}:{s:02d}"
+    return f"{h}:{m:02d}:{s:02d}"
+
+
+def summary(max_place):
+    day = Config.get(db, Config.KEY_CURRENT_DAY)
+
+    groups = (
+        db.query(Competitor.group)
+        .distinct()
+        .order_by(Competitor.group)
+        .all()
+    )
+    groups = [g[0] for g in groups]
+
+    # List of tuples: (group_name, rows)
+    report_groups = []
+
+    for group in groups:
+        competitors = (
+            db.query(Competitor)
+            .filter(Competitor.group == group)
+            .all()
+        )
+        if not competitors:
+            continue
+
+        ranked = Ranking().rank_multiday(day, competitors)
+
+        rows = []
+        for place, result in ranked:
+            c = result.competitor
+            if place is None or place > max_place:
+                break
+            rows.append([
+                place or "",
+                f"{c.last_name} {c.first_name}",
+                c.reg or "",
+                result.best_count,
+                format_time(result.total_time),
+                result.total_score
+            ])
+
+        report_groups.append((group, rows))
+
+        print(group)
+        print(tabulate(rows))
+
+    ans = input('Друкувати [Y/n]? ').strip().lower()
+    if ans in ('', 'y', 'yes'):
+        try:
+            with Printer() as p:
+                for group, result in report_groups:
+                    p.bold_on()
+                    p.underline2_on()
+                    p.text(f'{group}\n')
+                    p.bold_off()
+                    p.underline_off()
+                    for r in result:
+                        p.text(f'{r[0]:>2}')
+                        p.text(f' {r[1]:<23}')
+                        p.text(f' {r[2]:>5}')
+                        p.text(f' {r[3]:>2}')
+                        p.text(f' {r[4]:>7}')
+                        p.text(f' {r[5]:>4}')
+                        p.text('\n')
+                    p.text('\n')
+                p.feed(3)
+                p.cut()
+        except Exception as ex:
+            print(ex)
+
+
 # ---------- Main CLI Loop ----------
 def main():
     print("Orienteering CLI (type 'help' for commands)")
@@ -337,6 +418,13 @@ def main():
             elif cmd == 'register':
                 query = ' '.join(args) if args else None
                 register(query)
+            elif cmd == 'summary':
+                max_place = 99
+                try:
+                    max_place = int(args[0])
+                except ValueError:
+                    ...
+                summary(max_place)
             elif cmd == 'help':
                 print("Commands:")
                 print(tabulate([[c.synopsis, c.description] for c in commands_def]))

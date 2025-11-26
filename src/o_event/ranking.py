@@ -117,7 +117,7 @@ class Ranking:
             total_score = sum(score_for_run(r) for r in best)
             total_time = sum(r.result for r in best) if best else None
 
-            aggregated.append(Ranking.Result(c, scores, len(best), total_score, total_time if total_time is not None else 99999999))
+            aggregated.append(Ranking.Result(c, scores, len(best), total_score, total_time))
 
         # -------------------------------------------
         # 4) Sort by:
@@ -126,7 +126,7 @@ class Ranking:
         #       total_time asc
         # -------------------------------------------
         aggregated.sort(
-            key=lambda a: (a.best_count, a.total_score, -a.total_time),
+            key=lambda a: (a.best_count, a.total_score, -(a.total_time or 9999999)),
             reverse=True
         )
 

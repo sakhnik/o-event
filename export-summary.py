@@ -2,7 +2,6 @@
 
 from sqlalchemy.orm import Session
 from jinja2 import Template
-from datetime import timedelta
 
 from o_event.models import Competitor
 from o_event.ranking import Ranking
@@ -13,10 +12,10 @@ from o_event.db import SessionLocal
 def format_time(seconds: int | None) -> str:
     if seconds is None:
         return ""
-    td = timedelta(seconds=int(seconds))
-    # drop days
-    h, remainder = divmod(td.seconds, 3600)
+    h, remainder = divmod(seconds, 3600)
     m, s = divmod(remainder, 60)
+    if not h:
+        return f"{m}:{s:02d}"
     return f"{h}:{m:02d}:{s:02d}"
 
 

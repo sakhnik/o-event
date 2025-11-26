@@ -4,7 +4,6 @@ Orienteering competition management
 
 ## TODO
 
-    - early summary print
     - unknown or duplicate card assignment
     - start protocols styling
     - more precise summary calculation
