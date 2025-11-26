@@ -4,9 +4,10 @@ Orienteering competition management
 
 ## TODO
 
-    - summary report over multiple days
+    - early summary print
     - unknown or duplicate card assignment
     - start protocols styling
-    - early summary print
+    - more precise summary calculation
     - count of competitors still racing
     - i18n
+    - common style, advertising etc
