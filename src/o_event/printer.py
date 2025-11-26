@@ -86,3 +86,36 @@ class Printer:
             self._raw(b"\x1d\x56\x42\x00")  # partial cut
         else:
             self._raw(b"\x1d\x56\x00")      # full cut
+
+
+class PrinterMux:
+    def __init__(self):
+        self.parts = []
+
+    def __enter__(self):
+        self.parts.clear()
+        try:
+            self.p = Printer().__enter__()
+        except Exception as e:
+            print(e)
+            self.p = None
+        return self
+
+    def __exit__(self, exc_type, exc, tb):
+        if self.p:
+            self.p.__exit__(exc_type, exc, tb)
+        self.p = None
+
+    def __getattr__(self, name):
+        def mocked_method(*args, **kwargs):
+            if self.p:
+                return self.p.__getattr__(name)(*args, **kwargs)
+        return mocked_method
+
+    def text(self, t):
+        self.parts.append(t)
+        if self.p:
+            self.p.text(t)
+
+    def get_output(self):
+        return ''.join(self.parts).split('\n')
