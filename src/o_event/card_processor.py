@@ -89,7 +89,7 @@ class CardProcessor:
         # CASE 1: Unknown card → leave unassigned
         if competitor is None:
             db.commit()
-            return {"status": "UNK", "reason": "unknown card"}
+            return {"status": "UNK", "sid": card.card_number}
 
         day = Config.get(db, Config.KEY_CURRENT_DAY)
         run = get_current_run(db, day, competitor)
@@ -104,13 +104,13 @@ class CardProcessor:
         if existing:
             # card.run_id = run.id
             db.commit()
-            return {"status": "DUP"}
+            return {"status": "DUP", "sid": card.card_number}
 
         return self.handle_card(db, card, run, printer, readout)
 
-    def handle_card(self, db, card: Card, run: Run, printer: Printer, readout: PunchReadout):
+    def handle_card(self, db, card: Card, run: Run, printer: Printer, readout: PunchReadout = None):
         if readout is None:
-            readout = PunchReadout.model_validate_json(card.raw_json)
+            readout = PunchReadout.model_validate(card.raw_json)
 
         competitor = run.competitor
         day = run.day
@@ -124,6 +124,9 @@ class CardProcessor:
 
         # calculate OK/MP
         course = get_course_for_card(db, day, competitor)
+        if not course:
+            db.commit()
+            return {"status": "UNK_COURSE", "sid": card.card_number}
 
         # fetch required controls
         controls = (
