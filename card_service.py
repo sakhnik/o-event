@@ -20,7 +20,7 @@ def receive_card(readout: PunchReadout):
 
     try:
         with PrinterMux() as printer:
-            result = CardProcessor().handle_card(db, readout, printer)
+            result = CardProcessor().handle_readout(db, readout, printer)
             print('\n'.join(printer.get_output()))
             return result
 

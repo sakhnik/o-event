@@ -75,7 +75,7 @@ def test_all():
         ]}"""
     readout = PunchReadout.model_validate_json(runner16)
     with MockPrinter() as printer:
-        assert CardProcessor().handle_card(session, readout, printer) == {"status": "OK"}
+        assert CardProcessor().handle_readout(session, readout, printer) == {"status": "OK"}
         receipt16 = [
             '================================================',
             'E1 - O-Halloween',
@@ -160,7 +160,7 @@ def test_all():
         ]}"""
     readout = PunchReadout.model_validate_json(runner149)
     with MockPrinter() as printer:
-        assert CardProcessor().handle_card(session, readout, printer) == {"status": "MP"}
+        assert CardProcessor().handle_readout(session, readout, printer) == {"status": "MP"}
         receipt149 = [
             '================================================',
             'E1 - O-Halloween',
@@ -248,7 +248,7 @@ def test_all():
         ]}"""
     readout = PunchReadout.model_validate_json(runner32)
     with MockPrinter() as printer:
-        assert CardProcessor().handle_card(session, readout, printer) == {"status": "OK"}
+        assert CardProcessor().handle_readout(session, readout, printer) == {"status": "OK"}
         #with open("/tmp/c.txt", "w") as f:
         #    f.write(printer.get_output())
         receipt32 = [

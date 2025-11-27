@@ -65,7 +65,7 @@ def get_course_for_card(db, day, competitor):
 
 
 class CardProcessor:
-    def handle_card(self, db, readout: PunchReadout, printer: Printer) -> Card:
+    def handle_readout(self, db, readout: PunchReadout, printer: Printer):
         # build storage object
         card = Card(
             run_id=None,
@@ -78,10 +78,6 @@ class CardProcessor:
         )
         db.add(card)
         db.flush()  # create card.id for details
-
-        actual_punches = []
-        for item in readout.punches:
-            actual_punches.append((item.code, item.time - readout.startTime))
 
         # competitor lookup
         competitor = (
@@ -101,7 +97,7 @@ class CardProcessor:
         # Check for duplicate for this competitor on this stage
         existing = (
             db.query(Card)
-            .filter(Card.run_id == run.id)
+            .filter(Card.run_id == run.id, Card.raw_json != card.raw_json)
             .first()
         )
 
@@ -110,8 +106,21 @@ class CardProcessor:
             db.commit()
             return {"status": "DUP"}
 
+        return self.handle_card(db, card, run, printer, readout)
+
+    def handle_card(self, db, card: Card, run: Run, printer: Printer, readout: PunchReadout):
+        if readout is None:
+            readout = PunchReadout.model_validate_json(card.raw_json)
+
+        competitor = run.competitor
+        day = run.day
+
         # Assign competitor & run
         card.run_id = run.id
+
+        actual_punches = []
+        for item in readout.punches:
+            actual_punches.append((item.code, item.time - readout.startTime))
 
         # calculate OK/MP
         course = get_course_for_card(db, day, competitor)
@@ -146,6 +155,9 @@ class CardProcessor:
         return {"status": card.status.value}
 
     def store_run_splits(self, db, run, card, course, result):
+        # Delete previous splits for this run
+        db.query(RunSplit).filter(RunSplit.run_id == run.id).delete()
+
         prev_time = 0
 
         for seq, (code, time) in enumerate(result.visited):
