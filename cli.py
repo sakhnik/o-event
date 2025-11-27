@@ -30,7 +30,7 @@ commands_def: List[Command] = [
     Command('help', 'help', 'List commands'),
     Command('day', 'day <day>', 'Set current stage day'),
     Command('ls', 'ls <query>', 'List competitors matching query'),
-    Command('edit', 'edit <competitor_id>', 'Edit competitor with ID <competitor_id>'),
+    Command('edit', 'edit <competitor_id|query>', 'Edit competitor with ID <competitor_id>'),
     Command('add', 'add', 'Add new competitor'),
     Command('register', 'register <query>', 'Register competitors for start'),
     Command('summary', 'summary <max place>', 'Print summary result'),
@@ -185,6 +185,36 @@ def get_competitors(query: str = None) -> List[Tuple[int, Competitor]]:
     return results
 
 
+def pick_competitor(query: str = None) -> Competitor | None:
+    """
+    Show competitors in fzf and return the chosen Competitor.
+    """
+    items = get_competitors(query)
+
+    # Prepare the input for fzf
+    lines = []
+    for score, c in reversed(items):
+        name = f"{c.last_name or ''} {c.first_name or ''}"
+        group = c.group or ""
+        declared = c.declared_days or []
+        notes = c.notes or ''
+        line = f"{c.id:3} | {c.reg or '':6} | {c.sid:3} | {name:20} | {group:6} | {declared} | {notes}"
+        lines.append(line)
+
+    # Invoke fzf
+    try:
+        out = subprocess.check_output(
+            ["fzf", "--ansi"],
+            input="\n".join(lines),
+            text=True,
+        ).strip()
+    except subprocess.CalledProcessError:
+        return None  # user cancelled with ESC or Ctrl-C
+
+    chosen_id = int(out.split()[0])
+    return chosen_id
+
+
 # ---------- Commands ----------
 def ls_competitors(query: str = None):
     for score, c in get_competitors(query):
@@ -192,7 +222,7 @@ def ls_competitors(query: str = None):
         group = c.group or ""
         declared = c.declared_days or []
         notes = c.notes or ''
-        print(f"{c.id:3} | {c.reg or '':6} | {name:20} | {group:6} | {declared} | {notes}")
+        print(f"{c.sid:3} | {c.reg or '':6} | {name:20} | {group:6} | {declared} | {notes}")
 
 
 def add_competitor():
@@ -254,7 +284,7 @@ def register(query: str = None):
             declared = c.declared_days or []
             notes = c.notes or ''
             money = updated_money.get(c.id, c.money)
-            info = f"{c.id:3} | {money:5} | {c.reg or '':6} | {name:20} | {group:6} | {declared} | {notes}"
+            info = f"{c.id:3} | {money:5} | {c.reg or '':6} | {c.sid:3} | {name:20} | {group:6} | {declared} | {notes}"
             selection.append(info)
         edited, changed = edit_yaml_in_editor(selection)
         subset = []
@@ -407,12 +437,13 @@ def main():
                 ls_competitors(query)
             elif cmd == 'add':
                 add_competitor()
-            elif cmd == 'edit' and args:
-                try:
+            elif cmd == 'edit':
+                if args and len(args) > 0 and args[0].isdigit():
                     cid = int(args[0])
+                else:
+                    cid = pick_competitor(' '.join(args))
+                if cid is not None:
                     edit_competitor(cid)
-                except ValueError:
-                    print("Usage: edit <competitor_id>")
             elif cmd == 'register':
                 query = ' '.join(args) if args else None
                 register(query)
