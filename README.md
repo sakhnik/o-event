@@ -4,6 +4,8 @@ Orienteering competition management
 
 ## TODO
 
+    - accumulate intermediate finish leg distance when merging
+    - check group when importing competitors
     - start protocols styling
     - more precise summary calculation
     - count of competitors still racing
