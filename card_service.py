@@ -22,6 +22,7 @@ def receive_card(readout: PunchReadout):
         with PrinterMux() as printer:
             result = CardProcessor().handle_readout(db, readout, printer)
             print('\n'.join(printer.get_output()))
+            print(result)
             return result
 
     except Exception as ex:
