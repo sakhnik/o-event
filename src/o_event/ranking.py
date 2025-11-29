@@ -33,16 +33,16 @@ class Ranking:
     @dataclass
     class Result:
         competitor: Competitor
-        scores: List[int]
+        scores: List[float]
         best_count: int
-        total_score: int
+        total_score: float
         total_time: int
 
     def rank_multiday(
         self,
         days_to_calculate: int,
         competitors: List[Competitor],
-    ) -> Tuple[int | None, Result]:
+    ) -> List[Tuple[int | None, Result]]:
         """
         Returns list of (place, [scores per day], competitor).
         Sorted by:
@@ -70,7 +70,7 @@ class Ranking:
         # -------------------------------------------
         # 2) Compute score for each run
         # -------------------------------------------
-        def score_for_run(run: Run) -> int:
+        def score_for_run(run: Run) -> float:
             if run.status != Status.OK:
                 return 0
             winner_time = winners.get(run.day)
@@ -80,7 +80,7 @@ class Ranking:
             time = run.result
             time_behind = time - winner_time
 
-            s = int(100 * (2.0 - time_behind / (time - time_behind)))
+            s = 100 * (2.0 - time_behind / (time - time_behind))
             return s if s >= 0 else 0
 
         # -------------------------------------------
@@ -107,7 +107,7 @@ class Ranking:
             # sort runs by score desc + time asc
             ok_runs_sorted = sorted(
                 [r for r in used_runs if r.status == Status.OK],
-                key=lambda r: (score_for_run(r), - (r.result or 9999999)),
+                key=lambda r: (score_for_run(r), -(r.result or 9999999)),
                 reverse=True,
             )
 

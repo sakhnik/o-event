@@ -119,15 +119,18 @@ def generate_reports(session: Session, days_to_calculate: int):
         ranked = Ranking().rank_multiday(days_to_calculate, competitors)
 
         rows = []
-        for place, result in ranked:
+        for idx, (place, result) in enumerate(ranked):
             c = result.competitor
+            score_is_unique = (idx == 0 or round(ranked[0][1].total_score) != round(result.total_score)) \
+                and (idx >= len(ranked) - 1 or round(ranked[idx + 1][1].total_score) != round(result.total_score))
+            total_score = round(result.total_score) if score_is_unique else result.total_score
             rows.append([
                 place or "",
                 f"{c.last_name} {c.first_name}",
                 c.club_name or "",
                 result.best_count,
                 format_time(result.total_time),
-                result.total_score
+                total_score
             ])
 
         report_groups.append((group, rows))
