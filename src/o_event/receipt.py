@@ -142,13 +142,13 @@ class Receipt:
         # Category + distance
         km = self.course.length / 1000.0
         p.underline2_on()
-        dist_s = f"{km}km {self.course.climb}m"
+        dist_s = f"{km}км {self.course.climb}м"
         p.text(f"{self.category:<35}{dist_s:>13}\n")
         p.underline_off()
 
-        check_str = f"Check: {self._fmt(self.card.check_time)}"
-        start_str = f"Start: {self._fmt(self.card.start_time)}"
-        finish_str = f"Finish: {self._fmt(self.card.finish_time)}"
+        check_str = f"Вхід:  {self._fmt(self.card.check_time)}"
+        start_str = f"Старт: {self._fmt(self.card.start_time)}"
+        finish_str = f"Фініш: {self._fmt(self.card.finish_time)}"
         si_str = f"SI:{self.card.card_number}"
 
         p.text(f"{check_str:<20}{finish_str:>28}\n")
@@ -199,7 +199,7 @@ class Receipt:
 
         # Footer
         cum_loss_s = f"+{self._fmt(self.cum_loss)}"
-        p.text(f"поточне відставання: {cum_loss_s:>16}{'min/km':>10}\n")
+        p.text(f"поточне відставання: {cum_loss_s:>16}{'хв/км':>10}\n")
         place, all_count = self.get_standing(self.run_time)
         standing_s = f"турнірна таблиця: {place}/{all_count}" if status == 'OK' else ''
         p.text(f"{standing_s:<28}{pace:>19}\n")
