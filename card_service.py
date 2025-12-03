@@ -6,6 +6,7 @@ from o_event.db import SessionLocal
 
 import uvicorn
 from fastapi import FastAPI, HTTPException
+import traceback
 
 # -----------------------------------------------------------------------------------
 # DB Setup
@@ -27,6 +28,7 @@ def receive_card(readout: PunchReadout):
 
     except Exception as ex:
         db.rollback()
+        traceback.print_exc()
         raise HTTPException(status_code=500, detail=str(ex))
 
     finally:
