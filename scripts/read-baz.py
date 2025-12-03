@@ -55,14 +55,12 @@ def get_reg(club: str) -> str:
 def calc_payment(group: str, days: int) -> int:
     g = group.replace(" ", "").upper()
 
-    if any(x in g for x in ["10", "12", "14", "65", "70", "75", "ДІТИ"]):
-        base = 200 if days == 2 else 110
-    elif any(x in g for x in ["ДОРОСЛІ", "СТУДЕНТИ", "18", "16", "55"]):
+    if any(x in g for x in ["ДОРОСЛІ", "СТУДЕНТИ", "18", "55"]):
         base = 300 if days == 2 else 160
-    elif any(x in g for x in ["21", "35", "45"]):
+    if any(x in g for x in ["21", "35", "45"]):
         base = 400 if days == 2 else 210
     else:
-        base = 0
+        base = 200 if days == 2 else 110
 
     chip_fee = 5 * days
     return base + chip_fee
