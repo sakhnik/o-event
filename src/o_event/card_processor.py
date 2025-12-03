@@ -153,6 +153,7 @@ class CardProcessor:
 
         db.commit()
 
+        printer.logo()
         Receipt(db, result, card, course, controls).print(printer)
 
         return {"status": card.status.value}

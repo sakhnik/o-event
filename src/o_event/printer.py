@@ -87,6 +87,13 @@ class Printer:
         else:
             self._raw(b"\x1d\x56\x00")      # full cut
 
+    def logo(self):
+        try:
+            with open('logo.raw', 'rb') as f:
+                self._raw(f.read())
+        except FileNotFoundError:
+            ...
+
 
 class PrinterMux:
     def __init__(self):
@@ -109,7 +116,7 @@ class PrinterMux:
     def __getattr__(self, name):
         def mocked_method(*args, **kwargs):
             if self.p:
-                return self.p.__getattr__(name)(*args, **kwargs)
+                return getattr(self.p, name)(*args, **kwargs)
         return mocked_method
 
     def text(self, t):
