@@ -4,9 +4,10 @@ Orienteering competition management
 
 ## TODO
 
-    - accumulate intermediate finish leg distance when merging
-    - check group when importing competitors
+    - print logo in the receipts
     - start protocols styling
+    - logo and competition name in the reports
+    - accumulate intermediate finish leg distance when merging
     - count of competitors still racing
     - i18n
     - common style, advertising etc

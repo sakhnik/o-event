@@ -1,7 +1,8 @@
-from o_event.models import Competitor, Run, Status, Club
+from o_event.models import Competitor, Run, Status, Club, Course
 
 import csv
 from pathlib import Path
+from sqlalchemy import select
 
 
 class CSVImporter:
@@ -11,6 +12,8 @@ class CSVImporter:
         with csv_path.open(newline='', encoding="utf-8") as f:
             reader = csv.DictReader(f)
 
+            groups_with_courses = set(db.execute(select(Course.name)).scalars().all())
+
             for row in reader:
                 days_raw = row["Days"].strip()
                 declared_days = (
@@ -18,12 +21,19 @@ class CSVImporter:
                     if days_raw else []
                 )
 
+                sid = int(row["SID"])
+                first_name = row["First name"].strip()
+                last_name = row["Last name"].strip()
+                group = row["Group"].strip().replace(' ', '')
+                if group not in groups_with_courses:
+                    print(f"{sid} {last_name} {first_name}: невідома група {group}")
+
                 comp = Competitor(
                     reg=row["Reg"].strip(),
-                    group=row["Group"].strip().replace(' ', ''),
-                    sid=int(row["SID"]),
-                    first_name=row["First name"].strip(),
-                    last_name=row["Last name"].strip(),
+                    group=group,
+                    sid=sid,
+                    first_name=first_name,
+                    last_name=last_name,
                     notes=(row["Notes"].strip() or None),
                     money=int(row["Money"]),
                     declared_days=declared_days,
