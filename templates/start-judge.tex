@@ -1,0 +1,48 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{fontspec}
+\usepackage{geometry}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{titlesec}
+\usepackage{booktabs}
+
+\geometry{top=2cm,bottom=2cm,left=2cm,right=2cm}
+\setmainfont{Linux Libertine O} % або будь-який шрифт з українськими літерами
+
+\titleformat{\section}{\Large\bfseries}{}{0pt}{}
+\titleformat{\subsection}{\large\bfseries}{}{0pt}{}
+
+\begin{document}
+
+\begin{center}
+{\LARGE {{ cfg.name }} }\\[1em]
+\begin{tabular}{@{}ll@{}}
+\textbf{Місце:} & {{ cfg.place }} \\
+\textbf{Дата:} & {{ cfg.date }} \\
+\textbf{День змагань:} & {{ day }} \\
+\textbf{Головний суддя:} & {{ cfg.judge }} \\
+\textbf{Секретар:} & {{ cfg.secretary }} \\
+\end{tabular}
+\end{center}
+
+\bigskip
+\hrule
+\bigskip
+
+{% for slot, rows in slots %}
+\section*{Хвилина {{ slot }} — Старт {{ slot_to_time(slot0, slot) }}}
+
+\begin{longtable}{l l l}
+\toprule
+Номер & Група & Учасник \\
+\midrule
+\endhead
+{% for r in rows %}
+{{ r.competitor.sid }} & {{ r.competitor.group }} & {{ r.competitor.last_name }} {{ r.competitor.first_name }} \\
+{% endfor %}
+\bottomrule
+\end{longtable}
+
+{% endfor %}
+
+\end{document}

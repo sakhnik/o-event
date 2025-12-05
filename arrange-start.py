@@ -235,30 +235,29 @@ def load_protocol_data(session, day):
 def render_html(day, judge_data, participant_data, cfg, slot0):
     env = Environment(loader=FileSystemLoader("templates"))
 
-    tmpl_judge = env.get_template("start-judge.html")
-    tmpl_part  = env.get_template("start.html")
+    for suffix in 'html', 'tex':
+        tmpl = env.get_template(f"start-judge.{suffix}")
+        out = tmpl.render(
+            day=day,
+            slots=judge_data,
+            cfg=cfg,
+            slot0=slot0,
+            slot_to_time=slot_to_time,
+        )
+        with open(f"out/e{day}-start-judge.{suffix}", "w", encoding="utf-8") as f:
+            f.write(out)
 
-    html_judge = tmpl_judge.render(
-        day=day,
-        slots=judge_data,
-        cfg=cfg,
-        slot0=slot0,
-        slot_to_time=slot_to_time,
-    )
-
-    html_part = tmpl_part.render(
-        day=day,
-        groups=participant_data,
-        cfg=cfg,
-        slot0=slot0,
-        slot_to_time=slot_to_time,
-    )
-
-    with open(f"e{day}-start-judge.html", "w", encoding="utf-8") as f:
-        f.write(html_judge)
-
-    with open(f"e{day}-start.html", "w", encoding="utf-8") as f:
-        f.write(html_part)
+    for suffix in 'html', 'tex':
+        tmpl = env.get_template(f"start.{suffix}")
+        out = tmpl.render(
+            day=day,
+            groups=participant_data,
+            cfg=cfg,
+            slot0=slot0,
+            slot_to_time=slot_to_time,
+        )
+        with open(f"out/e{day}-start.{suffix}", "w", encoding="utf-8") as f:
+            f.write(out)
 
 
 # ------------------------------------------------------------
