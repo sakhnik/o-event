@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+
+import json
 import random
 import time
 from collections import defaultdict
@@ -18,6 +20,22 @@ def assign_start_slots(session, day, parallel_starts=1, seed=None):
         seed = int(time.time())
     random.seed(seed)
     print(f"Using seed: {seed}")
+
+    # --- store seed in Config ---
+    start_seeds_json = Config.get(session, Config.KEY_START_SEEDS, default="{}")
+    try:
+        start_seeds = json.loads(start_seeds_json)
+    except json.JSONDecodeError:
+        start_seeds = {}
+
+    day_key = str(day)
+    if day_key not in start_seeds:
+        start_seeds[day_key] = []
+
+    if not start_seeds[day_key] or start_seeds[day_key][-1] != seed:
+        start_seeds[day_key].append(seed)
+
+    Config.set(session, Config.KEY_START_SEEDS, json.dumps(start_seeds))
 
     runs = (
         session.query(Run)

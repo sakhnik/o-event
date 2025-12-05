@@ -22,6 +22,7 @@ class Config(Base):
     KEY_JUDGE = "judge"
     KEY_SECRETARY = "secretary"
     KEY_PLACE = "place"
+    KEY_START_SEEDS = "start_seeds"
 
     @staticmethod
     def set(db, key, value):
