@@ -13,9 +13,6 @@ from o_event.models import Run, Competitor, Course, Config, Stage
 from o_event.db import SessionLocal
 
 
-# ------------------------------------------------------------
-# Assign start slots using course length
-# ------------------------------------------------------------
 def assign_start_slots(session, day, parallel_starts=1, seed=None):
     if seed is None:
         seed = int(time.time())
@@ -57,10 +54,10 @@ def assign_start_slots(session, day, parallel_starts=1, seed=None):
     pace = {
         "Ч10": 15.0, "Ж10": 15.0,
         "Ч12": 10.0,  "Ж12": 10.0,
-        "Ч14": 8.0,  "Ж14": 8.0,
-        "Ч16": 7.0,  "Ж16": 7.0,
-        "Ч18": 6.0,  "Ж18": 7.0,
-        "Ч21E": 5.5, "Ж21E": 5.5,
+        "Ч14": 8.0,   "Ж14": 8.0,
+        "Ч16": 7.0,   "Ж16": 7.0,
+        "Ч18": 6.0,   "Ж18": 7.0,
+        "Ч21E": 5.5,  "Ж21E": 5.5,
     }
 
     expected_time = {
@@ -70,7 +67,6 @@ def assign_start_slots(session, day, parallel_starts=1, seed=None):
 
     # --- collect all runs into a single list and assign priority ---
     def priority(r):
-        # OCO competitors first, then longer expected time
         etime = expected_time.get(r.competitor.group, 30.0)
         return (0 if r.competitor.reg == "OCO" else 1, -etime)
 
@@ -84,12 +80,83 @@ def assign_start_slots(session, day, parallel_starts=1, seed=None):
 
     slot_index = 0
 
-    # --- assign competitors round-robin ---
-    for run in runs:
-        group_name = run.competitor.group
-        course_first = first_control.get(group_name)
+    # NEW: track last reg assigned for each group (to avoid same-reg adjacency)
+    last_reg_by_group = defaultdict(lambda: None)
 
-        # find next valid slot
+    # We'll work with runs as a mutable list of remaining candidates
+    remaining = list(runs)
+
+    while remaining:
+        picked_index = None
+        # 1) first pass: try to find candidate that doesn't repeat reg for its group AND can be placed
+        for i, run in enumerate(remaining):
+            group_name = run.competitor.group
+            reg = run.competitor.reg
+            course_first = first_control.get(run.competitor.group)
+
+            # skip if reg equals last reg for this group
+            if last_reg_by_group[group_name] == reg:
+                continue
+
+            # check if there exists a valid slot for this run (searching from current slot_index)
+            ok = False
+            si = slot_index
+            for _ in range(num_slots):
+                if (group_name not in group_slots[si] and
+                    (course_first is None or course_first not in slot_first_controls[si])):
+                    ok = True
+                    break
+                si = (si + 1) % num_slots
+
+            if ok:
+                picked_index = i
+                break
+
+        # 2) fallback pass: if no candidate found, allow same-reg (to avoid deadlock)
+        if picked_index is None:
+            for i, run in enumerate(remaining):
+                group_name = run.competitor.group
+                course_first = first_control.get(run.competitor.group)
+
+                si = slot_index
+                ok = False
+                for _ in range(num_slots):
+                    if (group_name not in group_slots[si] and
+                        (course_first is None or course_first not in slot_first_controls[si])):
+                        ok = True
+                        break
+                    si = (si + 1) % num_slots
+
+                if ok:
+                    picked_index = i
+                    break
+
+        # If still none found (very unlikely), expand search by ignoring first_control constraint
+        if picked_index is None:
+            for i, run in enumerate(remaining):
+                group_name = run.competitor.group
+                si = slot_index
+                ok = False
+                for _ in range(num_slots):
+                    if group_name not in group_slots[si]:
+                        ok = True
+                        break
+                    si = (si + 1) % num_slots
+                if ok:
+                    picked_index = i
+                    break
+
+        # If still none (really pathological), take first
+        if picked_index is None:
+            run = remaining.pop(0)
+        else:
+            run = remaining.pop(picked_index)
+
+        # Now find slot for this run (starting from current slot_index)
+        group_name = run.competitor.group
+        reg = run.competitor.reg
+        course_first = first_control.get(run.competitor.group)
+
         for _ in range(num_slots):
             if (group_name not in group_slots[slot_index] and
                 (course_first is None or course_first not in slot_first_controls[slot_index])):
@@ -103,7 +170,10 @@ def assign_start_slots(session, day, parallel_starts=1, seed=None):
         if course_first:
             slot_first_controls[slot_index].add(course_first)
 
-        # move to next slot for round-robin
+        # record last reg for this group
+        last_reg_by_group[group_name] = reg
+
+        # advance slot for round-robin
         slot_index = (slot_index + 1) % num_slots
 
     session.commit()

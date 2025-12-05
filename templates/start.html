@@ -36,6 +36,7 @@ h2 { margin-top: 40px; margin-bottom: 10px; border-bottom: 2px solid #333; paddi
   <th>Старт</th>
   <th>Номер</th>
   <th>Прізвище та ім’я</th>
+  <th>Клуб</th>
 </tr>
 </thead>
 <tbody>
@@ -44,6 +45,7 @@ h2 { margin-top: 40px; margin-bottom: 10px; border-bottom: 2px solid #333; paddi
   <td>{{ slot_to_time(slot0, r.start_slot) }}</td>
   <td>{{ r.competitor.sid }}</td>
   <td>{{ r.competitor.last_name }} {{ r.competitor.first_name }}</td>
+  <td>{{ r.competitor.club_name }}</td>
 </tr>
 {% endfor %}
 </tbody>
