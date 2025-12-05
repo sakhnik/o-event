@@ -33,8 +33,6 @@ h2 { margin-top: 40px; margin-bottom: 10px; border-bottom: 2px solid #333; paddi
 <table>
 <thead>
 <tr>
-  <th>№</th>
-  <th>Хвилина</th>
   <th>Старт</th>
   <th>Номер</th>
   <th>Прізвище та ім’я</th>
@@ -43,8 +41,6 @@ h2 { margin-top: 40px; margin-bottom: 10px; border-bottom: 2px solid #333; paddi
 <tbody>
 {% for r in rows %}
 <tr>
-  <td>{{ loop.index }}</td>
-  <td>{{ r.start_slot }}</td>
   <td>{{ slot_to_time(slot0, r.start_slot) }}</td>
   <td>{{ r.competitor.sid }}</td>
   <td>{{ r.competitor.last_name }} {{ r.competitor.first_name }}</td>
