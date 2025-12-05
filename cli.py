@@ -242,7 +242,7 @@ def add_competitor():
         "runs": [],
     }
     edited, changed = edit_yaml_in_editor(skeleton)
-    if not changed:
+    if changed:
         update_competitor_from_dict(edited)
         db.commit()
         print("Added new competitor.")

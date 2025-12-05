@@ -66,7 +66,7 @@ def calc_payment(group: str, days: int) -> int:
     return base + chip_fee
 
 
-tree = ET.parse('baz3982.xml')
+tree = ET.parse('baz.xml')
 root = tree.getroot()
 
 #######################################
@@ -83,7 +83,10 @@ for s in root:
         g = get_group(s.find("Group").text)
         name = s.find("FIO").text.split(" ")[0:2]
 
-        prog_event = s.find("ProgEvent").text
+        try:
+            prog_event = s.find("ProgEvent").text
+        except Exception:
+            prog_event = ''
         days = len(prog_event.split(','))
         try:
             qual = s.find("Qualification").text

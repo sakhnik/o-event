@@ -10,18 +10,18 @@ Base.metadata.create_all(ENGINE)
 session = SessionLocal()
 
 
-Config.create(session, "O-Halloween", date(2025, 11, 15), "John Doe", "Jane Smith", "Kyiv")
+Config.create(session, "ХІІ відкриті змагання з орієнтування в приміщеннях до Дня Святого Миколая", date(2025, 12, 6), "Білошицький В.М.", "Сахнік А.М.", "Київ")
 Config.set(session, Config.KEY_CURRENT_DAY, 1)
 
 importer = IOFImporter(session)
 
 importer.import_stage(
-    "../2025-halloween/15.xml",
+    "06.xml",
     day=1,
-    stage_name="Спринт"
+    stage_name="Корпус №12 НУБіП"
 )
 importer.import_stage(
-    "../2025-halloween/16.xml",
+    "07.xml",
     day=2,
-    stage_name="Середня"
+    stage_name="Ліцей №76"
 )
