@@ -46,8 +46,10 @@ def assign_start_slots(session, day, parallel_starts=1):
 
     sorted_groups = sorted(
         grouped.items(),
-        key=lambda kv: expected_time.get(kv[0], 30.0),
-        reverse=True
+        key=lambda kv: (
+            0 if any(r.competitor.reg == "OCO" for r in kv[1]) else 1,  # OCO first
+            -expected_time.get(kv[0], 30.0)
+        )
     )
 
     group_slots = defaultdict(set)
