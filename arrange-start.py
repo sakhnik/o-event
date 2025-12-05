@@ -1,66 +1,63 @@
 #!/usr/bin/env python3
-
-import argparse
 import random
-import csv
+import time
 from collections import defaultdict
-from tabulate import tabulate
+from datetime import datetime, timedelta
 
-from o_event.models import Run, Competitor, Course  # adjust import
+from jinja2 import Environment, FileSystemLoader
+
+from o_event.models import Run, Competitor, Course, Config
 from o_event.db import SessionLocal
 
 
-# -----------------------------
+# ------------------------------------------------------------
 # Assign start slots using course length
-# -----------------------------
-def assign_start_slots_with_course(session, day, parallel_starts=1, seed=None):
-    """
-    Assign start slots for competitors on a given day, considering course length and pace.
-    """
-    if seed is not None:
-        random.seed(seed)
+# ------------------------------------------------------------
+def assign_start_slots(session, day, parallel_starts=1):
+    random.seed(int(time.time()))
 
-    # Load all runs and join competitors
-    runs = session.query(Run).filter(Run.day == day).join(Competitor).all()
+    runs = (
+        session.query(Run)
+        .filter(Run.day == day)
+        .join(Competitor)
+        .all()
+    )
 
-    # Map group -> course length
-    group_course_lengths = {}
     courses = session.query(Course).all()
-    for course in courses:
-        group_course_lengths[course.name] = course.length
+    course_len = {c.name: c.length for c in courses}
 
-    # Heuristic pace per group (minutes per km)
-    pace_per_group = {
+    pace = {
         "Ч10": 10.0, "Ж10": 10.0,
-        "Ч12": 9.0, "Ж12": 9.0,
-        "Ч14": 8.0, "Ж14": 8.0,
-        "Ч16": 7.0, "Ж16": 7.0,
-        "Ч18": 6.0, "Ж18": 7.0,
+        "Ч12": 9.0,  "Ж12": 9.0,
+        "Ч14": 8.0,  "Ж14": 8.0,
+        "Ч16": 7.0,  "Ж16": 7.0,
+        "Ч18": 6.0,  "Ж18": 7.0,
         "Ч21E": 5.5, "Ж21E": 5.5,
     }
 
-    # Compute expected time per group
-    expected_time = {}
-    for group, length in group_course_lengths.items():
-        pace = pace_per_group.get(group, 10.0)  # default pace if missing
-        expected_time[group] = length * pace
+    expected_time = {
+        g: course_len[g] * pace.get(g, 10.0)
+        for g in course_len
+    }
 
-    # Group runs by competitor group
-    group_runs = defaultdict(list)
-    for run in runs:
-        group_runs[run.competitor.group].append(run)
+    grouped = defaultdict(list)
+    for r in runs:
+        grouped[r.competitor.group].append(r)
 
-    # Sort groups by expected time descending (longer courses start earlier)
-    sorted_groups = sorted(group_runs.items(), key=lambda x: expected_time.get(x[0], 30), reverse=True)
+    sorted_groups = sorted(
+        grouped.items(),
+        key=lambda kv: expected_time.get(kv[0], 30.0),
+        reverse=True
+    )
 
     group_slots = defaultdict(set)
     slot_counts = defaultdict(int)
-    last_slot_time = defaultdict(int)
+    last_slot = defaultdict(int)
 
-    for group_name, run_list in sorted_groups:
-        random.shuffle(run_list)  # randomize within group
-        for run in run_list:
-            slot = max(last_slot_time.get(group_name, 0), 0)
+    for group_name, lst in sorted_groups:
+        random.shuffle(lst)
+        for run in lst:
+            slot = last_slot[group_name]
             while True:
                 if group_name not in group_slots[slot] and slot_counts[slot] < parallel_starts:
                     break
@@ -68,103 +65,117 @@ def assign_start_slots_with_course(session, day, parallel_starts=1, seed=None):
             run.start_slot = slot
             group_slots[slot].add(group_name)
             slot_counts[slot] += 1
-            last_slot_time[group_name] = slot
+            last_slot[group_name] = slot
 
     session.commit()
-    print(f"Assigned start slots for {len(runs)} competitors on day {day}")
 
 
-# -----------------------------
-# Generic start protocol printer
-# -----------------------------
-def start_protocol(session, day, export_csv=None, by_group=False):
-    runs = session.query(Run).filter(Run.day == day).join(Competitor).all()
-
-    # Sort runs
-    if by_group:
-        runs.sort(key=lambda r: (r.competitor.group, r.start_slot))
-    else:
-        runs.sort(key=lambda r: r.start_slot)
-
-    # Group runs by slot
-    slots = defaultdict(list)
-    for run in runs:
-        slots[run.start_slot].append(run)
-
-    # Display
-    for slot in sorted(slots):
-        print(f"Хвилина {slot}:")
-        table = [[f"{r.competitor.last_name} {r.competitor.first_name}", r.competitor.group] for r in slots[slot]]
-        print(tabulate(table, headers=["Ім’я", "Група"], tablefmt="plain"))
-        print()  # blank line
-
-    # Export CSV if requested
-    if export_csv:
-        with open(export_csv, "w", newline="", encoding="utf-8") as f:
-            writer = csv.writer(f)
-            writer.writerow(["StartSlot", "Name", "Group"])
-            for slot in sorted(slots):
-                for run in slots[slot]:
-                    name = f"{run.competitor.last_name} {run.competitor.first_name}"
-                    writer.writerow([slot, name, run.competitor.group])
-        print(f"Exported CSV to {export_csv}")
+# ------------------------------------------------------------
+# Convert slot index → HH:MM time
+# ------------------------------------------------------------
+def slot_to_time(slot0_str, slot):
+    t0 = datetime.strptime(slot0_str, "%H:%M")
+    return (t0 + timedelta(minutes=slot)).strftime("%H:%M")
 
 
-def start_protocol_participants(session, day, export_csv=None):
-    """
-    Print participant start protocol partitioned by groups.
-    """
-    runs = session.query(Run).filter(Run.day == day).join(Competitor).all()
-
-    # Group runs by competitor group
-    group_runs = defaultdict(list)
-    for run in runs:
-        group_runs[run.competitor.group].append(run)
-
-    # Sort groups alphabetically (or by expected time if you prefer)
-    for group_name in sorted(group_runs):
-        print(f"Група {group_name}:")
-        # Sort competitors within group by start_slot
-        sorted_runs = sorted(group_runs[group_name], key=lambda r: r.start_slot)
-        table = [[r.start_slot, f"{r.competitor.last_name} {r.competitor.first_name}"] for r in sorted_runs]
-        print(tabulate(table, headers=["Хвилина", "Ім’я"], tablefmt="plain"))
-        print()  # empty line between groups
-
-    # Export CSV if requested
-    if export_csv:
-        with open(export_csv, "w", newline="", encoding="utf-8") as f:
-            writer = csv.writer(f)
-            writer.writerow(["Group", "Slot", "Name"])
-            for group_name in sorted(group_runs):
-                sorted_runs = sorted(group_runs[group_name], key=lambda r: r.start_slot)
-                for run in sorted_runs:
-                    writer.writerow([group_name, run.start_slot, f"{run.competitor.last_name} {run.competitor.first_name}"])
-        print(f"Exported CSV to {export_csv}")
+# ------------------------------------------------------------
+# Load config
+# ------------------------------------------------------------
+def load_config(session):
+    cfg_rows = session.query(Config).all()
+    return {row.key: row.value for row in cfg_rows}
 
 
-# -----------------------------
-# CLI
-# -----------------------------
+# ------------------------------------------------------------
+# Load protocol view-models
+# ------------------------------------------------------------
+def load_protocol_data(session, day):
+    runs = (
+        session.query(Run)
+        .filter(Run.day == day)
+        .join(Competitor)
+        .all()
+    )
+
+    # Judge: group by slot
+    by_slot = defaultdict(list)
+    for r in runs:
+        by_slot[r.start_slot].append(r)
+
+    judge_list = [
+        (slot, sorted(lst, key=lambda x: (x.competitor.last_name, x.competitor.first_name)))
+        for slot, lst in sorted(by_slot.items())
+    ]
+
+    # Competitors: group by group
+    by_group = defaultdict(list)
+    for r in runs:
+        by_group[r.competitor.group].append(r)
+
+    participant_list = [
+        (group, sorted(lst, key=lambda r: r.start_slot))
+        for group, lst in sorted(by_group.items())
+    ]
+
+    return judge_list, participant_list
+
+
+# ------------------------------------------------------------
+# Render Jinja2 templates
+# ------------------------------------------------------------
+def render_html(day, judge_data, participant_data, cfg, slot0):
+    env = Environment(loader=FileSystemLoader("templates"))
+
+    tmpl_judge = env.get_template("start-judge.html")
+    tmpl_part  = env.get_template("start.html")
+
+    html_judge = tmpl_judge.render(
+        day=day,
+        slots=judge_data,
+        cfg=cfg,
+        slot0=slot0,
+        slot_to_time=slot_to_time,
+    )
+
+    html_part = tmpl_part.render(
+        day=day,
+        groups=participant_data,
+        cfg=cfg,
+        slot0=slot0,
+        slot_to_time=slot_to_time,
+    )
+
+    with open(f"e{day}-start-judge.html", "w", encoding="utf-8") as f:
+        f.write(html_judge)
+
+    with open(f"e{day}-start.html", "w", encoding="utf-8") as f:
+        f.write(html_part)
+
+
+# ------------------------------------------------------------
+# Main
+# ------------------------------------------------------------
 def main():
-    parser = argparse.ArgumentParser(description="Orienteering start slot manager")
-    parser.add_argument("day", type=int, help="Day number")
-    parser.add_argument("--parallel", type=int, default=1, help="Number of parallel starts per slot")
-    parser.add_argument("--seed", type=int, default=None, help="Random seed")
-    parser.add_argument("--assign", action="store_true", help="Assign start slots")
-    parser.add_argument("--referees", action="store_true", help="Print start protocol by slot")
-    parser.add_argument("--participants", action="store_true", help="Print start protocol by group and slot")
-    parser.add_argument("--csv", type=str, default=None, help="Export protocol to CSV")
+    import argparse
 
+    parser = argparse.ArgumentParser(description="Generate start protocols")
+    parser.add_argument("day", type=int)
+    parser.add_argument("--parallel", type=int, default=1)
+    parser.add_argument("--assign", action="store_true")
+    parser.add_argument("--slot0", default="11:00",
+                        help="Start time for slot 0, HH:MM (default 11:00)")
     args = parser.parse_args()
 
     session = SessionLocal()
 
+    cfg = load_config(session)
+
     if args.assign:
-        assign_start_slots_with_course(session, args.day, args.parallel, args.seed)
-    if args.referees:
-        start_protocol(session, args.day, export_csv=args.csv, by_group=False)
-    if args.participants:
-        start_protocol_participants(session, args.day, export_csv=args.csv)
+        assign_start_slots(session, args.day, args.parallel)
+
+    judge_data, participant_data = load_protocol_data(session, args.day)
+
+    render_html(args.day, judge_data, participant_data, cfg, args.slot0)
 
 
 if __name__ == "__main__":

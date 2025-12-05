@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+<meta charset="UTF-8">
+<title>Стартовий протокол — День {{ day }}</title>
+<style>
+body { font-family: sans-serif; margin: 20px; }
+table { border-collapse: collapse; width: 100%; margin-bottom: 40px; }
+th, td { border: 1px solid #aaa; padding: 6px 10px; text-align: left; }
+th { background: #eee; }
+h1 { margin-bottom: 5px; }
+h2 { margin-top: 40px; margin-bottom: 10px; border-bottom: 2px solid #333; padding-bottom: 5px; }
+.header { margin-bottom: 20px; }
+</style>
+</head>
+<body>
+
+<h1>{{ cfg.name }}</h1>
+
+<div class="header">
+  <div><strong>Місце:</strong> {{ cfg.place }}</div>
+  <div><strong>Дата:</strong> {{ cfg.date }}</div>
+  <div><strong>День змагань:</strong> {{ day }}</div>
+  <div><strong>Головний суддя:</strong> {{ cfg.judge }}</div>
+  <div><strong>Секретар:</strong> {{ cfg.secretary }}</div>
+</div>
+
+<hr>
+
+{% for group_name, rows in groups %}
+<h2>Група {{ group_name }}</h2>
+
+<table>
+<thead>
+<tr>
+  <th>№</th>
+  <th>Хвилина</th>
+  <th>Старт</th>
+  <th>Номер</th>
+  <th>Прізвище та ім’я</th>
+</tr>
+</thead>
+<tbody>
+{% for r in rows %}
+<tr>
+  <td>{{ loop.index }}</td>
+  <td>{{ r.start_slot }}</td>
+  <td>{{ slot_to_time(slot0, r.start_slot) }}</td>
+  <td>{{ r.competitor.sid }}</td>
+  <td>{{ r.competitor.last_name }} {{ r.competitor.first_name }}</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>
+
+{% endfor %}
+
+</body>
+</html>
