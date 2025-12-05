@@ -3,6 +3,7 @@
 import json
 import random
 import time
+import math
 from collections import defaultdict
 from datetime import datetime, timedelta
 
@@ -54,55 +55,56 @@ def assign_start_slots(session, day, parallel_starts=1, seed=None):
         first_control[c.name] = c.controls[1].control_code if c.controls else None
 
     pace = {
-        "Ч10": 10.0, "Ж10": 10.0,
-        "Ч12": 9.0,  "Ж12": 9.0,
-        "Ч14": 7.0,  "Ж14": 8.0,
+        "Ч10": 15.0, "Ж10": 15.0,
+        "Ч12": 10.0,  "Ж12": 10.0,
+        "Ч14": 8.0,  "Ж14": 8.0,
         "Ч16": 7.0,  "Ж16": 7.0,
         "Ч18": 6.0,  "Ж18": 7.0,
         "Ч21E": 5.5, "Ж21E": 5.5,
     }
 
     expected_time = {
-        g: course_len[g] * pace.get(g, 10.0)
+        g: course_len[g] * pace.get(g, 20.0)
         for g in course_len
     }
 
-    grouped = defaultdict(list)
-    for r in runs:
-        grouped[r.competitor.group].append(r)
+    # --- collect all runs into a single list and assign priority ---
+    def priority(r):
+        # OCO competitors first, then longer expected time
+        etime = expected_time.get(r.competitor.group, 30.0)
+        return (0 if r.competitor.reg == "OCO" else 1, -etime)
 
-    sorted_groups = sorted(
-        grouped.items(),
-        key=lambda kv: (
-            0 if any(r.competitor.reg == "OCO" for r in kv[1]) else 1,  # OCO first
-            -expected_time.get(kv[0], 30.0)
-        )
-    )
+    runs.sort(key=priority)
 
-    group_slots = defaultdict(set)
-    slot_counts = defaultdict(int)
-    last_slot = defaultdict(int)
-    slot_first_controls = defaultdict(set)  # slot_index -> set of first control codes
+    # --- prepare slots ---
+    num_slots = math.ceil(len(runs) / parallel_starts)
+    slot_counts = defaultdict(int)          # slot_index -> number of competitors
+    group_slots = defaultdict(set)          # slot_index -> groups in slot
+    slot_first_controls = defaultdict(set)  # slot_index -> first controls
 
-    for group_name, lst in sorted_groups:
-        random.shuffle(lst)
-        for run in lst:
-            course_first = first_control.get(run.competitor.group)
-            slot = last_slot[group_name]
-            while True:
-                # check group clash, parallel limit, and first control clash
-                if (group_name not in group_slots[slot] and
-                    slot_counts[slot] < parallel_starts and
-                   (course_first is None or course_first not in slot_first_controls[slot])):
-                    break
-                slot += 1
+    slot_index = 0
 
-            run.start_slot = slot
-            group_slots[slot].add(group_name)
-            slot_counts[slot] += 1
-            last_slot[group_name] = slot
-            if course_first:
-                slot_first_controls[slot].add(course_first)
+    # --- assign competitors round-robin ---
+    for run in runs:
+        group_name = run.competitor.group
+        course_first = first_control.get(group_name)
+
+        # find next valid slot
+        for _ in range(num_slots):
+            if (group_name not in group_slots[slot_index] and
+                (course_first is None or course_first not in slot_first_controls[slot_index])):
+                break
+            slot_index = (slot_index + 1) % num_slots
+
+        # assign
+        run.start_slot = slot_index
+        group_slots[slot_index].add(group_name)
+        slot_counts[slot_index] += 1
+        if course_first:
+            slot_first_controls[slot_index].add(course_first)
+
+        # move to next slot for round-robin
+        slot_index = (slot_index + 1) % num_slots
 
     session.commit()
 
