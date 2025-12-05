@@ -6,15 +6,18 @@ from datetime import datetime, timedelta
 
 from jinja2 import Environment, FileSystemLoader
 
-from o_event.models import Run, Competitor, Course, Config
+from o_event.models import Run, Competitor, Course, Config, Stage
 from o_event.db import SessionLocal
 
 
 # ------------------------------------------------------------
 # Assign start slots using course length
 # ------------------------------------------------------------
-def assign_start_slots(session, day, parallel_starts=1):
-    random.seed(int(time.time()))
+def assign_start_slots(session, day, parallel_starts=1, seed=None):
+    if seed is None:
+        seed = int(time.time())
+    random.seed(seed)
+    print(f"Using seed: {seed}")
 
     runs = (
         session.query(Run)
@@ -23,13 +26,19 @@ def assign_start_slots(session, day, parallel_starts=1):
         .all()
     )
 
-    courses = session.query(Course).all()
+    stage = session.query(Stage).filter(Stage.day == day).first()
+    courses = stage.courses
     course_len = {c.name: c.length for c in courses}
+
+    # course_name -> first_control_code
+    first_control = {}
+    for c in session.query(Course).all():
+        first_control[c.name] = c.controls[1].control_code if c.controls else None
 
     pace = {
         "Ч10": 10.0, "Ж10": 10.0,
         "Ч12": 9.0,  "Ж12": 9.0,
-        "Ч14": 8.0,  "Ж14": 8.0,
+        "Ч14": 7.0,  "Ж14": 8.0,
         "Ч16": 7.0,  "Ж16": 7.0,
         "Ч18": 6.0,  "Ж18": 7.0,
         "Ч21E": 5.5, "Ж21E": 5.5,
@@ -55,19 +64,27 @@ def assign_start_slots(session, day, parallel_starts=1):
     group_slots = defaultdict(set)
     slot_counts = defaultdict(int)
     last_slot = defaultdict(int)
+    slot_first_controls = defaultdict(set)  # slot_index -> set of first control codes
 
     for group_name, lst in sorted_groups:
         random.shuffle(lst)
         for run in lst:
+            course_first = first_control.get(run.competitor.group)
             slot = last_slot[group_name]
             while True:
-                if group_name not in group_slots[slot] and slot_counts[slot] < parallel_starts:
+                # check group clash, parallel limit, and first control clash
+                if (group_name not in group_slots[slot] and
+                    slot_counts[slot] < parallel_starts and
+                   (course_first is None or course_first not in slot_first_controls[slot])):
                     break
                 slot += 1
+
             run.start_slot = slot
             group_slots[slot].add(group_name)
             slot_counts[slot] += 1
             last_slot[group_name] = slot
+            if course_first:
+                slot_first_controls[slot].add(course_first)
 
     session.commit()
 
@@ -166,6 +183,8 @@ def main():
     parser.add_argument("--assign", action="store_true")
     parser.add_argument("--slot0", default="11:00",
                         help="Start time for slot 0, HH:MM (default 11:00)")
+    parser.add_argument("--seed", type=int, default=None,
+                        help="Random seed to reproduce arrangement")
     args = parser.parse_args()
 
     session = SessionLocal()
@@ -173,7 +192,7 @@ def main():
     cfg = load_config(session)
 
     if args.assign:
-        assign_start_slots(session, args.day, args.parallel)
+        assign_start_slots(session, args.day, args.parallel, args.seed)
 
     judge_data, participant_data = load_protocol_data(session, args.day)
 
