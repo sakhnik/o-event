@@ -112,6 +112,12 @@ class CardProcessor:
     def handle_card(self, db, card: Card, run: Run, printer: Printer, readout: PunchReadout = None):
         if readout is None:
             readout = PunchReadout.model_validate(card.raw_json)
+        if readout.startTime == 0xeeee:
+            print("No start time!")
+            return {"status": "NO_START", "sid": card.card_number}
+        if readout.finishTime == 0xeeee:
+            print("No finish time!")
+            return {"status": "NO_FINISH", "sid": card.card_number}
 
         competitor = run.competitor
         day = run.day
