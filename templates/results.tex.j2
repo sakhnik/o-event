@@ -1,18 +1,27 @@
-\documentclass{article}
+\documentclass[a4paper,12pt]{article}
+\usepackage{fontspec}
 \usepackage{geometry}
 \usepackage{longtable}
-\usepackage{fontspec}
-\setmainfont{DejaVu Sans}
+\setmainfont{Linux Libertine O} % або інший шрифт з українськими літерами
 
 \begin{document}
 
-\section*{Results — Day {{ day }}}
+\begin{center}
+{\LARGE {{ cfg.name }} }\\[1em]
+\begin{tabular}{@{}ll@{}}
+\textbf{Місце:} & {{ cfg.place }} \\
+\textbf{Дата:} & {{ cfg.date }} \\
+\textbf{День змагань:} & {{ day }} \\
+\textbf{Головний суддя:} & {{ cfg.judge }} \\
+\textbf{Секретар:} & {{ cfg.secretary }} \\
+\end{tabular}
+\end{center}
 
 {% for g in groups %}
-\subsection*{Group {{ g.name }}}
+\subsection*{Група {{ g.name }}}
 
 \begin{longtable}{r l r l}
-\textbf{Place} & \textbf{Name} & \textbf{Result} & \textbf{Behind} \\
+\textbf{Місце} & \textbf{Ім’я} & \textbf{Результат} & \textbf{Відставання} \\
 \hline
 {% for pos, behind, run in g.ranked %}
 {{ pos or "" }} &

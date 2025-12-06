@@ -113,7 +113,7 @@ def load_splits(db: Session, day: int, runs_g):
 # HTML + LaTeX export
 # -------------------------------------------------------
 
-def export_results_html(db: Session, day: int, include_splits: bool):
+def export_results_html(db: Session, day: int, cfg, include_splits: bool):
     groups = load_day_results(db, day)
     ranking = Ranking()
 
@@ -132,10 +132,10 @@ def export_results_html(db: Session, day: int, include_splits: bool):
         groups_data.append(group_info)
 
     template = env.get_template("results.html.j2")
-    return template.render(day=day, groups=groups_data, include_splits=include_splits)
+    return template.render(day=day, groups=groups_data, include_splits=include_splits, cfg=cfg)
 
 
-def export_results_tex(db: Session, day: int):
+def export_results_tex(db: Session, day: int, cfg):
     groups = load_day_results(db, day)
     ranking = Ranking()
 
@@ -148,14 +148,17 @@ def export_results_tex(db: Session, day: int):
         })
 
     template = env.get_template("results.tex.j2")
-    return template.render(day=day, groups=groups_data)
+    return template.render(day=day, groups=groups_data, cfg=cfg)
 
 
 # -------------------------------------------------------
 # CLI
 # -------------------------------------------------------
 
-from o_event.models import Config
+
+def load_config(db):
+    cfg_rows = db.query(Config).all()
+    return {row.key: row.value for row in cfg_rows}
 
 
 def main():
@@ -164,10 +167,12 @@ def main():
         if day is None:
             raise RuntimeError("Config.current_day is not set")
 
+        cfg = load_config(db)
+
         # HTML without splits
-        html_results = export_results_html(db, day, include_splits=False)
+        html_results = export_results_html(db, day, cfg, include_splits=False)
         # HTML with splits
-        html_splits = export_results_html(db, day, include_splits=True)
+        html_splits = export_results_html(db, day, cfg, include_splits=True)
 
         # File names
         path_results = f"out/e{day}-results.html"
@@ -185,7 +190,7 @@ def main():
         print(f"Generated {path_splits}")
 
         # Optional LaTeX
-        tex = export_results_tex(db, day)
+        tex = export_results_tex(db, day, cfg)
         path_tex = f"out/e{day}-results.tex"
         with open(path_tex, "w", encoding="utf-8") as f:
             f.write(tex)
