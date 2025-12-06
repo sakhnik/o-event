@@ -5,8 +5,9 @@ from o_event.printer import PrinterMux
 from o_event.db import SessionLocal
 
 import uvicorn
-from fastapi import FastAPI, HTTPException
+from fastapi import FastAPI, HTTPException, Request
 import traceback
+from pydantic import ValidationError
 
 # -----------------------------------------------------------------------------------
 # DB Setup
@@ -16,16 +17,23 @@ app = FastAPI(title="Card Listener")
 
 
 @app.post("/card")
-def receive_card(readout: PunchReadout):
-    db = SessionLocal()
+async def receive_card(request: Request):
+    raw = await request.body()
+    print(raw)
 
+    db = SessionLocal()
     try:
+        data = PunchReadout.model_validate_json(raw)
         with PrinterMux() as printer:
-            result = CardProcessor().handle_readout(db, readout, printer)
+            result = CardProcessor().handle_readout(db, data, printer)
             print('\n'.join(printer.get_output()))
             print(result)
             return result
 
+        return {"status": "ok", "parsed": data}
+    except ValidationError as e:
+        print("VALIDATION ERROR:", e)
+        return {"error": "validation failed", "details": e.errors()}
     except Exception as ex:
         db.rollback()
         traceback.print_exc()
