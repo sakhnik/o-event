@@ -1,0 +1,42 @@
+<h3>Проміжки — {{ g.name }}</h3>
+
+<table>
+  <tr>
+    <th>Ім’я</th>
+    {% for ctrl in g.splits.required[1:] %}
+      <th>{{ loop.index }}<br>{{ ctrl }}</th>
+    {% endfor %}
+  </tr>
+
+  {% for pos, behind, run in g.ranked %}
+    <tr>
+      <td class="name">{{ run.competitor.last_name }} {{ run.competitor.first_name }}</td>
+
+      {% set sp = g.splits.splits_by_run.get(run.id, []) %}
+      {% set sp_dict = {} %}
+      {% for s in sp %}
+        {% set _ = sp_dict.update({s.seq: s}) %}
+      {% endfor %}
+
+      {% for seq in range(g.splits.required|length - 1) %}
+        {% set s = sp_dict.get(seq) %}
+
+        {% if s and s.leg_time %}
+          {% set lt = s.leg_time %}
+          {% set best3 = g.splits.best_per_leg.get(seq, []) %}
+          {% set cls = "" %}
+          {% if lt in best3 %}
+            {% set idx = best3.index(lt) %}
+            {% if idx == 0 %}{% set cls = "best1" %}
+            {% elif idx == 1 %}{% set cls = "best2" %}
+            {% elif idx == 2 %}{% set cls = "best3" %}{% endif %}
+          {% endif %}
+          <td class="{{ cls }}">{{ lt|fmt }}</td>
+        {% else %}
+          <td></td>
+        {% endif %}
+
+      {% endfor %}
+    </tr>
+  {% endfor %}
+</table>

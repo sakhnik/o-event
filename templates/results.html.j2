@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Results Day {{ day }}</title>
+<style>
+body { font-family: sans-serif; max-width: 1100px; margin: auto; }
+table { width: 100%; border-collapse: collapse; margin-bottom: 30px; }
+th, td { border: 1px solid #ccc; padding: 4px 6px; text-align: right; }
+th.name, td.name { text-align: left; }
+th { background: #eee; }
+tr:nth-child(even) { background: #fafafa; }
+.best1 { background-color: #c7f7c7; font-weight: bold; }
+.best2 { background-color: #fff7c7; }
+.best3 { background-color: #f7d0c7; }
+a.group-link { margin-right: 12px; font-weight: bold; }
+</style>
+</head>
+<body>
+
+<h1>Results</h1>
+
+{% for g in groups %}
+  <a class="group-link" href="#grp-{{ g.name }}">{{ g.name }}</a>
+{% endfor %}
+<hr>
+
+{% for g in groups %}
+  <h2 id="grp-{{ g.name }}">{{ g.name }}</h2>
+
+  <table>
+    <tr>
+      <th>Місце</th>
+      <th class="name">Ім’я</th>
+      <th>Результат</th>
+      <th>Відставання</th>
+    </tr>
+
+    {% for pos, behind, run in g.ranked %}
+      <tr>
+        <td>{{ pos or "" }}</td>
+        <td class="name">{{ run.competitor.last_name }} {{ run.competitor.first_name }}</td>
+        <td>{{ run.result|fmt }}</td>
+        <td>
+          {% if behind is not none %}
+            +{{ behind|fmt }}
+          {% else %}
+            {{ run.status.value }}
+          {% endif %}
+        </td>
+      </tr>
+    {% endfor %}
+  </table>
+
+  {% if include_splits %}
+    {% include "splits.html.j2" %}
+  {% endif %}
+
+{% endfor %}
+
+</body>
+</html>

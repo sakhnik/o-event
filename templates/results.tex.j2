@@ -1,0 +1,27 @@
+\documentclass{article}
+\usepackage{geometry}
+\usepackage{longtable}
+\usepackage{fontspec}
+\setmainfont{DejaVu Sans}
+
+\begin{document}
+
+\section*{Results — Day {{ day }}}
+
+{% for g in groups %}
+\subsection*{Group {{ g.name }}}
+
+\begin{longtable}{r l r l}
+\textbf{Place} & \textbf{Name} & \textbf{Result} & \textbf{Behind} \\
+\hline
+{% for pos, behind, run in g.ranked %}
+{{ pos or "" }} &
+{{ run.competitor.last_name }} {{ run.competitor.first_name }} &
+{{ run.result|fmt }} &
+{% if behind is not none %}+{{ behind|fmt }}{% else %}{{ run.status.value }}{% endif %} \\
+{% endfor %}
+\end{longtable}
+
+{% endfor %}
+
+\end{document}
