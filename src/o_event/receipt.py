@@ -136,7 +136,7 @@ class Receipt:
 
         # Name + club
         p.bold_on()
-        p.text(f"{self.name:<35}{self.club:>13}\n")
+        p.text(f"{self.name:<35}{(self.club if self.club is not None else ''):>13}\n")
         p.bold_off()
 
         # Category + distance
