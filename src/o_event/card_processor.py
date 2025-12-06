@@ -15,6 +15,7 @@ from o_event.models import (
 
 from pydantic import BaseModel
 from datetime import datetime
+from typing import Optional
 
 
 class PunchItem(BaseModel):
@@ -28,7 +29,7 @@ class PunchReadout(BaseModel):
     cardNumber: int
     startTime: int
     finishTime: int
-    checkTime: int
+    checkTime: Optional[int] = None
     punches: list[PunchItem]
 
 
