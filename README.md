@@ -4,9 +4,9 @@ Orienteering competition management
 
 ## TODO
 
-    - start protocols styling
-    - logo and competition name in the reports
     - accumulate intermediate finish leg distance when merging
     - count of competitors still racing
     - i18n
     - common style, advertising etc
+    - detect registration clusters, register by clusters
+    - report DNS if registered
