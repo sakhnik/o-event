@@ -4,6 +4,7 @@ jinja2
 prompt_toolkit
 pytest
 rapidfuzz
+requests
 sqlalchemy
 tabulate
 uvicorn

@@ -13,6 +13,7 @@ import os
 import subprocess
 import tempfile
 import yaml
+import requests
 
 from o_event.db import SessionLocal
 from o_event.models import Competitor, Run, Status, Config, Card
@@ -34,7 +35,8 @@ commands_def: List[Command] = [
     Command('ls', 'ls <query>', 'List competitors matching query'),
     Command('edit', 'edit <competitor_id|query>', 'Edit competitor with ID <competitor_id>'),
     Command('add', 'add', 'Add new competitor'),
-    Command('card', 'card', 'Assign a card for the run'),
+    Command('assign', 'assign', 'Assign a card for the run'),
+    Command('modify', 'modify', 'Modify a card'),
     Command('register', 'register <query>', 'Register competitors for start'),
     Command('summary', 'summary <max place>', 'Print summary result'),
     Command('quit', 'quit', 'Quit the CLI')
@@ -505,6 +507,27 @@ def assign_card():
         print(status)
 
 
+def modify_card():
+    card_id = pick_card()
+    if card_id is None:
+        return
+    card = db.get(Card, card_id)
+    if card is None:
+        print("No such card")
+        return
+
+    edited, changed = edit_yaml_in_editor(card.raw_json)
+    if changed:
+        url = "https://localhost:12345/card"
+        response = requests.post(url, json=edited)
+        if response.ok:
+            print(response.json())
+        else:
+            print("Error:", response.status_code, response.text)
+    else:
+        print("No changes made. Aborted.")
+
+
 def main():
     print("Orienteering CLI (type 'help' for commands)")
     session = PromptSession()
@@ -545,8 +568,10 @@ def main():
                 except (ValueError, IndexError):
                     ...
                 summary(max_place)
-            elif cmd == 'card':
+            elif cmd == 'assign':
                 assign_card()
+            elif cmd == 'modify':
+                modify_card()
             elif cmd == 'help':
                 print("Commands:")
                 print(tabulate([[c.synopsis, c.description] for c in commands_def]))
