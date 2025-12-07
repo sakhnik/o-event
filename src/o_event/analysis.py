@@ -22,23 +22,24 @@ class Analysis:
         order_correct: bool
         matches_raw: List[IdxPair]
 
-    def analyse_order(self, required: IntList, punches: ControlList) -> Result:
+    def analyse_order(self, required: IntList, punches: ControlList, to_ignore: IntList = []) -> Result:
         """
         required: [control codes]
         punches:  [(code, time), ...]
         """
 
-        n = len(required)
+        required2 = [i for i in required if i not in to_ignore]
+        n = len(required2)
         m = len(punches)
 
-        # dp[i][j] = best match count for required[:i] and punches[:j]
+        # dp[i][j] = best match count for required2[:i] and punches[:j]
         dp = [[0] * (m + 1) for _ in range(n + 1)]
 
         # For backtracking
         parent = [[None] * (m + 1) for _ in range(n + 1)]
 
         for i in range(1, n + 1):
-            r = required[i - 1]
+            r = required2[i - 1]
             for j in range(1, m + 1):
                 c, _ = punches[j - 1]
 
@@ -46,7 +47,7 @@ class Analysis:
                 best = dp[i][j - 1]
                 parent_choice = ("left", i, j - 1)
 
-                # Option B: skip required i
+                # Option B: skip required2 i
                 if dp[i - 1][j] > best:
                     best = dp[i - 1][j]
                     parent_choice = ("up", i - 1, j)
@@ -66,9 +67,9 @@ class Analysis:
         while i > 0 and j > 0:
             direction, pi, pj = parent[i][j]
 
-            if direction == "diag" and required[i - 1] == punches[j - 1][0]:
+            if direction == "diag" and required2[i - 1] == punches[j - 1][0]:
                 # A match
-                matches.append((i - 1, j - 1))  # store (required index, punch index)
+                matches.append((i - 1, j - 1))  # store (required2 index, punch index)
                 i, j = pi, pj
             else:
                 i, j = pi, pj
@@ -79,12 +80,12 @@ class Analysis:
         used_req = {ri for (ri, pj) in matches}
         used_punch = {pj for (ri, pj) in matches}
 
-        visited = [(required[ri], punches[pj][1]) for (ri, pj) in matches]
-        missing = [required[i] for i in range(n) if i not in used_req]
+        visited = [(required2[ri], punches[pj][1]) for (ri, pj) in matches]
+        missing = [required2[i] for i in range(n) if i not in used_req]
         extra = [punches[j] for j in range(m) if j not in used_punch]
 
         # Order correctness
-        # - If all required controls matched, the order is correct.
+        # - If all required2 controls matched, the order is correct.
         # - DP guarantees index monotonicity.
         all_visited = (len(matches) == n)
         order_correct = all_visited

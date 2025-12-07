@@ -16,6 +16,7 @@ from o_event.models import (
 from pydantic import BaseModel
 from datetime import datetime
 from typing import Optional
+import json
 
 
 class PunchItem(BaseModel):
@@ -109,7 +110,7 @@ class CardProcessor:
 
         return self.handle_card(db, card, run, printer, readout)
 
-    def handle_card(self, db, card: Card, run: Run, printer: Printer, readout: PunchReadout = None):
+    def handle_card(self, db, card: Card, run: Run, printer: Printer, readout: PunchReadout | None = None):
         if readout is None:
             readout = PunchReadout.model_validate(card.raw_json)
         if readout.startTime == 0xeeee:
@@ -144,7 +145,9 @@ class CardProcessor:
         )
         required_codes = [int(c.control_code) for c in controls if c.control_code.isdigit()]
 
-        result = Analysis().analyse_order(required_codes, actual_punches)
+        ignore_controls = json.loads(Config.get(db, Config.KEY_IGNORE_CONTROLS, '[]'))
+
+        result = Analysis().analyse_order(required_codes, actual_punches, ignore_controls)
 
         run.start = card.start_time
         run.finish = card.finish_time
