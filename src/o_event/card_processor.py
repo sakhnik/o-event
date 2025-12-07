@@ -15,7 +15,7 @@ from o_event.models import (
 
 from pydantic import BaseModel
 from datetime import datetime
-from typing import Optional
+from typing import Optional, List
 import json
 
 
@@ -110,6 +110,39 @@ class CardProcessor:
 
         return self.handle_card(db, card, run, printer, readout)
 
+    def retime_local_anchors(self, punches: List[PunchItem], max_leg: int = 1800) -> List[PunchItem]:
+        n = len(punches)
+        if n == 0:
+            return punches
+
+        reliable_idx = [0]  # first punch is always reliable
+
+        # Step 1: mark reliable punches
+        for i in range(1, n):
+            delta = punches[i].time - punches[reliable_idx[-1]].time
+            if 0 < delta <= max_leg:
+                reliable_idx.append(i)
+            # else: outlier
+
+        # Step 2: ensure last punch is reliable
+        if reliable_idx[-1] != n - 1:
+            reliable_idx.append(n - 1)
+
+        # Step 3: interpolate sequences of outliers between reliable punches
+        for r in range(len(reliable_idx) - 1):
+            start_idx = reliable_idx[r]
+            end_idx = reliable_idx[r + 1]
+            t_start = punches[start_idx].time
+            t_end = punches[end_idx].time
+            num_outliers = end_idx - start_idx - 1
+            if num_outliers <= 0:
+                continue
+            # strictly increasing timestamps for outliers
+            for i in range(1, num_outliers + 1):
+                punches[start_idx + i].time = int(t_start + i * (t_end - t_start) / (num_outliers + 1))
+
+        return punches
+
     def handle_card(self, db, card: Card, run: Run, printer: Printer, readout: PunchReadout | None = None):
         if readout is None:
             readout = PunchReadout.model_validate(card.raw_json)
@@ -125,6 +158,8 @@ class CardProcessor:
 
         # Assign competitor & run
         card.run_id = run.id
+
+        readout.punches = self.retime_local_anchors(readout.punches)
 
         actual_punches = []
         for item in readout.punches:
