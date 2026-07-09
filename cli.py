@@ -418,17 +418,6 @@ def summary(max_place):
             print(ex)
 
 
-# Format seconds → "h:mm:ss"
-def format_time(seconds: int | None) -> str:
-    if seconds is None:
-        return ""
-    h, remainder = divmod(seconds, 3600)
-    m, s = divmod(remainder, 60)
-    if not h:
-        return f"{m}:{s:02d}"
-    return f"{h}:{m:02d}:{s:02d}"
-
-
 def pick_card():
     cards = (
         db.query(Card)
