@@ -4,7 +4,6 @@ from sqlalchemy import (
 )
 from sqlalchemy.orm import declarative_base, relationship, object_session
 import enum
-from typing import Any
 
 Base = declarative_base()
 
@@ -24,7 +23,6 @@ class Config(Base):
     KEY_SECRETARY = "secretary"
     KEY_PLACE = "place"
     KEY_START_SEEDS = "start_seeds"
-    KEY_IGNORE_CONTROLS = "ignore_controls"
 
     @staticmethod
     def set(db, key, value):
@@ -51,7 +49,7 @@ class Config(Base):
         db.commit()
 
     @staticmethod
-    def get(db, key, default=None) -> Any:
+    def get(db, key, default=None):
         c = db.query(Config).filter_by(key=key).first()
         if not c:
             return default
