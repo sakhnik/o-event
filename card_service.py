@@ -9,9 +9,6 @@ from fastapi import FastAPI, HTTPException, Request
 import traceback
 from pydantic import ValidationError
 
-# -----------------------------------------------------------------------------------
-# DB Setup
-# -----------------------------------------------------------------------------------
 
 app = FastAPI(title="Card Listener")
 
