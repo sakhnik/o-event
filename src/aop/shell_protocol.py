@@ -3,9 +3,14 @@ from __future__ import annotations
 import asyncio
 
 
+class CommandTimeoutError(TimeoutError):
+    pass
+
+
 class ShellProtocol:
-    def __init__(self, transport):
+    def __init__(self, transport, timeout: float = 5.0):
         self._transport = transport
+        self._timeout = timeout
 
         self._notifications = asyncio.Queue()
         self._pending = None
@@ -25,13 +30,16 @@ class ShellProtocol:
 
         loop = asyncio.get_running_loop()
         future = loop.create_future()
-
         self._pending = future
 
-        await self._transport.write((command + "\n").encode())
-
         try:
-            return await future
+            await self._transport.write((command + "\n").encode())
+
+            try:
+                return await asyncio.wait_for(future, self._timeout)
+            except asyncio.TimeoutError as e:
+                raise CommandTimeoutError(f"Command '{command}' timed out after {self._timeout:.1f} s") from e
+
         finally:
             self._pending = None
 
