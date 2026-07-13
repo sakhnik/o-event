@@ -16,12 +16,12 @@ Config.set(session, Config.KEY_CURRENT_DAY, 1)
 importer = IOFImporter(session)
 
 importer.import_stage(
-    "06.xml",
+    "test/data/15.xml",
     day=1,
     stage_name="Корпус №12 НУБіП"
 )
 importer.import_stage(
-    "07.xml",
+    "test/data/16.xml",
     day=2,
     stage_name="Ліцей №76"
 )

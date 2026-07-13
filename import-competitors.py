@@ -1,11 +1,10 @@
 #!/usr/bin/env python3
 
-from o_event.csv_importer import CSVImporter
+from o_event.baz_importer import BazImporter
 from o_event.db import SessionLocal
 from pathlib import Path
 
 session = SessionLocal()
 
 
-CSVImporter().import_competitors(session, Path('runners.csv'))
-CSVImporter().import_clubs(session, Path('clubs.csv'))
+BazImporter().import_competitors(session, Path('baz3982.xml'))

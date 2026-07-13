@@ -1,6 +1,6 @@
 from o_event.models import Base, Config
 from o_event.iof_importer import IOFImporter
-from o_event.csv_importer import CSVImporter
+from o_event.baz_importer import BazImporter
 from o_event.card_processor import CardProcessor, PunchReadout
 from o_event.iof_exporter import IOFExporter
 
@@ -50,10 +50,8 @@ def test_all():
     stage.date = datetime(2025, 11, 16, 17, 0, 0)
     session.commit()
 
-    runners_path = Path(__file__).parent / "data" / "runners.csv"
-    CSVImporter().import_competitors(session, runners_path)
-    clubs_path = Path(__file__).parent / "data" / "clubs.csv"
-    CSVImporter().import_clubs(session, clubs_path)
+    runners_path = Path(__file__).parent / "data" / "baz.xml"
+    BazImporter().import_competitors(session, runners_path)
 
     runner16 = """
         {"stationNumber":1,"cardNumber":16,"startTime":60386,"finishTime":62341,"checkTime":60386,"punches":[

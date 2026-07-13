@@ -1,0 +1,2829 @@
+<?xml version='1.0' encoding='windows-1251'?>
+<UOFData>
+<UOFVersion>0.1.0</UOFVersion>
+<ModifyDate>14.11.2025</ModifyDate>
+<ModifyTime>23:59:22.0</ModifyTime>
+<CreateProgram>export_baz.php</CreateProgram>
+<Events>3982</Events>
+<Names>О-Halloween</Names>
+<Orgs>клуб спортивного та оздоровчого орієнтування „Зелеста”</Orgs>
+<Idreg>26</Idreg>
+<Period>15.11.2025 - 16.11.2025</Period>
+<mps />
+<gsud />
+<gsek />
+<tsud />
+<Sportsman>
+<Predst>Коваль Степан</Predst>
+<FIO>Мазур Уляна</FIO>
+<FOUCode>32654</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>19.10.2015</Birthday>
+<Qualification>б/р</Qualification>
+<Trener>Козак Володимир</Trener>
+<Trener />
+<Trener />
+<Group>Ж10</Group>
+<Region>м.Київ</Region>
+<Club>Oxygen</Club>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>0</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Мельник Юрій</Predst>
+<FIO>Марченко Лілія</FIO>
+<FOUCode>30016</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>18.08.2015</Birthday>
+<Qualification>б/р ю</Qualification>
+<Group>Ж10</Group>
+<Region>м.Київ</Region>
+<Club>Зелеста</Club>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>2</ProgEvent>
+<Pol>0</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Ткаченко Дмитро</Predst>
+<FIO>Сидоренко Злата</FIO>
+<FOUCode>34361</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>01.01.2015</Birthday>
+<Trener>Павленко Володимир</Trener>
+<Trener />
+<Trener />
+<Group>Ж10</Group>
+<Region>м.Київ</Region>
+<DUSSH>ЦТКУМ Святош.р-ну м.Києва</DUSSH>
+<TDSCH>2</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>2</ProgEvent>
+<Pol>0</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Коваль Степан</Predst>
+<FIO>Яремчук Надія</FIO>
+<FOUCode>33195</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>13.07.2015</Birthday>
+<Qualification>б/р</Qualification>
+<Trener>Сидоренко Юрій</Trener>
+<Trener />
+<Trener />
+<Group>Ж10</Group>
+<Region>м.Київ</Region>
+<Club>Oxygen</Club>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>0</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Левченко Володимир</Predst>
+<FIO>Павленко Марія</FIO>
+<FOUCode>32349</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>05.05.2016</Birthday>
+<Qualification>б/р</Qualification>
+<Trener>Левченко Андрій</Trener>
+<Trener />
+<Trener />
+<Group>Ж10</Group>
+<Region>м.Київ</Region>
+<Club>Sever</Club>
+<DUSSH>УДЦТКУМ</DUSSH>
+<TDSCH>2</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>0</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Мельник Юрій</Predst>
+<FIO>Марченко Уляна</FIO>
+<FOUCode>28648</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>06.10.2015</Birthday>
+<Qualification>б/р ю</Qualification>
+<Trener>Мазур Антон</Trener>
+<Trener>Романюк Володимир</Trener>
+<Group>Ж10</Group>
+<Region>м.Київ</Region>
+<Club>Зелеста</Club>
+<DUSSH>ЦТКУМ Святош.р-ну м.Києва</DUSSH>
+<TDSCH>2</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>0</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Левченко Володимир</Predst>
+<FIO>Мельник Поліна</FIO>
+<FOUCode>30733</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>15.02.2016</Birthday>
+<Qualification>ІІІ-ю</Qualification>
+<Trener>Левченко Андрій</Trener>
+<Trener />
+<Trener />
+<Group>Ж10</Group>
+<Region>м.Київ</Region>
+<Club>Sever</Club>
+<DUSSH>УДЦТКУМ</DUSSH>
+<TDSCH>2</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>0</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Коваль Степан</Predst>
+<FIO>Іваненко Світлана</FIO>
+<FOUCode>32250</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>22.06.2015</Birthday>
+<Qualification>ІІІ-ю</Qualification>
+<Group>Ж10</Group>
+<Region>м.Київ</Region>
+<Club>Oxygen</Club>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>0</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Мельник Юрій</Predst>
+<FIO>Гончар Злата</FIO>
+<FOUCode>34193</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>15.05.2014</Birthday>
+<Qualification>б/р ю</Qualification>
+<Trener>Романюк Володимир</Trener>
+<Trener />
+<Trener />
+<Group>Ж12</Group>
+<Region>м.Київ</Region>
+<Club>Зелеста</Club>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>0</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Мельник Юрій</Predst>
+<FIO>Петренко Надія</FIO>
+<FOUCode>32265</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>20.03.2013</Birthday>
+<Qualification>ІІ-ю</Qualification>
+<Trener>Сидоренко Юрій</Trener>
+<Trener />
+<Trener />
+<Group>Ж12</Group>
+<Region>м.Київ</Region>
+<Club>Oxygen</Club>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>0</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Коваль Степан</Predst>
+<FIO>Мороз Катерина</FIO>
+<FOUCode>30259</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>06.06.2014</Birthday>
+<Qualification>ІІІ</Qualification>
+<Trener>Данилюк Ігор</Trener>
+<Group>Ж12</Group>
+<Region>м.Київ</Region>
+<Club>Oxygen</Club>
+<TDSCH>0</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>0</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Коваль Степан</Predst>
+<FIO>Кушнір Марта</FIO>
+<FOUCode>34773</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>18.04.2013</Birthday>
+<Qualification>І-ю</Qualification>
+<Trener>Ковальчук Максим</Trener>
+<Trener>Данилюк Ігор</Trener>
+<Trener />
+<Group>Ж12</Group>
+<Region>м.Київ</Region>
+<Club>Oxygen</Club>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>0</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Мельник Юрій</Predst>
+<FIO>Мельник Ольга</FIO>
+<FOUCode>28647</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>23.05.2013</Birthday>
+<Qualification>б/р ю</Qualification>
+<Trener>Мазур Антон</Trener>
+<Trener>Романюк Володимир</Trener>
+<Group>Ж12</Group>
+<Region>м.Київ</Region>
+<Club>Зелеста</Club>
+<DUSSH>ЦТКУМ Святош.р-ну м.Києва</DUSSH>
+<TDSCH>2</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>0</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Левченко Назар</Predst>
+<FIO>Кушнір Катерина</FIO>
+<FOUCode>26313</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>20.01.2014</Birthday>
+<Qualification>І-ю</Qualification>
+<Trener>Петренко Степан</Trener>
+<Group>Ж12</Group>
+<Region>м.Київ</Region>
+<Club>Sever</Club>
+<Chip>8653623</Chip>
+<DUSSH>КДЮСШ Пуща-Водиця</DUSSH>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>0</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Ткаченко Дмитро</Predst>
+<FIO>Кравченко Софія</FIO>
+<FOUCode>34640</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>01.01.2014</Birthday>
+<Qualification>б/р</Qualification>
+<Trener>Павленко Володимир</Trener>
+<Trener />
+<Trener />
+<Group>Ж12</Group>
+<Region>м.Київ</Region>
+<DUSSH>ЦТКУМ Святош.р-ну м.Києва</DUSSH>
+<TDSCH>2</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>2</ProgEvent>
+<Pol>0</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Левченко Володимир</Predst>
+<FIO>Мороз Олена</FIO>
+<FOUCode>29169</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>15.01.2012</Birthday>
+<Qualification>ІІ</Qualification>
+<Trener>Левченко Андрій</Trener>
+<Trener />
+<Trener />
+<Group>Ж14</Group>
+<Region>м.Київ</Region>
+<Club>Sever</Club>
+<DUSSH>УДЦТКУМ</DUSSH>
+<TDSCH>2</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>0</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Федоренко Іван</Predst>
+<FIO>Левченко Олена</FIO>
+<FOUCode>28384</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>01.02.2012</Birthday>
+<Qualification>ІІ-ю</Qualification>
+<Group>Ж14</Group>
+<Region>м.Київ</Region>
+<Club>ЦТКЭУМ</Club>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>0</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Федоренко Іван</Predst>
+<FIO>Поліщук Ольга</FIO>
+<FOUCode>28982</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>28.01.2012</Birthday>
+<Qualification>б/р</Qualification>
+<Group>Ж14</Group>
+<Region>м.Київ</Region>
+<Club>СЗШ №162</Club>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>0</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Мельник Юрій</Predst>
+<FIO>Павленко Надія</FIO>
+<FOUCode>33235</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>18.01.2011</Birthday>
+<Qualification>б/р ю</Qualification>
+<Trener>Романюк Володимир</Trener>
+<Group>Ж14</Group>
+<Region>м.Київ</Region>
+<Club>Зелеста</Club>
+<DUSSH>ЦТКУМ Святош.р-ну м.Києва</DUSSH>
+<TDSCH>2</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>0</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Левченко Володимир</Predst>
+<FIO>Лисенко Соломія</FIO>
+<FOUCode>28426</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>18.05.2012</Birthday>
+<Qualification>ІІ</Qualification>
+<Trener>Левченко Андрій</Trener>
+<Trener />
+<Trener />
+<Group>Ж14</Group>
+<Region>м.Київ</Region>
+<Club>Sever</Club>
+<DUSSH>УДЦТКУМ</DUSSH>
+<TDSCH>2</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>0</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Коваль Степан</Predst>
+<FIO>Романюк Галина</FIO>
+<FOUCode>28122</FOUCode>
+<FSOU>1</FSOU>
+<Birthday>19.08.2011</Birthday>
+<Qualification>ІІ</Qualification>
+<Trener>Данилюк Ігор</Trener>
+<Group>Ж14</Group>
+<Region>м.Київ</Region>
+<Club>Oxygen</Club>
+<TDSCH>0</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>0</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Федоренко Іван</Predst>
+<FIO>Мазур Дарина</FIO>
+<FOUCode>28981</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>11.02.2012</Birthday>
+<Qualification>ІІ-ю</Qualification>
+<Group>Ж14</Group>
+<Region>м.Київ</Region>
+<DUSSH>ЦТКУМ Святош.р-ну м.Києва</DUSSH>
+<TDSCH>2</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>0</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Левченко Володимир</Predst>
+<FIO>Марченко Мілана</FIO>
+<FOUCode>32236</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>06.11.2012</Birthday>
+<Qualification>ІІІ-ю</Qualification>
+<Trener>Левченко Андрій</Trener>
+<Trener />
+<Trener />
+<Group>Ж14</Group>
+<Region>м.Київ</Region>
+<Club>Sever</Club>
+<DUSSH>УДЦТКУМ</DUSSH>
+<TDSCH>2</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>0</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Федоренко Іван</Predst>
+<FIO>Мороз Галина</FIO>
+<FOUCode>30791</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>30.07.2012</Birthday>
+<Qualification>б/р ю</Qualification>
+<Group>Ж14</Group>
+<Region>м.Київ</Region>
+<DUSSH>ЦТКУМ Святош.р-ну м.Києва</DUSSH>
+<TDSCH>2</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>2</ProgEvent>
+<Pol>0</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Федоренко Іван</Predst>
+<FIO>Лисенко Наталія</FIO>
+<FOUCode>34814</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>13.10.2011</Birthday>
+<Qualification>б/р ю</Qualification>
+<Group>Ж14</Group>
+<Region>м.Київ</Region>
+<Club>СЗШ №162</Club>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>2</ProgEvent>
+<Pol>0</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Мельник Юрій</Predst>
+<FIO>Сидоренко Ірина</FIO>
+<FOUCode>25299</FOUCode>
+<FSOU>1</FSOU>
+<Birthday>07.10.2011</Birthday>
+<Qualification>ІІ-ю</Qualification>
+<Trener>Мазур Антон</Trener>
+<Trener>Романюк Володимир</Trener>
+<Group>Ж14</Group>
+<Region>м.Київ</Region>
+<Club>Зелеста</Club>
+<DUSSH>ЦТКУМ Святош.р-ну м.Києва</DUSSH>
+<TDSCH>2</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>0</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Федоренко Іван</Predst>
+<FIO>Данилюк Єлизавета</FIO>
+<FOUCode>34815</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>05.08.2011</Birthday>
+<Qualification>б/р ю</Qualification>
+<Group>Ж14</Group>
+<Region>м.Київ</Region>
+<Club>СЗШ №162</Club>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1</ProgEvent>
+<Pol>0</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Федоренко Іван</Predst>
+<FIO>Клименко Катерина</FIO>
+<FOUCode>28678</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>03.09.2011</Birthday>
+<Qualification>ІІ-ю</Qualification>
+<Group>Ж14</Group>
+<Region>м.Київ</Region>
+<Club>ЦТКУМ Географічне краєзнавство</Club>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>0</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Бойко Павло</Predst>
+<FIO>Коваль Марта</FIO>
+<FOUCode>29037</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>26.11.2009</Birthday>
+<Qualification>б/р ю</Qualification>
+<Group>Ж16</Group>
+<Region>м.Київ</Region>
+<Club>ЦПР Святошинського району</Club>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>2</ProgEvent>
+<Pol>0</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Олійник Максим</Predst>
+<FIO>Бондаренко Марта</FIO>
+<FOUCode>32011</FOUCode>
+<FSOU>1</FSOU>
+<Birthday>04.02.2011</Birthday>
+<Qualification>І</Qualification>
+<Trener>Поліщук Богдан</Trener>
+<Trener>Петренко Степан</Trener>
+<Trener />
+<Group>Ж16</Group>
+<Region>м.Київ</Region>
+<Club>Sever</Club>
+<DUSSH>КДЮСШ Пуща-Водиця</DUSSH>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>0</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Федоренко Іван</Predst>
+<FIO>Романюк Анна</FIO>
+<FOUCode>28985</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>24.09.2010</Birthday>
+<Qualification>ІІІ-ю</Qualification>
+<Group>Ж16</Group>
+<Region>м.Київ</Region>
+<Club>СЗШ №162</Club>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>2</ProgEvent>
+<Pol>0</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Мельник Юрій</Predst>
+<FIO>Мороз Марта</FIO>
+<FOUCode>32539</FOUCode>
+<FSOU>1</FSOU>
+<Birthday>27.11.2010</Birthday>
+<Qualification>б/р ю</Qualification>
+<Trener>Романюк Володимир</Trener>
+<Group>Ж16</Group>
+<Region>м.Київ</Region>
+<Club>Зелеста</Club>
+<DUSSH>ЦПР Святошинського району</DUSSH>
+<TDSCH>2</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>0</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Мельник Юрій</Predst>
+<FIO>Романюк Дарина</FIO>
+<FOUCode>28619</FOUCode>
+<FSOU>1</FSOU>
+<Birthday>23.08.2010</Birthday>
+<Qualification>ІІІ</Qualification>
+<Trener>Данилюк Ігор</Trener>
+<Group>Ж16</Group>
+<Region>м.Київ</Region>
+<Club>Oxygen</Club>
+<DUSSH>КДЮСШ Пуща-Водиця</DUSSH>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>0</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Мельник Юрій</Predst>
+<FIO>Кравченко Ольга</FIO>
+<FOUCode>10827</FOUCode>
+<FSOU>1</FSOU>
+<Birthday>09.12.2002</Birthday>
+<Qualification>І</Qualification>
+<Trener>Мазур Антон</Trener>
+<Trener />
+<Trener />
+<Group>Ж21А</Group>
+<Region>м.Київ</Region>
+<Club>Зелеста</Club>
+<Chip>1005497</Chip>
+<DUSSH>ЦТКУМ Святош.р-ну м.Києва</DUSSH>
+<TDSCH>2</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>0</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Мельник Юрій</Predst>
+<FIO>Олійник Тетяна</FIO>
+<FOUCode>23474</FOUCode>
+<FSOU>1</FSOU>
+<Birthday>13.08.2008</Birthday>
+<Qualification>ІІ</Qualification>
+<Trener>Ткаченко Руслан</Trener>
+<Group>Ж21А</Group>
+<Region>Луганська</Region>
+<Club>ЦТКЭУМ</Club>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>2</ProgEvent>
+<Pol>0</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Мельник Юрій</Predst>
+<FIO>Шульга Марія</FIO>
+<FOUCode>34824</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>08.09.1994</Birthday>
+<Qualification>б/р</Qualification>
+<Group>Ж21А</Group>
+<Region>м.Київ</Region>
+<Club>Зелеста</Club>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>2</ProgEvent>
+<Pol>0</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Федоренко Іван</Predst>
+<FIO>Шевченко Світлана</FIO>
+<FOUCode>29178</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>19.09.2008</Birthday>
+<Qualification>б/р</Qualification>
+<Group>Ж21А</Group>
+<Region>м.Київ</Region>
+<DUSSH>ЦТКУМ Святош.р-ну м.Києва</DUSSH>
+<TDSCH>2</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>2</ProgEvent>
+<Pol>0</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Мельник Юрій</Predst>
+<FIO>Мороз Вікторія</FIO>
+<FOUCode>31990</FOUCode>
+<FSOU>1</FSOU>
+<Birthday>14.10.2007</Birthday>
+<Qualification>ІІІ</Qualification>
+<Trener>Мазур Антон</Trener>
+<Group>Ж21А</Group>
+<Region>м.Київ</Region>
+<Club>Зелеста</Club>
+<Chip>8534563</Chip>
+<DUSSH>ЦТКУМ Святош.р-ну м.Києва</DUSSH>
+<TDSCH>2</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>0</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Коваль Степан</Predst>
+<FIO>Мельник Галина</FIO>
+<FOUCode>12992</FOUCode>
+<FSOU>1</FSOU>
+<Birthday>01.03.1998</Birthday>
+<Qualification>КМСУ</Qualification>
+<Trener>Сидоренко Юрій</Trener>
+<Trener>Федоренко Віктор</Trener>
+<Trener>Павленко Кирило</Trener>
+<Group>Ж21Е</Group>
+<Region>м.Київ</Region>
+<Club>Oxygen</Club>
+<FST>О</FST>
+<Chip>9201931</Chip>
+<DUSSH>Київ ДЮСШ №12</DUSSH>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>0</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Левченко Володимир</Predst>
+<FIO>Олійник Дарина</FIO>
+<FOUCode>26787</FOUCode>
+<FSOU>1</FSOU>
+<Birthday>28.07.2011</Birthday>
+<Qualification>КМСУ</Qualification>
+<Trener>Левченко Андрій</Trener>
+<Group>Ж21Е</Group>
+<Region>м.Київ</Region>
+<Club>Sever</Club>
+<Chip>8525922</Chip>
+<DUSSH>УДЦТКУМ</DUSSH>
+<TDSCH>2</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>0</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Олійник Дмитро</Predst>
+<FIO>Мазур Мілана</FIO>
+<FOUCode>12785</FOUCode>
+<FSOU>1</FSOU>
+<Birthday>21.04.1984</Birthday>
+<Qualification>МСУ</Qualification>
+<Trener>Поліщук Богдан</Trener>
+<Group>Ж21Е</Group>
+<Region>м.Київ</Region>
+<Club>Sever</Club>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1</ProgEvent>
+<Pol>0</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Савченко Роман</Predst>
+<FIO>Клименко Тетяна</FIO>
+<FOUCode>15019</FOUCode>
+<FSOU>1</FSOU>
+<Birthday>01.05.2007</Birthday>
+<Qualification>КМСУ</Qualification>
+<Trener>Павленко Михайло</Trener>
+<Trener>Савченко Павло</Trener>
+<Group>Ж21Е</Group>
+<Region>м.Київ</Region>
+<Club>OC Orienta</Club>
+<FST>О</FST>
+<Chip>8507947</Chip>
+<DUSSH>КДЮСШ Пуща-Водиця</DUSSH>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>0</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Левченко Володимир</Predst>
+<FIO>Бойко Олена</FIO>
+<FOUCode>23386</FOUCode>
+<FSOU>1</FSOU>
+<Birthday>09.09.2008</Birthday>
+<Qualification>І</Qualification>
+<Trener>Левченко Андрій</Trener>
+<Group>Ж21Е</Group>
+<Region>м.Київ</Region>
+<Club>Sever</Club>
+<DUSSH>УДЦТКУМ</DUSSH>
+<TDSCH>2</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>0</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Савченко Роман</Predst>
+<FIO>Кравченко Олена</FIO>
+<FOUCode>16812</FOUCode>
+<FSOU>1</FSOU>
+<Birthday>08.10.1983</Birthday>
+<Qualification>КМСУ</Qualification>
+<Trener>Павленко Михайло</Trener>
+<Group>Ж35</Group>
+<Region>м.Київ</Region>
+<Club>OC Orienta</Club>
+<Chip>2131858</Chip>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>0</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Федоренко Іван</Predst>
+<FIO>Бондаренко Надія</FIO>
+<FOUCode>28980</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>25.03.1990</Birthday>
+<Qualification>ІІІ</Qualification>
+<Group>Ж35</Group>
+<Region>м.Київ</Region>
+<DUSSH>ЦТКУМ Святош.р-ну м.Києва</DUSSH>
+<TDSCH>2</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>0</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Сидоренко Юлія</Predst>
+<FIO>Сидоренко Юлія</FIO>
+<FOUCode>12407</FOUCode>
+<FSOU>1</FSOU>
+<Birthday>03.12.1974</Birthday>
+<Qualification>ІІ</Qualification>
+<Group>Ж35</Group>
+<Region>м.Київ</Region>
+<Chip>8525499</Chip>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>0</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Мельник Юрій</Predst>
+<FIO>Коваль Поліна</FIO>
+<FOUCode>15002</FOUCode>
+<FSOU>1</FSOU>
+<Birthday>04.06.1985</Birthday>
+<Qualification>ІІІ</Qualification>
+<Trener>Поліщук Богдан</Trener>
+<Group>Ж35</Group>
+<Region>м.Київ</Region>
+<Club>Sever</Club>
+<TDSCH>0</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>0</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Бондаренко Олена</Predst>
+<FIO>Бондаренко Олена</FIO>
+<FOUCode>13645</FOUCode>
+<FSOU>1</FSOU>
+<Birthday>26.09.1977</Birthday>
+<Qualification>ІІ</Qualification>
+<Group>Ж45</Group>
+<Region>Миколаївська</Region>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>0</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Павленко Дарина</Predst>
+<FIO>Павленко Дарина</FIO>
+<FOUCode>28781</FOUCode>
+<FSOU>1</FSOU>
+<Birthday>23.07.1972</Birthday>
+<Qualification>б/р</Qualification>
+<Group>Ж45</Group>
+<Region>Донецька</Region>
+<Chip>8536609</Chip>
+<TDSCH>0</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>0</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Левченко Володимир</Predst>
+<FIO>Бондаренко Лілія</FIO>
+<FOUCode>31995</FOUCode>
+<FSOU>1</FSOU>
+<Birthday>28.06.1977</Birthday>
+<Qualification>б/р</Qualification>
+<Trener>Левченко Андрій</Trener>
+<Trener />
+<Trener />
+<Group>Ж45</Group>
+<Region>м.Київ</Region>
+<Club>Sever</Club>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>0</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Левченко Володимир</Predst>
+<FIO>Левченко Володимир</FIO>
+<FOUCode>14584</FOUCode>
+<FSOU>1</FSOU>
+<Birthday>08.12.1971</Birthday>
+<Qualification>І</Qualification>
+<Group>Ж45</Group>
+<Region>м.Київ</Region>
+<Club>Sever</Club>
+<DUSSH>УДЦТКУМ</DUSSH>
+<TDSCH>2</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>0</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Левченко Володимир</Predst>
+<FIO>Яремчук Тетяна</FIO>
+<FOUCode>32570</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>06.10.1973</Birthday>
+<Qualification>б/р</Qualification>
+<Group>Ж45</Group>
+<Region>м.Київ</Region>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>0</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Савченко Роман</Predst>
+<FIO>Лисенко Єлизавета</FIO>
+<FOUCode>28472</FOUCode>
+<FSOU>1</FSOU>
+<Birthday>20.04.1978</Birthday>
+<Qualification>ІІ</Qualification>
+<Trener>Павленко Михайло</Trener>
+<Trener />
+<Trener />
+<Group>Ж45</Group>
+<Region>м.Київ</Region>
+<Club>OC Orienta</Club>
+<Chip>8653534</Chip>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>0</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Савченко Роман</Predst>
+<FIO>Савченко Марта</FIO>
+<FOUCode>18171</FOUCode>
+<FSOU>1</FSOU>
+<Birthday>06.06.1979</Birthday>
+<Qualification>ІІ</Qualification>
+<Trener>Павленко Михайло</Trener>
+<Group>Ж45</Group>
+<Region>м.Київ</Region>
+<Club>OC Orienta</Club>
+<Chip>2131838</Chip>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>0</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Мельник Юрій</Predst>
+<FIO>Коваль Світлана</FIO>
+<FOUCode>459</FOUCode>
+<FSOU>1</FSOU>
+<Birthday>17.12.1955</Birthday>
+<Qualification>ІІ</Qualification>
+<Trener>Мазур Антон</Trener>
+<Group>Ж55</Group>
+<Region>м.Київ</Region>
+<Club>O-club</Club>
+<Chip>1300268</Chip>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>2</ProgEvent>
+<Pol>0</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Коваль Степан</Predst>
+<FIO>Ковальчук Олена</FIO>
+<FOUCode>12121</FOUCode>
+<FSOU>1</FSOU>
+<Birthday>06.10.1968</Birthday>
+<Qualification>КМСУ</Qualification>
+<Group>Ж55</Group>
+<Region>м.Київ</Region>
+<Club>Oxygen</Club>
+<TDSCH>0</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>0</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Савченко Віктор</Predst>
+<FIO>Петренко Христина</FIO>
+<FOUCode>9576</FOUCode>
+<FSOU>1</FSOU>
+<Birthday>07.07.1953</Birthday>
+<Qualification>ІІІ</Qualification>
+<Group>Ж55</Group>
+<Region>м.Київ</Region>
+<Club>O-club</Club>
+<Chip>8525498</Chip>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>0</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Мельник Юрій</Predst>
+<FIO>Сидоренко Галина</FIO>
+<FOUCode>34816</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>24.12.2017</Birthday>
+<Qualification>б/р ю</Qualification>
+<Trener>Романюк Володимир</Trener>
+<Trener />
+<Trener />
+<Group>ЖН діти</Group>
+<Region>м.Київ</Region>
+<Club>Зелеста</Club>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1</ProgEvent>
+<Pol>0</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Ткаченко Дмитро</Predst>
+<FIO>Олійник Надія</FIO>
+<FOUCode>34360</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>01.01.2018</Birthday>
+<Trener>Павленко Володимир</Trener>
+<Trener />
+<Trener />
+<Group>ЖН діти</Group>
+<Region>м.Київ</Region>
+<DUSSH>ЦТКУМ Святош.р-ну м.Києва</DUSSH>
+<TDSCH>2</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>0</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Савченко Роман</Predst>
+<FIO>Поліщук Єлизавета</FIO>
+<FOUCode>33860</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>03.04.2018</Birthday>
+<Qualification>б/р ю</Qualification>
+<Trener>Павленко Михайло</Trener>
+<Trener />
+<Trener />
+<Group>ЖН діти</Group>
+<Region>м.Київ</Region>
+<Club>OC Orienta</Club>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>0</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Мельник Юрій</Predst>
+<FIO>Кушнір Поліна</FIO>
+<FOUCode>33171</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>02.04.2019</Birthday>
+<Qualification>б/р</Qualification>
+<Trener>Мазур Антон</Trener>
+<Trener />
+<Trener />
+<Group>ЖН діти</Group>
+<Region>м.Київ</Region>
+<Club>Зелеста</Club>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>0</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Сидоренко Іван</Predst>
+<FIO>Бондаренко Мілана</FIO>
+<FOUCode>34808</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>25.02.2017</Birthday>
+<Qualification>б/р</Qualification>
+<Trener>Мазур Антон</Trener>
+<Trener />
+<Trener />
+<Group>ЖН діти</Group>
+<Region>Київська</Region>
+<Club>Зелеста</Club>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>2</ProgEvent>
+<Pol>0</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Савченко Роман</Predst>
+<FIO>Гончар Ольга</FIO>
+<FOUCode>23213</FOUCode>
+<FSOU>1</FSOU>
+<Birthday>06.12.2002</Birthday>
+<Qualification>КМСУ</Qualification>
+<Trener>Павленко Михайло</Trener>
+<Group>Жстуденти</Group>
+<Region>м.Київ</Region>
+<Club>OC Orienta</Club>
+<Chip>7200281</Chip>
+<TDSCH>0</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>0</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Мороз Уляна</Predst>
+<FIO>Мороз Уляна</FIO>
+<FOUCode>29171</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>31.05.2005</Birthday>
+<Qualification>І</Qualification>
+<Group>Жстуденти</Group>
+<Region>м.Київ</Region>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>0</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Савченко Роман</Predst>
+<FIO>Мазур Катерина</FIO>
+<FOUCode>30172</FOUCode>
+<FSOU>1</FSOU>
+<Birthday>18.06.2005</Birthday>
+<Qualification>б/р</Qualification>
+<Trener>Павленко Михайло</Trener>
+<Trener />
+<Trener />
+<Group>Жстуденти</Group>
+<Region>м.Київ</Region>
+<Club>OC Orienta</Club>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>0</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Мельник Юрій</Predst>
+<FIO>Кравченко Володимир</FIO>
+<FOUCode>34822</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>09.03.1965</Birthday>
+<Qualification>б/р</Qualification>
+<Group>Н дорослі</Group>
+<Region>м.Київ</Region>
+<Club>Зелеста</Club>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>2</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Мельник Юрій</Predst>
+<FIO>Клименко Віктор</FIO>
+<FOUCode>34823</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>27.01.1967</Birthday>
+<Qualification>б/р</Qualification>
+<Group>Н дорослі</Group>
+<Region>м.Київ</Region>
+<Club>Зелеста</Club>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>2</ProgEvent>
+<Pol>0</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Савченко Роман</Predst>
+<FIO>Савченко Ярослав</FIO>
+<FOUCode>34592</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>19.09.1991</Birthday>
+<Qualification>б/р</Qualification>
+<Trener>Павленко Михайло</Trener>
+<Trener />
+<Trener />
+<Group>Н дорослі</Group>
+<Region>м.Київ</Region>
+<Club>OC Orienta</Club>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>0</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Мельник Юрій</Predst>
+<FIO>Шевченко Євген</FIO>
+<FOUCode>33142</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>02.10.1982</Birthday>
+<Qualification>б/р</Qualification>
+<Trener>Мазур Антон</Trener>
+<Trener />
+<Trener />
+<Group>Н дорослі</Group>
+<Region>м.Київ</Region>
+<Club>Зелеста</Club>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>0</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Ткаченко Дмитро</Predst>
+<FIO>Павленко Ярослав</FIO>
+<FOUCode>34359</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>01.01.2015</Birthday>
+<Trener>Павленко Володимир</Trener>
+<Trener />
+<Trener />
+<Group>Ч10</Group>
+<Region>м.Київ</Region>
+<DUSSH>ЦТКУМ Святош.р-ну м.Києва</DUSSH>
+<TDSCH>2</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Мельник Юрій</Predst>
+<FIO>Олійник Михайло</FIO>
+<FOUCode>34423</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>15.05.2016</Birthday>
+<Qualification>б/р ю</Qualification>
+<Group>Ч10</Group>
+<Region>м.Київ</Region>
+<Club>ЦПР Святошинського району</Club>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Мельник Юрій</Predst>
+<FIO>Данилюк Богдан</FIO>
+<FOUCode>30319</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>01.01.2015</Birthday>
+<Trener>Павленко Володимир</Trener>
+<Trener />
+<Trener />
+<Group>Ч10</Group>
+<Region>м.Київ</Region>
+<DUSSH>ЦТКУМ Святош.р-ну м.Києва</DUSSH>
+<TDSCH>2</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Бойко Павло</Predst>
+<FIO>Тимошенко Володимир</FIO>
+<FOUCode>32339</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>17.09.2015</Birthday>
+<Qualification>б/р ю</Qualification>
+<Group>Ч10</Group>
+<Region>м.Київ</Region>
+<Club>ЦПР Святошинського району</Club>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Бойко Павло</Predst>
+<FIO>Гончар Кирило</FIO>
+<FOUCode>32343</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>31.08.2016</Birthday>
+<Qualification>б/р ю</Qualification>
+<Group>Ч10</Group>
+<Region>м.Київ</Region>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Кушнір Кирило</Predst>
+<FIO>Петренко Тарас</FIO>
+<FOUCode>30017</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>22.10.2015</Birthday>
+<Qualification>б/р</Qualification>
+<Group>Ч10</Group>
+<Region>м.Київ</Region>
+<Club>Sever</Club>
+<Chip>1083328</Chip>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>0</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Бойко Павло</Predst>
+<FIO>Кушнір Ярослав</FIO>
+<FOUCode>32341</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>30.05.2016</Birthday>
+<Qualification>б/р ю</Qualification>
+<Group>Ч10</Group>
+<Region>м.Київ</Region>
+<Club>ЦПР Святошинського району</Club>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Савченко Ігор</Predst>
+<FIO>Лисенко Антон</FIO>
+<FOUCode>34462</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>12.11.2015</Birthday>
+<Qualification>б/р</Qualification>
+<Group>Ч10</Group>
+<Region>м.Київ</Region>
+<TDSCH>0</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Савченко Ігор</Predst>
+<FIO>Мельник Володимир</FIO>
+<FOUCode>34452</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>13.07.2016</Birthday>
+<Qualification>б/р</Qualification>
+<Group>Ч10</Group>
+<Region>м.Київ</Region>
+<TDSCH>0</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Мельник Юрій</Predst>
+<FIO>Коваль Віктор</FIO>
+<FOUCode>29850</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>07.07.2016</Birthday>
+<Qualification>б/р ю</Qualification>
+<Trener>Мазур Антон</Trener>
+<Trener />
+<Trener />
+<Group>Ч10</Group>
+<Region>м.Київ</Region>
+<Club>Зелеста</Club>
+<DUSSH>ЦТКУМ Святош.р-ну м.Києва</DUSSH>
+<TDSCH>2</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Коваль Степан</Predst>
+<FIO>Шульга Ярослав</FIO>
+<FOUCode>34775</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>22.04.2016</Birthday>
+<Qualification>б/р ю</Qualification>
+<Trener>Данилюк Ігор</Trener>
+<Trener />
+<Trener />
+<Group>Ч10</Group>
+<Region>м.Київ</Region>
+<Club>Oxygen</Club>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Савченко Ігор</Predst>
+<FIO>Клименко Антон</FIO>
+<FOUCode>34821</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>02.02.2014</Birthday>
+<Qualification>б/р</Qualification>
+<Trener>Савченко Павло</Trener>
+<Trener />
+<Trener />
+<Group>Ч12</Group>
+<Region>м.Київ</Region>
+<Club>СШ 40</Club>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Коваль Степан</Predst>
+<FIO>Савченко Андрій</FIO>
+<FOUCode>32163</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>27.11.2013</Birthday>
+<Qualification>ІІ-ю</Qualification>
+<Trener>Данилюк Ігор</Trener>
+<Group>Ч12</Group>
+<Region>м.Київ</Region>
+<Club>Oxygen</Club>
+<TDSCH>0</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Левченко Володимир</Predst>
+<FIO>Кушнір Віктор</FIO>
+<FOUCode>28422</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>22.08.2014</Birthday>
+<Qualification>ІІ-ю</Qualification>
+<Trener>Левченко Андрій</Trener>
+<Trener />
+<Trener />
+<Group>Ч12</Group>
+<Region>м.Київ</Region>
+<Club>Sever</Club>
+<DUSSH>УДЦТКУМ</DUSSH>
+<TDSCH>2</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Мельник Юрій</Predst>
+<FIO>Романюк Михайло</FIO>
+<FOUCode>34424</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>15.06.2014</Birthday>
+<Qualification>б/р ю</Qualification>
+<Group>Ч12</Group>
+<Region>м.Київ</Region>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Левченко Володимир</Predst>
+<FIO>Мороз Володимир</FIO>
+<FOUCode>32328</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>08.11.2013</Birthday>
+<Qualification>ІІІ-ю</Qualification>
+<Trener>Левченко Андрій</Trener>
+<Trener />
+<Trener />
+<Group>Ч12</Group>
+<Region>м.Київ</Region>
+<Club>Sever</Club>
+<DUSSH>УДЦТКУМ</DUSSH>
+<TDSCH>2</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Левченко Володимир</Predst>
+<FIO>Шевченко Олександр</FIO>
+<FOUCode>33928</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>20.12.2014</Birthday>
+<Qualification>ІІІ-ю</Qualification>
+<Trener>Левченко Андрій</Trener>
+<Trener />
+<Trener />
+<Group>Ч12</Group>
+<Region>м.Київ</Region>
+<Club>Sever</Club>
+<DUSSH>УДЦТКУМ</DUSSH>
+<TDSCH>2</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Ткаченко Дмитро</Predst>
+<FIO>Марченко Олександр</FIO>
+<FOUCode>34358</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>01.01.2013</Birthday>
+<Trener>Павленко Володимир</Trener>
+<Trener />
+<Trener />
+<Group>Ч12</Group>
+<Region>м.Київ</Region>
+<DUSSH>ЦТКУМ Святош.р-ну м.Києва</DUSSH>
+<TDSCH>2</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>2</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Коваль Степан</Predst>
+<FIO>Ковальчук Назар</FIO>
+<FOUCode>28797</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>12.01.2014</Birthday>
+<Qualification>І-ю</Qualification>
+<Trener>Данилюк Ігор</Trener>
+<Group>Ч12</Group>
+<Region>м.Київ</Region>
+<Club>Oxygen</Club>
+<DUSSH>КДЮСШ Пуща-Водиця</DUSSH>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Мельник Юрій</Predst>
+<FIO>Клименко Роман</FIO>
+<FOUCode>29198</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>29.07.2014</Birthday>
+<Qualification>б/р</Qualification>
+<Trener>Поліщук Богдан</Trener>
+<Trener>Петренко Степан</Trener>
+<Trener />
+<Group>Ч12</Group>
+<Region>м.Київ</Region>
+<Club>Sever</Club>
+<DUSSH>КДЮСШ Пуща-Водиця</DUSSH>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Савченко Ігор</Predst>
+<FIO>Марченко Тарас</FIO>
+<FOUCode>32677</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>06.07.2014</Birthday>
+<Qualification>б/р</Qualification>
+<Trener>Петренко Олександр</Trener>
+<Trener>Мазур Михайло</Trener>
+<Trener />
+<Group>Ч12</Group>
+<Region>м.Київ</Region>
+<Club>СШ 40</Club>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Савченко Ігор</Predst>
+<FIO>Поліщук Кирило</FIO>
+<FOUCode>32680</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>08.12.2013</Birthday>
+<Qualification>б/р</Qualification>
+<Trener>Петренко Олександр</Trener>
+<Trener>Мазур Михайло</Trener>
+<Trener />
+<Group>Ч12</Group>
+<Region>м.Київ</Region>
+<Club>СШ 40</Club>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Ткаченко Дмитро</Predst>
+<FIO>Павленко Андрій</FIO>
+<FOUCode>34357</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>01.01.2014</Birthday>
+<Trener>Павленко Володимир</Trener>
+<Trener />
+<Trener />
+<Group>Ч12</Group>
+<Region>м.Київ</Region>
+<DUSSH>ЦТКУМ Святош.р-ну м.Києва</DUSSH>
+<TDSCH>2</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Левченко Володимир</Predst>
+<FIO>Клименко Володимир</FIO>
+<FOUCode>32237</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>06.11.2013</Birthday>
+<Qualification>ІІІ-ю</Qualification>
+<Trener>Левченко Андрій</Trener>
+<Trener />
+<Trener />
+<Group>Ч12</Group>
+<Region>м.Київ</Region>
+<Club>Sever</Club>
+<DUSSH>УДЦТКУМ</DUSSH>
+<TDSCH>2</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Ткаченко Дмитро</Predst>
+<FIO>Савченко Богдан</FIO>
+<FOUCode>28489</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>01.01.2013</Birthday>
+<Qualification>ІІІ-ю</Qualification>
+<Trener>Павленко Володимир</Trener>
+<Trener />
+<Trener />
+<Group>Ч12</Group>
+<Region>м.Київ</Region>
+<DUSSH>ЦТКУМ Святош.р-ну м.Києва</DUSSH>
+<TDSCH>2</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Мельник Юрій</Predst>
+<FIO>Бондаренко Ігор</FIO>
+<FOUCode>27408</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>27.01.2014</Birthday>
+<Qualification>б/р ю</Qualification>
+<Trener>Мазур Антон</Trener>
+<Group>Ч12</Group>
+<Region>м.Київ</Region>
+<Club>Зелеста</Club>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Савченко Ігор</Predst>
+<FIO>Петренко Євген</FIO>
+<FOUCode>32678</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>07.07.2014</Birthday>
+<Qualification>б/р</Qualification>
+<Trener>Петренко Олександр</Trener>
+<Trener>Мазур Михайло</Trener>
+<Trener />
+<Group>Ч12</Group>
+<Region>м.Київ</Region>
+<Club>СШ 40</Club>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Савченко Ігор</Predst>
+<FIO>Шульга Юрій</FIO>
+<FOUCode>32679</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>27.08.2013</Birthday>
+<Qualification>б/р</Qualification>
+<Trener>Петренко Олександр</Trener>
+<Trener>Мазур Михайло</Trener>
+<Trener />
+<Group>Ч12</Group>
+<Region>м.Київ</Region>
+<Club>СШ 40</Club>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Левченко Володимир</Predst>
+<FIO>Сидоренко Ярослав</FIO>
+<FOUCode>32158</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>16.02.2014</Birthday>
+<Qualification>ІІІ-ю</Qualification>
+<Trener>Левченко Андрій</Trener>
+<Trener />
+<Trener />
+<Group>Ч12</Group>
+<Region>м.Київ</Region>
+<Club>Sever</Club>
+<DUSSH>УДЦТКУМ</DUSSH>
+<TDSCH>2</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Коваль Степан</Predst>
+<FIO>Кравченко Дмитро</FIO>
+<FOUCode>28748</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>01.01.2012</Birthday>
+<Qualification>ІІІ</Qualification>
+<Trener>Данилюк Ігор</Trener>
+<Group>Ч14</Group>
+<Region>м.Київ</Region>
+<Club>Oxygen</Club>
+<DUSSH>КДЮСШ Пуща-Водиця</DUSSH>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Савченко Ігор</Predst>
+<FIO>Кравченко Тарас</FIO>
+<FOUCode>34825</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>01.01.2011</Birthday>
+<Qualification>б/р</Qualification>
+<Trener>Петренко Олександр</Trener>
+<Trener />
+<Trener />
+<Group>Ч14</Group>
+<Region>м.Київ</Region>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Ткаченко Дмитро</Predst>
+<FIO>Кушнір Олег</FIO>
+<FOUCode>34819</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>01.01.2012</Birthday>
+<Trener>Павленко Володимир</Trener>
+<Trener />
+<Trener />
+<Group>Ч14</Group>
+<Region>м.Київ</Region>
+<DUSSH>ЦТКУМ Святош.р-ну м.Києва</DUSSH>
+<TDSCH>2</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Бойко Павло</Predst>
+<FIO>Мазур Кирило</FIO>
+<FOUCode>31769</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>08.06.2011</Birthday>
+<Qualification>б/р ю</Qualification>
+<Group>Ч14</Group>
+<Region>м.Київ</Region>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Савченко Ігор</Predst>
+<FIO>Данилюк Павло</FIO>
+<FOUCode>34826</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>01.01.2011</Birthday>
+<Qualification>б/р</Qualification>
+<Trener>Петренко Олександр</Trener>
+<Trener />
+<Trener />
+<Group>Ч14</Group>
+<Region>м.Київ</Region>
+<Club>СШ 40</Club>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Бойко Павло</Predst>
+<FIO>Бондаренко Василь</FIO>
+<FOUCode>33237</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>28.05.2011</Birthday>
+<Qualification>б/р ю</Qualification>
+<Group>Ч14</Group>
+<Region>м.Київ</Region>
+<Club>ЦПР Святошинського району</Club>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Левченко Володимир</Predst>
+<FIO>Федоренко Олександр</FIO>
+<FOUCode>28441</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>01.01.2012</Birthday>
+<Qualification>ІІ</Qualification>
+<Trener>Левченко Андрій</Trener>
+<Trener />
+<Trener />
+<Group>Ч14</Group>
+<Region>м.Київ</Region>
+<Club>Sever</Club>
+<DUSSH>УДЦТКУМ</DUSSH>
+<TDSCH>2</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Савченко Ігор</Predst>
+<FIO>Мороз Роман</FIO>
+<FOUCode>34827</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>06.10.2011</Birthday>
+<Qualification>б/р</Qualification>
+<Trener>Петренко Олександр</Trener>
+<Trener />
+<Trener />
+<Group>Ч14</Group>
+<Region>м.Київ</Region>
+<Club>СШ 40</Club>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Мельник Юрій</Predst>
+<FIO>Бойко Степан</FIO>
+<FOUCode>33226</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>06.05.2011</Birthday>
+<Qualification>І-ю</Qualification>
+<Trener>Павленко Данило</Trener>
+<Trener />
+<Trener />
+<Group>Ч14</Group>
+<Region>м.Київ</Region>
+<DUSSH>ДЮСШ”Віраж”</DUSSH>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Мельник Юрій</Predst>
+<FIO>Лисенко Руслан</FIO>
+<FOUCode>25670</FOUCode>
+<FSOU>1</FSOU>
+<Birthday>30.09.2011</Birthday>
+<Qualification>б/р ю</Qualification>
+<Trener>Мазур Антон</Trener>
+<Group>Ч14</Group>
+<Region>м.Київ</Region>
+<Club>Зелеста</Club>
+<DUSSH>ЦТКУМ Святош.р-ну м.Києва</DUSSH>
+<TDSCH>2</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Левченко Володимир</Predst>
+<FIO>Яремчук Олег</FIO>
+<FOUCode>31462</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>29.02.2012</Birthday>
+<Qualification>б/р</Qualification>
+<Trener>Левченко Андрій</Trener>
+<Trener />
+<Trener />
+<Group>Ч14</Group>
+<Region>м.Київ</Region>
+<Club>Sever</Club>
+<DUSSH>УДЦТКУМ</DUSSH>
+<TDSCH>2</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Мельник Юрій</Predst>
+<FIO>Шевченко Василь</FIO>
+<FOUCode>28607</FOUCode>
+<FSOU>1</FSOU>
+<Birthday>23.10.2009</Birthday>
+<Qualification>б/р</Qualification>
+<Trener>Мазур Антон</Trener>
+<Trener />
+<Trener />
+<Group>Ч16</Group>
+<Region>м.Київ</Region>
+<Club>Зелеста</Club>
+<DUSSH>ЦТКУМ Святош.р-ну м.Києва</DUSSH>
+<TDSCH>2</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Мельник Юрій</Predst>
+<FIO>Іваненко Олександр</FIO>
+<FOUCode>27052</FOUCode>
+<FSOU>1</FSOU>
+<Birthday>02.09.2010</Birthday>
+<Qualification>І</Qualification>
+<Trener>Петренко Степан</Trener>
+<Group>Ч16</Group>
+<Region>м.Київ</Region>
+<Club>Sever</Club>
+<DUSSH>КДЮСШ Пуща-Водиця</DUSSH>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Мельник Юрій</Predst>
+<FIO>Тимошенко Олександр</FIO>
+<FOUCode>28433</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>18.09.2010</Birthday>
+<Qualification>І-ю</Qualification>
+<Trener>Павленко Данило</Trener>
+<Trener />
+<Trener />
+<Group>Ч16</Group>
+<Region>м.Київ</Region>
+<DUSSH>ДЮСШ”Віраж”</DUSSH>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Мельник Юрій</Predst>
+<FIO>Бондаренко Назар</FIO>
+<FOUCode>33866</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>24.01.2010</Birthday>
+<Qualification>б/р ю</Qualification>
+<Group>Ч16</Group>
+<Region>м.Київ</Region>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Мельник Юрій</Predst>
+<FIO>Шульга Максим</FIO>
+<FOUCode>32503</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>03.04.2010</Birthday>
+<Qualification>ІІ</Qualification>
+<Trener>Павленко Данило</Trener>
+<Trener />
+<Trener />
+<Group>Ч16</Group>
+<Region>м.Київ</Region>
+<Chip>8653664</Chip>
+<DUSSH>ДЮСШ”Віраж”</DUSSH>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Мельник Юрій</Predst>
+<FIO>Коваль Олег</FIO>
+<FOUCode>33867</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>22.10.2009</Birthday>
+<Qualification>б/р ю</Qualification>
+<Group>Ч16</Group>
+<Region>м.Київ</Region>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Мельник Юрій</Predst>
+<FIO>Гончар Роман</FIO>
+<FOUCode>34571</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>13.04.2010</Birthday>
+<Qualification>б/р ю</Qualification>
+<Trener>Мазур Антон</Trener>
+<Trener />
+<Trener />
+<Group>Ч16</Group>
+<Region>м.Київ</Region>
+<Club>Зелеста</Club>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Мельник Юрій</Predst>
+<FIO>Левченко Василь</FIO>
+<FOUCode>32540</FOUCode>
+<FSOU>1</FSOU>
+<Birthday>27.11.2010</Birthday>
+<Qualification>б/р ю</Qualification>
+<Trener>Романюк Володимир</Trener>
+<Group>Ч16</Group>
+<Region>м.Київ</Region>
+<Club>Зелеста</Club>
+<DUSSH>ЦТКУМ Святош.р-ну м.Києва</DUSSH>
+<TDSCH>2</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Олійник Максим</Predst>
+<FIO>Кравченко Віктор</FIO>
+<FOUCode>20940</FOUCode>
+<FSOU>1</FSOU>
+<Birthday>26.05.2011</Birthday>
+<Qualification>І</Qualification>
+<Trener>Петренко Степан</Trener>
+<Group>Ч16</Group>
+<Region>м.Київ</Region>
+<Club>Sever</Club>
+<Chip>8653480</Chip>
+<DUSSH>КДЮСШ Пуща-Водиця</DUSSH>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Мельник Юрій</Predst>
+<FIO>Шульга Антон</FIO>
+<FOUCode>30749</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>21.01.2000</Birthday>
+<Qualification>б/р</Qualification>
+<Group>Ч21А</Group>
+<Region>м.Київ</Region>
+<Club>Зелеста</Club>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>2</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Мельник Юрій</Predst>
+<FIO>Шульга Степан</FIO>
+<FOUCode>30480</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>22.01.1989</Birthday>
+<Qualification>б/р</Qualification>
+<Trener>Мазур Антон</Trener>
+<Trener />
+<Trener />
+<Group>Ч21А</Group>
+<Region>м.Київ</Region>
+<Club>Зелеста</Club>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>2</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Мельник Юрій</Predst>
+<FIO>Мазур Максим</FIO>
+<FOUCode>27873</FOUCode>
+<FSOU>1</FSOU>
+<Birthday>07.10.2008</Birthday>
+<Qualification>І</Qualification>
+<Trener>Мазур Антон</Trener>
+<Group>Ч21А</Group>
+<Region>м.Київ</Region>
+<Club>Зелеста</Club>
+<Chip>8508016</Chip>
+<DUSSH>ЦТКУМ Святош.р-ну м.Києва</DUSSH>
+<TDSCH>2</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Мельник Юрій</Predst>
+<FIO>Коваль Назар</FIO>
+<FOUCode>30747</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>04.12.2000</Birthday>
+<Qualification>б/р</Qualification>
+<Group>Ч21А</Group>
+<Region>м.Київ</Region>
+<Club>Зелеста</Club>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>2</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Романюк Роман</Predst>
+<FIO>Романюк Роман</FIO>
+<FOUCode>33181</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>06.11.1995</Birthday>
+<Qualification>б/р</Qualification>
+<Group>Ч21А</Group>
+<Region>м.Київ</Region>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Левченко Віктор</Predst>
+<FIO>Савченко Михайло</FIO>
+<FOUCode>8360</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>24.06.1989</Birthday>
+<Qualification>ІІ</Qualification>
+<Trener>Мазур Євген</Trener>
+<Group>Ч21А</Group>
+<Region>м.Київ</Region>
+<Club>Київська Русь</Club>
+<FST>І</FST>
+<Chip>8535747</Chip>
+<DUSSH>ІФОДЮСШІ</DUSSH>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Мельник Юрій</Predst>
+<FIO>Романюк Василь</FIO>
+<FOUCode>25669</FOUCode>
+<FSOU>1</FSOU>
+<Birthday>22.12.1983</Birthday>
+<Qualification>б/р</Qualification>
+<Trener>Мазур Антон</Trener>
+<Group>Ч21А</Group>
+<Region>м.Київ</Region>
+<Club>Зелеста</Club>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Сидоренко Іван</Predst>
+<FIO>Сидоренко Іван</FIO>
+<FOUCode>34074</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>20.01.1991</Birthday>
+<Qualification>б/р</Qualification>
+<Trener>Мазур Антон</Trener>
+<Trener />
+<Trener />
+<Group>Ч21А</Group>
+<Region>Київська</Region>
+<Club>Зелеста</Club>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>2</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Савченко Роман</Predst>
+<FIO>Савченко Роман</FIO>
+<FOUCode>6782</FOUCode>
+<FSOU>1</FSOU>
+<Birthday>23.07.1995</Birthday>
+<Qualification>б/р ю</Qualification>
+<Trener>Павленко Михайло</Trener>
+<Group>Ч21Е</Group>
+<Region>м.Київ</Region>
+<Club>OC Orienta</Club>
+<Chip>8000177</Chip>
+<VUZ>КУ ім. Б. Грінченка</VUZ>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Савченко Ігор</Predst>
+<FIO>Савченко Ігор</FIO>
+<FIO_LAT>Hychko</FIO_LAT>
+<FIO_LAT2>Vitalii</FIO_LAT2>
+<IOFCode>10900</IOFCode>
+<FOUCode>461</FOUCode>
+<FSOU>1</FSOU>
+<Birthday>22.03.1995</Birthday>
+<Qualification>МСУ</Qualification>
+<Trener>Левченко Кирило</Trener>
+<Trener>Савченко Іван</Trener>
+<Trener>Савченко Павло</Trener>
+<Group>Ч21Е</Group>
+<Region>м.Київ</Region>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Мельник Юрій</Predst>
+<FIO>Савченко Дмитро</FIO>
+<FOUCode>20075</FOUCode>
+<FSOU>1</FSOU>
+<Birthday>17.01.2007</Birthday>
+<Qualification>КМСУ</Qualification>
+<Trener>Романюк Ярослав</Trener>
+<Trener>Мазур Антон</Trener>
+<Group>Ч21Е</Group>
+<Region>м.Київ</Region>
+<Club>Зелеста</Club>
+<Chip>8508168</Chip>
+<DUSSH>ЦТКУМ Святош.р-ну м.Києва</DUSSH>
+<TDSCH>2</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Мазур Руслан</Predst>
+<FIO>Лисенко Віктор</FIO>
+<FOUCode>31039</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>20.08.2006</Birthday>
+<Qualification>б/р</Qualification>
+<Group>Ч21Е</Group>
+<Region>м.Київ</Region>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Мельник Юрій</Predst>
+<FIO>Поліщук Юрій</FIO>
+<FOUCode>34820</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>31.10.1991</Birthday>
+<Qualification>КМСУ</Qualification>
+<Trener>Мазур Антон</Trener>
+<Trener />
+<Trener />
+<Group>Ч21Е</Group>
+<Region>м.Київ</Region>
+<Club>Зелеста</Club>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Левченко Володимир</Predst>
+<FIO>Бойко Андрій</FIO>
+<FOUCode>27400</FOUCode>
+<FSOU>1</FSOU>
+<Birthday>28.01.2009</Birthday>
+<Qualification>КМСУ</Qualification>
+<Trener>Левченко Андрій</Trener>
+<Group>Ч21Е</Group>
+<Region>м.Київ</Region>
+<Club>Sever</Club>
+<Chip>8514952</Chip>
+<DUSSH>УДЦТКУМ</DUSSH>
+<TDSCH>2</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Савченко Роман</Predst>
+<FIO>Романюк Іван</FIO>
+<FOUCode>16149</FOUCode>
+<FSOU>1</FSOU>
+<Birthday>15.12.2004</Birthday>
+<Qualification>КМСУ</Qualification>
+<Trener>Павленко Михайло</Trener>
+<Trener>Савченко Павло</Trener>
+<Group>Ч21Е</Group>
+<Region>м.Київ</Region>
+<Club>OC Orienta</Club>
+<FST>О</FST>
+<Chip>8014395</Chip>
+<DUSSH>КДЮСШ Пуща-Водиця</DUSSH>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Шульга Кирило</Predst>
+<FIO>Король Артур</FIO>
+<FOUCode>19249</FOUCode>
+<FSOU>1</FSOU>
+<Birthday>31.10.2005</Birthday>
+<Qualification>КМСУ</Qualification>
+<Trener>Федоренко Олег</Trener>
+<Trener>Ковальчук Андрій</Trener>
+<Group>Ч21Е</Group>
+<Region>Сумська</Region>
+<Chip>1300879</Chip>
+<DUSSH>ЦПО КМР ТКВ</DUSSH>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Коваль Степан</Predst>
+<FIO>Поліщук Антон</FIO>
+<FOUCode>21390</FOUCode>
+<FSOU>1</FSOU>
+<Birthday>25.08.1995</Birthday>
+<Qualification>КМСУ</Qualification>
+<Trener>Козак Володимир</Trener>
+<Group>Ч21Е</Group>
+<Region>м.Київ</Region>
+<Club>Oxygen</Club>
+<TDSCH>0</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Мельник Юрій</Predst>
+<FIO>Іваненко Назар</FIO>
+<FOUCode>27872</FOUCode>
+<FSOU>1</FSOU>
+<Birthday>27.04.1973</Birthday>
+<Qualification>ІІІ</Qualification>
+<Trener>Мазур Антон</Trener>
+<Trener />
+<Trener />
+<Group>Ч45</Group>
+<Region>м.Київ</Region>
+<Club>Зелеста</Club>
+<Chip>8507607</Chip>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Шульга Іван</Predst>
+<FIO>Шульга Іван</FIO>
+<FOUCode>6749</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>24.02.1975</Birthday>
+<Qualification>ІІ</Qualification>
+<Trener>Данилюк Степан</Trener>
+<Group>Ч45</Group>
+<Region>Луганська</Region>
+<Club>Луганск 0,7</Club>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Мельник Юрій</Predst>
+<FIO>Федоренко Ігор</FIO>
+<FOUCode>24588</FOUCode>
+<FSOU>1</FSOU>
+<Birthday>26.04.1978</Birthday>
+<Qualification>ІІІ</Qualification>
+<Trener>Мазур Антон</Trener>
+<Group>Ч45</Group>
+<Region>м.Київ</Region>
+<Club>Зелеста</Club>
+<Chip>8508135</Chip>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Савченко Роман</Predst>
+<FIO>Іваненко Ярослав</FIO>
+<FOUCode>16814</FOUCode>
+<FSOU>1</FSOU>
+<Birthday>05.10.1972</Birthday>
+<Qualification>КМСУ</Qualification>
+<Trener>Павленко Михайло</Trener>
+<Group>Ч45</Group>
+<Region>м.Київ</Region>
+<Club>OC Orienta</Club>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Ковальчук Степан</Predst>
+<FIO>Ковальчук Степан</FIO>
+<FOUCode>17900</FOUCode>
+<FSOU>1</FSOU>
+<Birthday>10.08.1963</Birthday>
+<Qualification>І</Qualification>
+<Trener>Мельник Дмитро</Trener>
+<Group>Ч55</Group>
+<Region>Кіровоградська</Region>
+<Club>СРК ”Пеленг”</Club>
+<TDSCH>0</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Левченко Віктор</Predst>
+<FIO>Левченко Віктор</FIO>
+<FOUCode>473</FOUCode>
+<FSOU>1</FSOU>
+<Birthday>15.01.1962</Birthday>
+<Qualification>І</Qualification>
+<Trener>Коваль Кирило</Trener>
+<Group>Ч55</Group>
+<Region>м.Київ</Region>
+<Club>Київська Русь</Club>
+<FST>І</FST>
+<DUSSH>ДЮСШ ”Інваспорт”</DUSSH>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Левченко Володимир</Predst>
+<FIO>Марченко Павло</FIO>
+<FOUCode>14585</FOUCode>
+<FSOU>1</FSOU>
+<Birthday>08.08.1969</Birthday>
+<Qualification>І</Qualification>
+<Group>Ч55</Group>
+<Region>м.Київ</Region>
+<Club>Sever</Club>
+<DUSSH>УДЦТКУМ</DUSSH>
+<TDSCH>2</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Поліщук Ігор</Predst>
+<FIO>Мазур Данило</FIO>
+<FOUCode>15718</FOUCode>
+<FSOU>1</FSOU>
+<Birthday>24.07.1961</Birthday>
+<Qualification>ІІІ</Qualification>
+<Group>Ч55</Group>
+<Region>м.Київ</Region>
+<Club>O-club</Club>
+<Chip>2047588</Chip>
+<TDSCH>0</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Мельник Юрій</Predst>
+<FIO>Яремчук Роман</FIO>
+<FOUCode>12896</FOUCode>
+<FSOU>1</FSOU>
+<Birthday>03.06.1960</Birthday>
+<Qualification>б/р</Qualification>
+<Trener>Мазур Антон</Trener>
+<Trener />
+<Trener />
+<Group>Ч55</Group>
+<Region>м.Київ</Region>
+<Club>Зелеста</Club>
+<Chip>8507930</Chip>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Мельник Юрій</Predst>
+<FIO>Коваль Дмитро</FIO>
+<FOUCode>27464</FOUCode>
+<FSOU>1</FSOU>
+<Birthday>12.01.1970</Birthday>
+<Qualification>б/р</Qualification>
+<Trener>Мазур Антон</Trener>
+<Group>Ч55</Group>
+<Region>м.Київ</Region>
+<Club>Зелеста</Club>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>2</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Мельник Юрій</Predst>
+<FIO>Яремчук Тарас</FIO>
+<FOUCode>34818</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>07.07.2018</Birthday>
+<Qualification>б/р ю</Qualification>
+<Trener>Романюк Володимир</Trener>
+<Trener />
+<Trener />
+<Group>ЧН діти</Group>
+<Region>м.Київ</Region>
+<Club>Зелеста</Club>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>2</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Шульга Іван</Predst>
+<FIO>Кравченко Кирило</FIO>
+<FOUCode>34028</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>01.01.2020</Birthday>
+<Qualification>б/р</Qualification>
+<Group>ЧН діти</Group>
+<Region>Луганська</Region>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Левченко Володимир</Predst>
+<FIO>Мазур Андрій</FIO>
+<FOUCode>34347</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>16.01.2021</Birthday>
+<Qualification>б/р ю</Qualification>
+<Trener>Левченко Андрій</Trener>
+<Trener />
+<Trener />
+<Group>ЧН діти</Group>
+<Region>м.Київ</Region>
+<Club>Sever</Club>
+<DUSSH>УДЦТКУМ</DUSSH>
+<TDSCH>2</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Мельник Юрій</Predst>
+<FIO>Клименко Данило</FIO>
+<FOUCode>29812</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>14.11.2019</Birthday>
+<Qualification>б/р</Qualification>
+<Group>ЧН діти</Group>
+<Region>Черкаська</Region>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Левченко Віктор</Predst>
+<FIO>Петренко Михайло</FIO>
+<FOUCode>34784</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>05.02.2016</Birthday>
+<Qualification>б/р ю</Qualification>
+<Trener>Мазур Євген</Trener>
+<Trener />
+<Trener />
+<Group>ЧН діти</Group>
+<Region>м.Київ</Region>
+<Club>Київська Русь</Club>
+<FST>І</FST>
+<DUSSH>ДЮСШІ ”ШАНС”</DUSSH>
+<TDSCH>0</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Мельник Юрій</Predst>
+<FIO>Шульга Михайло</FIO>
+<FOUCode>34817</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>14.07.2018</Birthday>
+<Qualification>б/р ю</Qualification>
+<Trener>Романюк Володимир</Trener>
+<Trener />
+<Trener />
+<Group>ЧН діти</Group>
+<Region>м.Київ</Region>
+<Club>Зелеста</Club>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>2</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Сидоренко Іван</Predst>
+<FIO>Марченко Назар</FIO>
+<FOUCode>34809</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>30.04.2019</Birthday>
+<Qualification>б/р</Qualification>
+<Trener>Мазур Антон</Trener>
+<Trener />
+<Trener />
+<Group>ЧН діти</Group>
+<Region>Київська</Region>
+<Club>Зелеста</Club>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>2</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Левченко Віктор</Predst>
+<FIO>Коваль Андрій</FIO>
+<FOUCode>22397</FOUCode>
+<FSOU>1</FSOU>
+<Birthday>15.02.2006</Birthday>
+<Qualification>ІІ-ю</Qualification>
+<Trener>Мазур Євген</Trener>
+<Group>Чстуденти</Group>
+<Region>м.Київ</Region>
+<Club>Київська Русь</Club>
+<FST>І</FST>
+<DUSSH>ДЮСШ ”Інваспорт”</DUSSH>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>2</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Савченко Роман</Predst>
+<FIO>Петренко Василь</FIO>
+<FOUCode>16820</FOUCode>
+<FSOU>1</FSOU>
+<Birthday>26.09.2006</Birthday>
+<Qualification>КМСУ</Qualification>
+<Trener>Павленко Михайло</Trener>
+<Trener>Савченко Павло</Trener>
+<Group>Чстуденти</Group>
+<Region>м.Київ</Region>
+<Club>OC Orienta</Club>
+<FST>О</FST>
+<Chip>8506621</Chip>
+<DUSSH>КДЮСШ Пуща-Водиця</DUSSH>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Данилюк Дмитро</Predst>
+<FIO>Данилюк Дмитро</FIO>
+<FIO_LAT>Oleg</FIO_LAT>
+<FIO_LAT2>Pepryk</FIO_LAT2>
+<FOUCode>15581</FOUCode>
+<FSOU>1</FSOU>
+<Birthday>19.03.2005</Birthday>
+<Qualification>МСУ</Qualification>
+<Trener>Поліщук Богдан</Trener>
+<Trener>Коваль Богдан</Trener>
+<Group>Чстуденти</Group>
+<Region>м.Київ</Region>
+<Club>Sever</Club>
+<Chip>8001533</Chip>
+<VUZ>УжНУ</VUZ>
+<DUSSH>КДЮСШ Пуща-Водиця</DUSSH>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+<Sportsman>
+<Predst>Кравченко Роман</Predst>
+<FIO>Кравченко Роман</FIO>
+<FOUCode>34813</FOUCode>
+<FSOU>0</FSOU>
+<Birthday>30.11.2002</Birthday>
+<Group>Чстуденти</Group>
+<Region>м.Київ</Region>
+<Club>ТКУ</Club>
+<TDSCH>1</TDSCH>
+<RelayLeg>0</RelayLeg>
+<ProgEvent>1,2</ProgEvent>
+<Pol>1</Pol>
+<PsRel>0</PsRel>
+</Sportsman>
+</UOFData>
