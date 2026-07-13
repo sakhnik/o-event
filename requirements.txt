@@ -1,4 +1,5 @@
 PyYAML
+bleak
 fastapi
 jinja2
 prompt_toolkit
