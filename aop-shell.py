@@ -2,10 +2,12 @@
 
 import asyncio
 
-from aop.ble_transport import BleTransport
+from aop.ble_transport import BleTransport, SerialTransport
 from aop.shell_protocol import ShellProtocol
 
 
+USE_BLE = False
+SERIAL_DEVICE = "/dev/ttyUSB0"
 HCI_DEVICE = "hci1"
 AOP = "AOP 1"
 
@@ -39,8 +41,14 @@ async def notification_task(shell: ShellProtocol):
         print(notification, end="" if notification.endswith("\n") else "\n")
 
 
+def get_transport():
+    if USE_BLE:
+        return BleTransport(AOP, HCI_DEVICE)
+    return SerialTransport(SERIAL_DEVICE)
+
+
 async def main():
-    async with BleTransport(AOP, HCI_DEVICE) as transport:
+    async with get_transport() as transport:
         shell = ShellProtocol(transport)
 
         stdin = asyncio.create_task(stdin_task(shell))

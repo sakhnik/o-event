@@ -4,13 +4,15 @@ import asyncio
 from dataclasses import dataclass
 import traceback
 
-from aop.ble_transport import BleTransport
+from aop.ble_transport import BleTransport, SerialTransport
 from aop.shell_protocol import ShellProtocol
 from o_event.card_processor import PunchReadout, PunchItem, CardProcessor
 from o_event.printer import PrinterMux
 from o_event.db import SessionLocal
 
 
+USE_BLE = False
+SERIAL_DEVICE = "/dev/ttyUSB0"
 HCI_DEVICE = "hci1"
 STATION_NUMBER = 1
 AOP = f"AOP {STATION_NUMBER}"
@@ -84,9 +86,14 @@ def parse_punch_readout(lines: list[str], station_number: int) -> PunchReadout:
     )
 
 
+def get_transport():
+    if USE_BLE:
+        return BleTransport(AOP, HCI_DEVICE)
+    return SerialTransport(SERIAL_DEVICE)
+
+
 async def main():
-    async with BleTransport(AOP, HCI_DEVICE) as transport:
-        # transport = SerialTransport("/dev/ttyUSB0")
+    async with get_transport() as transport:
         shell = ShellProtocol(transport)
 
         print(await shell.execute("card-readout"))
