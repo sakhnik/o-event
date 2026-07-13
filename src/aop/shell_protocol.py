@@ -60,7 +60,7 @@ class ShellProtocol:
                 if not lines:
                     continue
 
-                message = b"".join(lines).decode()
+                message = b"".join(lines).decode().strip()
                 lines.clear()
 
                 if self._pending is None:
