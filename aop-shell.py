@@ -6,12 +6,16 @@ from aop.ble_transport import BleTransport
 from aop.shell_protocol import ShellProtocol
 
 
+HCI_DEVICE = "hci1"
+AOP = "AOP 1"
+
+
 async def stdin_task(shell: ShellProtocol):
     loop = asyncio.get_running_loop()
 
     while True:
         try:
-            line = await loop.run_in_executor(None, input, "> ")
+            line = await loop.run_in_executor(None, input, f"{AOP}> ")
         except EOFError:
             break
 
@@ -36,7 +40,7 @@ async def notification_task(shell: ShellProtocol):
 
 
 async def main():
-    async with BleTransport("AOP 1", "hci1") as transport:
+    async with BleTransport(AOP, HCI_DEVICE) as transport:
         shell = ShellProtocol(transport)
 
         stdin = asyncio.create_task(stdin_task(shell))
