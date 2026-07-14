@@ -25,7 +25,7 @@
 \hline
 {% for pos, behind, run in g.ranked %}
 {{ pos or "" }} &
-{{ run.competitor.last_name }} {{ run.competitor.first_name }} &
+{{ run.competitor.name }} &
 {{ run.result|fmt }} &
 {% if behind is not none %}+{{ behind|fmt }}{% else %}{{ run.status.value }}{% endif %} \\
 {% endfor %}

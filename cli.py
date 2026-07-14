@@ -165,7 +165,7 @@ def get_competitors(query: str = None) -> List[Tuple[int, Competitor]]:
     results = []
 
     for c in comps:
-        name = f"{c.last_name or ''} {c.first_name or ''}"
+        name = c.name or ""
         group = c.group or ""
         notes = c.notes or ""
         reg = c.reg or ""
@@ -199,7 +199,7 @@ def pick_competitor(query: str = None) -> Competitor | None:
     # Prepare the input for fzf
     lines = []
     for score, c in reversed(items):
-        name = f"{c.last_name or ''} {c.first_name or ''}"
+        name = c.name or ""
         group = c.group or ""
         declared = c.declared_days or []
         notes = c.notes or ''
@@ -223,7 +223,7 @@ def pick_competitor(query: str = None) -> Competitor | None:
 # ---------- Commands ----------
 def ls_competitors(query: str = None):
     for score, c in get_competitors(query):
-        name = f"{c.last_name or ''} {c.first_name or ''}"
+        name = c.name or ""
         group = c.group or ""
         declared = c.declared_days or []
         notes = c.notes or ''
@@ -236,8 +236,7 @@ def add_competitor():
         "reg": "",
         "group": "",
         "sid": None,
-        "first_name": "",
-        "last_name": "",
+        "name": "",
         "notes": "",
         "money": None,
         "declared_days": [],
@@ -284,7 +283,7 @@ def register(query: str = None):
     while True:
         selection = []
         for _, c in subset:
-            name = f"{c.last_name or ''} {c.first_name or ''}"
+            name = c.name or ""
             group = c.group or ""
             declared = c.declared_days or []
             notes = c.notes or ''
@@ -300,11 +299,11 @@ def register(query: str = None):
             if comp is None:
                 raise ValueError(f"Competitor id {id_} not found")
             if comp.money_paid is not None:
-                print(f'{comp.sid} {comp.group} {comp.last_name} {comp.first_name} вже заплатив {comp.money_paid}!')
+                print(f'{comp.sid} {comp.group} {comp.name} вже заплатив {comp.money_paid}!')
             money = int(parts[1])
             updated_money[id_] = money
             subset.append((money, comp))
-        report = [[comp.sid, comp.group, f'{comp.last_name} {comp.first_name}', money] for money, comp in subset]
+        report = [[comp.sid, comp.group, comp.name, money] for money, comp in subset]
         print(tabulate(report))
         total = sum(money for money, _ in subset)
         print(f"Всього: {total}")
@@ -319,7 +318,7 @@ def register(query: str = None):
                         p.text(f'{comp.sid:>3}')
                         p.bold_off()
                         p.text(f' {comp.group:<8}')
-                        name = f'{comp.last_name} {comp.first_name}'
+                        name = comp.name
                         p.text(f' {name:<21}')
                         p.text(f' {money:>5}')
                         p.text('\n')
@@ -381,7 +380,7 @@ def summary(max_place):
                 break
             rows.append([
                 place or "",
-                f"{c.last_name} {c.first_name}",
+                c.name or "",
                 c.reg or "",
                 result.best_count,
                 format_time(result.total_time),
@@ -461,7 +460,7 @@ def pick_run():
     # Prepare the input for fzf
     lines = []
     for r in reversed(runs):
-        name = f'{r.competitor.last_name} {r.competitor.first_name}'
+        name = r.competitor.name
         start_slot = r.start_slot or ''
         line = f"{r.id:3} | start={start_slot:5} | {r.competitor.group:4} | {r.competitor.sid:4} | {name:20} | {r.status:3} | {format_time(r.result):5}"
         lines.append(line)

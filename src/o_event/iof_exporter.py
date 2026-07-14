@@ -244,10 +244,12 @@ class IOFExporter:
         )
 
     def map_person(self, c: Competitor) -> PersonDTO:
+        name = c.name.split()
+
         return PersonDTO(
             ids={"O-Event": str(c.id)},
-            family=c.last_name,
-            given=c.first_name,
+            family=name[0] if name else '',
+            given=' '.join(name[1:]) if name else '',
             clubShort=c.reg,
             clubName=c.club_name,
         )

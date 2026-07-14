@@ -39,7 +39,7 @@
 \midrule
 \endhead
 {% for r in rows %}
-{{ slot_to_time(slot0, r.start_slot) }} & {{ r.competitor.sid }} & {{ r.competitor.last_name }} {{ r.competitor.first_name }} & {{ r.competitor.club_name }} \\
+{{ slot_to_time(slot0, r.start_slot) }} & {{ r.competitor.sid }} & {{ r.competitor.name }} & {{ r.competitor.club_name }} \\
 {% endfor %}
 \bottomrule
 \end{longtable}

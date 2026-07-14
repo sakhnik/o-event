@@ -126,7 +126,7 @@ def generate_reports(session: Session, days_to_calculate: int):
             total_score = round(result.total_score) if score_is_unique else result.total_score
             rows.append([
                 place or "",
-                f"{c.last_name} {c.first_name}",
+                c.name or "",
                 c.club_name or "",
                 result.best_count,
                 format_time(result.total_time),

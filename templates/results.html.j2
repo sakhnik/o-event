@@ -48,7 +48,7 @@ a.group-link { margin-right: 12px; font-weight: bold; }
     {% for pos, behind, run in g.ranked %}
       <tr>
         <td>{{ pos or "" }}</td>
-        <td class="name">{{ run.competitor.last_name }} {{ run.competitor.first_name }}</td>
+        <td class="name">{{ run.competitor.name }}</td>
         <td>{{ run.result|fmt }}</td>
         <td>
           {% if behind is not none %}

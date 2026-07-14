@@ -212,7 +212,7 @@ def load_protocol_data(session, day):
         by_slot[r.start_slot].append(r)
 
     judge_list = [
-        (slot, sorted(lst, key=lambda x: (x.competitor.last_name, x.competitor.first_name)))
+        (slot, sorted(lst, key=lambda x: x.competitor.name))
         for slot, lst in sorted(by_slot.items())
     ]
 

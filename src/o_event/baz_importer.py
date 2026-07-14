@@ -78,9 +78,7 @@ class BazImporter:
         for s in root.findall("Sportsman"):
             group = self.get_group(s.findtext("Group", ""))
 
-            fio = s.findtext("FIO", "").split()
-            last = fio[0] if len(fio) else ""
-            first = fio[1] if len(fio) > 1 else ""
+            name = s.findtext("FIO", "")
 
             prog_event = s.findtext("ProgEvent", "")
             declared_days = [
@@ -106,8 +104,7 @@ class BazImporter:
             runners.append({
                 "club": club,
                 "group": group,
-                "last": last,
-                "first": first,
+                "name": name,
                 "notes": notes,
                 "days": declared_days,
             })
@@ -125,17 +122,13 @@ class BazImporter:
                     db.add(Club(reg=reg, name=runner["club"]))
 
             if runner["group"] not in groups:
-                print(
-                    f"{sid} {runner['last']} {runner['first']}: "
-                    f"невідома група {runner['group']}"
-                )
+                print(f"{sid} {runner['name']}: невідома група {runner['group']}")
 
             comp = Competitor(
                 reg=reg,
                 group=runner["group"],
                 sid=sid,
-                first_name=runner["first"],
-                last_name=runner["last"],
+                name=runner["name"],
                 notes=runner["notes"] or None,
                 money=self.calc_payment(runner["group"], len(runner["days"]),),
                 declared_days=runner["days"],
