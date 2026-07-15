@@ -4,20 +4,19 @@ from dataclasses import dataclass
 from prompt_toolkit import PromptSession
 from prompt_toolkit.completion import WordCompleter
 from prompt_toolkit.formatted_text import HTML
-from sqlalchemy import asc, or_
 from tabulate import tabulate
 from typing import List
 import subprocess
-import requests
 
 from o_event.db import SessionLocal
-from o_event.models import Competitor, Run, Status, Config, Card
-from o_event.printer import Printer, PrinterMux
+from o_event.models import Competitor, Config
+from o_event.printer import Printer
 from o_event.ranking import Ranking
-from o_event.card_processor import CardProcessor
 from app.cli.editor import Editor
 from app.cli.competitor_utils import CompetitorUtils
 from app.cli.registration import Registration
+from app.cli.time_utils import TimeUtils
+from app.cli.card_utils import CardUtils
 
 
 @dataclass
@@ -147,17 +146,6 @@ def set_current_day(arg):
         ...
 
 
-# Format seconds → "h:mm:ss"
-def format_time(seconds: int | None) -> str:
-    if seconds is None:
-        return ""
-    h, remainder = divmod(seconds, 3600)
-    m, s = divmod(remainder, 60)
-    if not h:
-        return f"{m}:{s:02d}"
-    return f"{h}:{m:02d}:{s:02d}"
-
-
 def summary(max_place):
     day = Config.get(db, Config.KEY_CURRENT_DAY)
 
@@ -193,7 +181,7 @@ def summary(max_place):
                 c.name or "",
                 c.reg or "",
                 result.best_count,
-                format_time(result.total_time),
+                TimeUtils().format_time(result.total_time),
                 result.total_score
             ])
 
@@ -225,105 +213,6 @@ def summary(max_place):
                 p.cut()
         except Exception as ex:
             print(ex)
-
-
-def pick_card():
-    cards = (
-        db.query(Card)
-        .order_by(Card.readout_datetime.asc())
-        .all()
-    )
-
-    # Prepare the input for fzf
-    lines = []
-    for c in reversed(cards):
-        readout_time = c.readout_datetime.strftime('%H:%M:%S')
-        start = format_time(c.start_time)
-        finish = format_time(c.finish_time)
-        line = f"{c.id:3} | card={c.card_number:<4} | readout={readout_time:7} | start={start:6} | finish={finish:6}"
-        lines.append(line)
-
-    # Invoke fzf
-    try:
-        out = subprocess.check_output(
-            ["fzf", "--ansi"],
-            input="\n".join(lines),
-            text=True,
-        ).strip()
-    except subprocess.CalledProcessError:
-        return None  # user cancelled with ESC or Ctrl-C
-
-    chosen_id = int(out.split()[0])
-    return chosen_id
-
-
-def pick_run():
-    current_day = Config.get(db, Config.KEY_CURRENT_DAY)
-
-    runs = (
-        db.query(Run)
-        .filter(Run.day == current_day)
-        .order_by(asc(or_(Run.result == None, Run.status != Status.OK)))    # noqa: E711
-        .all()
-    )
-
-    # Prepare the input for fzf
-    lines = []
-    for r in reversed(runs):
-        name = r.competitor.name
-        start_slot = r.start_slot or ''
-        line = f"{r.id:3} | start={start_slot:5} | {r.competitor.group:4} | {r.competitor.sid:4} | {name:20} | {r.status:3} | {format_time(r.result):5}"
-        lines.append(line)
-
-    # Invoke fzf
-    try:
-        out = subprocess.check_output(
-            ["fzf", "--ansi"],
-            input="\n".join(lines),
-            text=True,
-        ).strip()
-    except subprocess.CalledProcessError:
-        return None  # user cancelled with ESC or Ctrl-C
-
-    chosen_id = int(out.split()[0])
-    return chosen_id
-
-
-def assign_card():
-    card_id = pick_card()
-    if card_id is None:
-        return
-    run_id = pick_run()
-    if run_id is None:
-        return
-
-    card = db.get(Card, card_id)
-    run = db.get(Run, run_id)
-    with PrinterMux() as p:
-        status = CardProcessor().handle_card(db, card, run, p)
-        print('\n'.join(p.get_output()))
-        print(status)
-
-
-def modify_card():
-    card_id = pick_card()
-    if card_id is None:
-        return
-    card = db.get(Card, card_id)
-    if card is None:
-        print("No such card")
-        return
-
-    edited, changed = Editor().edit_yaml(card.raw_json)
-    if changed:
-        url = "https://localhost:12345/card"
-        response = requests.post(url, json=edited)
-        if response.ok:
-            print(response.json())
-        else:
-            print("Error:", response.status_code, response.text)
-    else:
-        print("No changes made. Aborted.")
 
 
 def main():
@@ -367,9 +256,9 @@ def main():
                     ...
                 summary(max_place)
             elif cmd == 'assign':
-                assign_card()
+                CardUtils(db).assign_card()
             elif cmd == 'modify':
-                modify_card()
+                CardUtils(db).modify_card()
             elif cmd == 'help':
                 print("Commands:")
                 print(tabulate([[c.synopsis, c.description] for c in commands_def]))
