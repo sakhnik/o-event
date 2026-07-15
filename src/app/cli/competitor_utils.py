@@ -1,3 +1,6 @@
+from rapidfuzz import fuzz
+from typing import Tuple, List
+
 from o_event.models import Competitor, Run, Status
 from sqlalchemy.inspection import inspect
 
@@ -69,3 +72,32 @@ class CompetitorUtils:
 
         self.db.flush()
         return comp
+
+    def filter_competitors(self, query: str = None) -> List[Tuple[int, Competitor]]:
+        comps = self.db.query(Competitor).all()
+        results = []
+
+        for c in comps:
+            name = c.name or ""
+            group = c.group or ""
+            notes = c.notes or ""
+            reg = c.reg or ""
+
+            # If no query, include everything
+            if not query:
+                results.append((100, c))  # 100 score to keep original order
+                continue
+
+            # Compute fuzzy score across multiple fields
+            score = max(
+                fuzz.partial_ratio(query.lower(), name.lower()),
+                fuzz.partial_ratio(query.lower(), group.lower()),
+                fuzz.partial_ratio(query.lower(), notes.lower()),
+                fuzz.partial_ratio(query.lower(), reg.lower()),
+            )
+
+            if score >= 75:  # threshold for matching
+                results.append((score, c))
+
+        results.sort(key=lambda x: x[0])
+        return results

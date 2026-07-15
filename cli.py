@@ -4,10 +4,9 @@ from dataclasses import dataclass
 from prompt_toolkit import PromptSession
 from prompt_toolkit.completion import WordCompleter
 from prompt_toolkit.formatted_text import HTML
-from rapidfuzz import fuzz
 from sqlalchemy import asc, or_
 from tabulate import tabulate
-from typing import List, Tuple
+from typing import List
 import subprocess
 import requests
 
@@ -59,41 +58,11 @@ def resolve_command(cmd):
         return None  # ambiguous or unknown
 
 
-def get_competitors(query: str = None) -> List[Tuple[int, Competitor]]:
-    comps = db.query(Competitor).all()
-    results = []
-
-    for c in comps:
-        name = c.name or ""
-        group = c.group or ""
-        notes = c.notes or ""
-        reg = c.reg or ""
-
-        # If no query, include everything
-        if not query:
-            results.append((100, c))  # 100 score to keep original order
-            continue
-
-        # Compute fuzzy score across multiple fields
-        score = max(
-            fuzz.partial_ratio(query.lower(), name.lower()),
-            fuzz.partial_ratio(query.lower(), group.lower()),
-            fuzz.partial_ratio(query.lower(), notes.lower()),
-            fuzz.partial_ratio(query.lower(), reg.lower()),
-        )
-
-        if score >= 75:  # threshold for matching
-            results.append((score, c))
-
-    results.sort(key=lambda x: x[0])
-    return results
-
-
 def pick_competitor(query: str = None) -> Competitor | None:
     """
     Show competitors in fzf and return the chosen Competitor.
     """
-    items = get_competitors(query)
+    items = CompetitorUtils(db).filter_competitors(query)
 
     # Prepare the input for fzf
     lines = []
@@ -121,7 +90,7 @@ def pick_competitor(query: str = None) -> Competitor | None:
 
 # ---------- Commands ----------
 def ls_competitors(query: str = None):
-    for score, c in get_competitors(query):
+    for score, c in CompetitorUtils(db).filter_competitors(query):
         name = c.name or ""
         group = c.group or ""
         declared = c.declared_days or []
@@ -178,7 +147,7 @@ def set_current_day(arg):
 
 
 def register(query: str = None):
-    subset = get_competitors(query)
+    subset = CompetitorUtils(db).filter_competitors(query)
     updated_money = {}
     while True:
         selection = []
