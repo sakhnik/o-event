@@ -6,7 +6,6 @@ from prompt_toolkit.completion import WordCompleter
 from prompt_toolkit.formatted_text import HTML
 from rapidfuzz import fuzz
 from sqlalchemy import asc, or_
-from sqlalchemy.inspection import inspect
 from tabulate import tabulate
 from typing import List, Tuple
 import subprocess
@@ -18,6 +17,7 @@ from o_event.printer import Printer, PrinterMux
 from o_event.ranking import Ranking
 from o_event.card_processor import CardProcessor
 from app.cli.editor import Editor
+from app.cli.competitor_utils import CompetitorUtils
 
 
 @dataclass
@@ -57,74 +57,6 @@ def resolve_command(cmd):
         return cmd  # exact match
     else:
         return None  # ambiguous or unknown
-
-
-def get_columns(model):
-    return [c.key for c in inspect(model).mapper.column_attrs]
-
-
-# ---------- Utilities ----------
-def competitor_to_dict(c: Competitor):
-    comp_dict = {col: getattr(c, col) for col in get_columns(Competitor)}
-    comp_dict["runs"] = [
-        {col: getattr(r, col) if col != "status" else (r.status.value if r.status else None)
-         for col in get_columns(Run)}
-        for r in c.runs
-    ]
-    return comp_dict
-
-
-def update_competitor_from_dict(d: dict):
-    comp_columns = get_columns(Competitor)
-    run_columns = get_columns(Run)
-
-    # Create or fetch competitor
-    if "id" not in d or d["id"] is None:
-        comp = Competitor()
-        db.add(comp)
-        db.flush()
-    else:
-        comp = db.get(Competitor, d["id"])
-        if comp is None:
-            raise ValueError(f"Competitor id {d['id']} not found")
-
-    # Update competitor fields dynamically
-    for col in comp_columns:
-        if col in d and col != "id":  # don't overwrite primary key
-            setattr(comp, col, d[col])
-
-    # Update runs
-    existing_by_id = {r.id: r for r in comp.runs if r.id is not None}
-    seen_existing_ids = set()
-
-    for rd in d.get("runs", []):
-        if "id" in rd and rd["id"] in existing_by_id:
-            r = existing_by_id[rd["id"]]
-            seen_existing_ids.add(rd["id"])
-        else:
-            r = Run()
-            r.competitor = comp
-            db.add(r)
-
-        for col in run_columns:
-            if col in rd and col != "id":  # don't overwrite primary key
-                setattr(r, col, rd[col])
-
-        # Handle enum status separately
-        st = rd.get("status")
-        if hasattr(Run, "status"):
-            if st is None:
-                r.status = None
-            else:
-                r.status = Status(st) if st in Status._value2member_map_ else None
-
-    # Remove deleted runs
-    for r in list(comp.runs):
-        if r.id is not None and r.id not in seen_existing_ids:
-            db.delete(r)
-
-    db.flush()
-    return comp
 
 
 def get_competitors(query: str = None) -> List[Tuple[int, Competitor]]:
@@ -212,7 +144,7 @@ def add_competitor():
     }
     edited, changed = Editor().edit_yaml(skeleton)
     if changed:
-        update_competitor_from_dict(edited)
+        CompetitorUtils(db).update_competitor_from_dict(edited)
         db.commit()
         print("Added new competitor.")
     else:
@@ -224,10 +156,10 @@ def edit_competitor(cid: int):
     if not comp:
         print(f"No competitor with ID {cid}")
         return
-    comp_dict = competitor_to_dict(comp)
+    comp_dict = CompetitorUtils(db).competitor_to_dict(comp)
     edited, changed = Editor().edit_yaml(comp_dict)
     if changed:
-        update_competitor_from_dict(edited)
+        CompetitorUtils(db).update_competitor_from_dict(edited)
         db.commit()
         print(f"Competitor {cid} updated.")
     else:
