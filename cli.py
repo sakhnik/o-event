@@ -9,10 +9,7 @@ from sqlalchemy import asc, or_
 from sqlalchemy.inspection import inspect
 from tabulate import tabulate
 from typing import List, Tuple
-import os
 import subprocess
-import tempfile
-import yaml
 import requests
 
 from o_event.db import SessionLocal
@@ -20,6 +17,7 @@ from o_event.models import Competitor, Run, Status, Config, Card
 from o_event.printer import Printer, PrinterMux
 from o_event.ranking import Ranking
 from o_event.card_processor import CardProcessor
+from app.cli.editor import Editor
 
 
 @dataclass
@@ -129,37 +127,6 @@ def update_competitor_from_dict(d: dict):
     return comp
 
 
-def edit_yaml_in_editor(comp_dict: dict) -> Tuple[dict, bool]:
-    editor = os.environ.get("EDITOR", "vi")
-    with tempfile.NamedTemporaryFile(mode="w+", suffix=".yaml", delete=False) as tf:
-        path = tf.name
-        yaml.safe_dump(comp_dict, tf, sort_keys=False, allow_unicode=True, width=float('inf'))
-        tf.flush()
-    try:
-        # Save original text
-        original_text = yaml.safe_dump(comp_dict, sort_keys=False, allow_unicode=True, width=float('inf'))
-
-        # Launch editor
-        subprocess.call([editor, path])
-
-        # Read edited text
-        with open(path, "r", encoding="utf-8") as f:
-            edited_text = f.read()
-
-        if edited_text.strip() == original_text.strip():
-            return comp_dict, False
-
-        # Otherwise parse YAML and return
-        edited = yaml.safe_load(edited_text)
-        return edited, True
-
-    finally:
-        try:
-            os.unlink(path)
-        except Exception:
-            pass
-
-
 def get_competitors(query: str = None) -> List[Tuple[int, Competitor]]:
     comps = db.query(Competitor).all()
     results = []
@@ -243,7 +210,7 @@ def add_competitor():
         "declared_days": [],
         "runs": [],
     }
-    edited, changed = edit_yaml_in_editor(skeleton)
+    edited, changed = Editor().edit_yaml(skeleton)
     if changed:
         update_competitor_from_dict(edited)
         db.commit()
@@ -258,7 +225,7 @@ def edit_competitor(cid: int):
         print(f"No competitor with ID {cid}")
         return
     comp_dict = competitor_to_dict(comp)
-    edited, changed = edit_yaml_in_editor(comp_dict)
+    edited, changed = Editor().edit_yaml(comp_dict)
     if changed:
         update_competitor_from_dict(edited)
         db.commit()
@@ -292,7 +259,7 @@ def register(query: str = None):
             money = updated_money.get(c.id, c.money)
             info = f"{c.id:3} | {money:5} | {c.reg or '':6} | {c.sid:3} | {name:20} | {group:6} | {declared} | r={representative} | {notes}"
             selection.append(info)
-        edited, changed = edit_yaml_in_editor(selection)
+        edited, changed = Editor().edit_yaml(selection)
         subset = []
         for s in edited:
             parts = [p.strip() for p in s.split("|")]
@@ -506,7 +473,7 @@ def modify_card():
         print("No such card")
         return
 
-    edited, changed = edit_yaml_in_editor(card.raw_json)
+    edited, changed = Editor().edit_yaml(card.raw_json)
     if changed:
         url = "https://localhost:12345/card"
         response = requests.post(url, json=edited)
