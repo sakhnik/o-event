@@ -1,8 +1,10 @@
 from rapidfuzz import fuzz
 from typing import Tuple, List
+import subprocess
 
 from o_event.models import Competitor, Run, Status
 from sqlalchemy.inspection import inspect
+from app.cli.editor import Editor
 
 
 class CompetitorUtils:
@@ -101,3 +103,75 @@ class CompetitorUtils:
 
         results.sort(key=lambda x: x[0])
         return results
+
+    def ls_competitors(self, query: str = None):
+        for score, c in self.filter_competitors(query):
+            name = c.name or ""
+            group = c.group or ""
+            declared = c.declared_days or []
+            notes = c.notes or ''
+            print(f"{c.sid:3} | {c.reg or '':6} | {name:20} | {group:6} | {declared} | {notes}")
+
+    def pick_competitor(self, query: str = None) -> Competitor | None:
+        """
+        Show competitors in fzf and return the chosen Competitor.
+        """
+        items = self.filter_competitors(query)
+
+        # Prepare the input for fzf
+        lines = []
+        for score, c in reversed(items):
+            name = c.name or ""
+            group = c.group or ""
+            declared = c.declared_days or []
+            notes = c.notes or ''
+            line = f"{c.id:3} | {c.reg or '':6} | {c.sid:3} | {name:20} | {group:6} | {declared} | {notes}"
+            lines.append(line)
+
+        # Invoke fzf
+        try:
+            out = subprocess.check_output(
+                ["fzf", "--ansi"],
+                input="\n".join(lines),
+                text=True,
+            ).strip()
+        except subprocess.CalledProcessError:
+            return None  # user cancelled with ESC or Ctrl-C
+
+        chosen_id = int(out.split()[0])
+        return chosen_id
+
+    def edit_competitor(self, cid: int):
+        comp = self.db.get(Competitor, cid)
+        if not comp:
+            print(f"No competitor with ID {cid}")
+            return
+        comp_dict = self.competitor_to_dict(comp)
+        edited, changed = Editor().edit_yaml(comp_dict)
+        if changed:
+            self.update_competitor_from_dict(edited)
+            self.db.commit()
+            print(f"Competitor {cid} updated.")
+        else:
+            print("No changes made. Aborted.")
+
+    def add_competitor(self):
+        skeleton = {
+            "id": None,
+            "reg": "",
+            "group": "",
+            "sid": None,
+            "name": "",
+            "representative": "",
+            "notes": "",
+            "money": None,
+            "declared_days": [],
+            "runs": [],
+        }
+        edited, changed = Editor().edit_yaml(skeleton)
+        if changed:
+            self.update_competitor_from_dict(edited)
+            self.db.commit()
+            print("Added new competitor.")
+        else:
+            print("No changes made. Aborted.")

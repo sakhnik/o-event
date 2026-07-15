@@ -6,13 +6,11 @@ from prompt_toolkit.completion import WordCompleter
 from prompt_toolkit.formatted_text import HTML
 from tabulate import tabulate
 from typing import List
-import subprocess
 
 from o_event.db import SessionLocal
 from o_event.models import Competitor, Config
 from o_event.printer import Printer
 from o_event.ranking import Ranking
-from app.cli.editor import Editor
 from app.cli.competitor_utils import CompetitorUtils
 from app.cli.registration import Registration
 from app.cli.time_utils import TimeUtils
@@ -56,83 +54,6 @@ def resolve_command(cmd):
         return cmd  # exact match
     else:
         return None  # ambiguous or unknown
-
-
-def pick_competitor(query: str = None) -> Competitor | None:
-    """
-    Show competitors in fzf and return the chosen Competitor.
-    """
-    items = CompetitorUtils(db).filter_competitors(query)
-
-    # Prepare the input for fzf
-    lines = []
-    for score, c in reversed(items):
-        name = c.name or ""
-        group = c.group or ""
-        declared = c.declared_days or []
-        notes = c.notes or ''
-        line = f"{c.id:3} | {c.reg or '':6} | {c.sid:3} | {name:20} | {group:6} | {declared} | {notes}"
-        lines.append(line)
-
-    # Invoke fzf
-    try:
-        out = subprocess.check_output(
-            ["fzf", "--ansi"],
-            input="\n".join(lines),
-            text=True,
-        ).strip()
-    except subprocess.CalledProcessError:
-        return None  # user cancelled with ESC or Ctrl-C
-
-    chosen_id = int(out.split()[0])
-    return chosen_id
-
-
-# ---------- Commands ----------
-def ls_competitors(query: str = None):
-    for score, c in CompetitorUtils(db).filter_competitors(query):
-        name = c.name or ""
-        group = c.group or ""
-        declared = c.declared_days or []
-        notes = c.notes or ''
-        print(f"{c.sid:3} | {c.reg or '':6} | {name:20} | {group:6} | {declared} | {notes}")
-
-
-def add_competitor():
-    skeleton = {
-        "id": None,
-        "reg": "",
-        "group": "",
-        "sid": None,
-        "name": "",
-        "representative": "",
-        "notes": "",
-        "money": None,
-        "declared_days": [],
-        "runs": [],
-    }
-    edited, changed = Editor().edit_yaml(skeleton)
-    if changed:
-        CompetitorUtils(db).update_competitor_from_dict(edited)
-        db.commit()
-        print("Added new competitor.")
-    else:
-        print("No changes made. Aborted.")
-
-
-def edit_competitor(cid: int):
-    comp = db.get(Competitor, cid)
-    if not comp:
-        print(f"No competitor with ID {cid}")
-        return
-    comp_dict = CompetitorUtils(db).competitor_to_dict(comp)
-    edited, changed = Editor().edit_yaml(comp_dict)
-    if changed:
-        CompetitorUtils(db).update_competitor_from_dict(edited)
-        db.commit()
-        print(f"Competitor {cid} updated.")
-    else:
-        print("No changes made. Aborted.")
 
 
 def get_current_day():
@@ -235,16 +156,16 @@ def main():
                 set_current_day(parts[1])
             elif cmd == 'ls':
                 query = " ".join(args) if args else None
-                ls_competitors(query)
+                CompetitorUtils(db).ls_competitors(query)
             elif cmd == 'add':
-                add_competitor()
+                CompetitorUtils(db).add_competitor()
             elif cmd == 'edit':
                 if args and len(args) > 0 and args[0].isdigit():
                     cid = int(args[0])
                 else:
-                    cid = pick_competitor(' '.join(args))
+                    cid = CompetitorUtils(db).pick_competitor(' '.join(args))
                 if cid is not None:
-                    edit_competitor(cid)
+                    CompetitorUtils(db).edit_competitor(cid)
             elif cmd == 'register':
                 query = ' '.join(args) if args else None
                 Registration(db).register(query)
