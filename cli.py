@@ -1,126 +1,167 @@
 #!/usr/bin/env python3
 
 from dataclasses import dataclass
+from typing import Callable
+
 from prompt_toolkit import PromptSession
 from prompt_toolkit.completion import WordCompleter
 from prompt_toolkit.formatted_text import HTML
 from tabulate import tabulate
-from typing import List
 
 from o_event.db import SessionLocal
 from o_event.models import Config
+
 from app.cli.card_utils import CardUtils
 from app.cli.competitor_utils import CompetitorUtils
 from app.cli.registration import Registration
 from app.cli.summary import Summary
 
 
-@dataclass
+@dataclass(frozen=True)
 class Command:
     command: str
     synopsis: str
     description: str
+    handler: Callable[[list[str]], None]
 
 
-commands_def: List[Command] = [
-    Command('help', 'help', 'List commands'),
-    Command('day', 'day <day>', 'Set current stage day'),
-    Command('ls', 'ls <query>', 'List competitors matching query'),
-    Command('edit', 'edit <competitor_id|query>', 'Edit competitor with ID <competitor_id>'),
-    Command('add', 'add', 'Add new competitor'),
-    Command('assign', 'assign', 'Assign a card for the run'),
-    Command('modify', 'modify', 'Modify a card'),
-    Command('register', 'register <query>', 'Register competitors for start'),
-    Command('summary', 'summary <max place>', 'Print summary result'),
-    Command('quit', 'quit', 'Quit the CLI')
-]
-commands = [c.command for c in commands_def]
-cmd_completer = WordCompleter(commands, ignore_case=True)
+class Cli:
+    def __init__(self):
+        self.db = SessionLocal()
 
-db = SessionLocal()
+        self.session = PromptSession()
+        self.running = True
 
+        self.competitors = CompetitorUtils(self.db)
+        self.cards = CardUtils(self.db)
+        self.registration = Registration(self.db)
+        self.summary_util = Summary(self.db)
 
-def resolve_command(cmd):
-    """
-    Resolve a possibly abbreviated command to full command.
-    If multiple matches exist, return None (ambiguous).
-    """
-    matches = [c for c in commands if c.startswith(cmd)]
-    if len(matches) == 1:
-        return matches[0]
-    elif cmd in commands:
-        return cmd  # exact match
-    else:
-        return None  # ambiguous or unknown
+        self.commands = [
+            Command("help", "help", "List commands", self.help),
+            Command("day", "day <day>", "Set current stage day", self.day),
+            Command("ls", "ls <query>", "List competitors matching query", self.ls),
+            Command("edit", "edit <competitor_id|query>", "Edit competitor", self.edit),
+            Command("add", "add", "Add new competitor", self.add),
+            Command("assign", "assign", "Assign a card for the run", self.assign),
+            Command("modify", "modify", "Modify a card", self.modify),
+            Command("register", "register <query>", "Register competitors for start", self.register),
+            Command("summary", "summary <max place>", "Print summary result", self.summary),
+            Command("quit", "quit", "Quit the CLI", self.quit),
+        ]
 
+        self.handlers = {
+            command.command: command.handler
+            for command in self.commands
+        }
 
-def get_current_day():
-    return Config.get(db, Config.KEY_CURRENT_DAY)
+        self.completer = WordCompleter(
+            self.handlers.keys(),
+            ignore_case=True,
+        )
 
+    def resolve_command(self, prefix: str) -> str | None:
+        matches = [name for name in self.handlers if name.startswith(prefix)]
 
-def set_current_day(arg):
-    try:
-        Config.set(db, Config.KEY_CURRENT_DAY, int(arg))
-    except Exception:
-        ...
+        if len(matches) == 1:
+            return matches[0]
 
+        if prefix in self.handlers:
+            return prefix
 
-def main():
-    print("Orienteering CLI (type 'help' for commands)")
-    session = PromptSession()
-    while True:
+        return None
+
+    def current_day(self):
+        return Config.get(self.db, Config.KEY_CURRENT_DAY)
+
+    def set_current_day(self, day: str):
         try:
-            current_day = get_current_day()
-            text = session.prompt(HTML(f'<ansiblue>E{current_day}> </ansiblue>'), completer=cmd_completer)
-            if not text.strip():
-                continue
-            parts = text.strip().split()
-            cmd_input = parts[0].lower()
-            cmd = resolve_command(cmd_input)
-            args = parts[1:]
+            Config.set(self.db, Config.KEY_CURRENT_DAY, int(day))
+        except (TypeError, ValueError):
+            pass
 
-            if cmd == 'quit':
+    def run(self):
+        print("Orienteering CLI (type 'help' for commands)")
+
+        while self.running:
+            try:
+                self.prompt_once()
+            except KeyboardInterrupt:
+                print("Use 'quit' to exit")
+            except EOFError:
                 break
-            elif cmd == 'day':
-                set_current_day(parts[1])
-            elif cmd == 'ls':
-                query = " ".join(args) if args else None
-                CompetitorUtils(db).ls_competitors(query)
-            elif cmd == 'add':
-                CompetitorUtils(db).add_competitor()
-            elif cmd == 'edit':
-                if args and len(args) > 0 and args[0].isdigit():
-                    cid = int(args[0])
-                else:
-                    cid = CompetitorUtils(db).pick_competitor(' '.join(args))
-                if cid is not None:
-                    CompetitorUtils(db).edit_competitor(cid)
-            elif cmd == 'register':
-                query = ' '.join(args) if args else None
-                Registration(db).register(query)
-            elif cmd == 'summary':
-                max_place = 99
-                try:
-                    max_place = int(args[0])
-                except (ValueError, IndexError):
-                    ...
-                Summary(db).summary(max_place)
-            elif cmd == 'assign':
-                CardUtils(db).assign_card()
-            elif cmd == 'modify':
-                CardUtils(db).modify_card()
-            elif cmd == 'help':
-                print("Commands:")
-                print(tabulate([[c.synopsis, c.description] for c in commands_def]))
-            else:
-                print("Unknown command, type 'help'")
-        except KeyboardInterrupt:
-            print("Use 'quit' to exit")
-        except EOFError:
-            break
 
-    db.close()
+        self.db.close()
+
+    def prompt_once(self):
+        text = self.session.prompt(
+            HTML(f"<ansiblue>E{self.current_day()}> </ansiblue>"),
+            completer=self.completer,
+        )
+
+        if not text.strip():
+            return
+
+        parts = text.split()
+        command = self.resolve_command(parts[0].lower())
+        args = parts[1:]
+
+        if command is None:
+            print("Unknown command, type 'help'")
+            return
+
+        self.handlers[command](args)
+
+    #
+    # Commands
+    #
+
+    def help(self, args: list[str]):
+        print("Commands:")
+        print(tabulate([[c.synopsis, c.description] for c in self.commands]))
+
+    def quit(self, args: list[str]):
+        self.running = False
+
+    def day(self, args: list[str]):
+        if not args:
+            print(f"Current day: {self.current_day()}")
+            return
+
+        self.set_current_day(args[0])
+
+    def ls(self, args: list[str]):
+        self.competitors.ls_competitors(" ".join(args) or None)
+
+    def add(self, args: list[str]):
+        self.competitors.add_competitor()
+
+    def edit(self, args: list[str]):
+        if args and args[0].isdigit():
+            competitor_id = int(args[0])
+        else:
+            competitor_id = self.competitors.pick_competitor(" ".join(args))
+
+        if competitor_id is not None:
+            self.competitors.edit_competitor(competitor_id)
+
+    def assign(self, args: list[str]):
+        self.cards.assign_card()
+
+    def modify(self, args: list[str]):
+        self.cards.modify_card()
+
+    def register(self, args: list[str]):
+        self.registration.register(" ".join(args) or None)
+
+    def summary(self, args: list[str]):
+        try:
+            max_place = int(args[0])
+        except (IndexError, ValueError):
+            max_place = 99
+
+        self.summary_util.summary(max_place)
 
 
 if __name__ == "__main__":
-    main()
+    Cli().run()
