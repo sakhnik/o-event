@@ -161,6 +161,7 @@ class Competitor(Base):
     group = Column(String(50))
     sid = Column(Integer)
     name = Column(String(100))
+    representative = Column(String(100))
     notes = Column(String(500))
     money = Column(Integer)
     money_paid = Column(Integer, nullable=True)

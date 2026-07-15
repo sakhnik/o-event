@@ -237,6 +237,7 @@ def add_competitor():
         "group": "",
         "sid": None,
         "name": "",
+        "representative": "",
         "notes": "",
         "money": None,
         "declared_days": [],
@@ -287,8 +288,9 @@ def register(query: str = None):
             group = c.group or ""
             declared = c.declared_days or []
             notes = c.notes or ''
+            representative = c.representative or ''
             money = updated_money.get(c.id, c.money)
-            info = f"{c.id:3} | {money:5} | {c.reg or '':6} | {c.sid:3} | {name:20} | {group:6} | {declared} | {notes}"
+            info = f"{c.id:3} | {money:5} | {c.reg or '':6} | {c.sid:3} | {name:20} | {group:6} | {declared} | r={representative} | {notes}"
             selection.append(info)
         edited, changed = edit_yaml_in_editor(selection)
         subset = []

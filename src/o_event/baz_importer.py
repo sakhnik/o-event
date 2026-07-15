@@ -79,6 +79,7 @@ class BazImporter:
             group = self.get_group(s.findtext("Group", ""))
 
             name = s.findtext("FIO", "")
+            representative = s.findtext("Predst", "")
 
             prog_event = s.findtext("ProgEvent", "")
             declared_days = [
@@ -96,15 +97,13 @@ class BazImporter:
             region = s.findtext("Region", "")
             trainer = s.findtext("Trener", "")
 
-            notes = (
-                f"{prog_event}: "
-                f"{year}, {qual}, {club}, {region}, {trainer}"
-            )
+            notes = f"{prog_event}: {year}, {qual}, {club}, {region}, {trainer}"
 
             runners.append({
                 "club": club,
                 "group": group,
                 "name": name,
+                "representative": representative,
                 "notes": notes,
                 "days": declared_days,
             })
@@ -129,6 +128,7 @@ class BazImporter:
                 group=runner["group"],
                 sid=sid,
                 name=runner["name"],
+                representative=runner["representative"],
                 notes=runner["notes"] or None,
                 money=self.calc_payment(runner["group"], len(runner["days"]),),
                 declared_days=runner["days"],
