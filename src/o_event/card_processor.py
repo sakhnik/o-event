@@ -92,7 +92,7 @@ class CardProcessor:
             db.commit()
             return {"status": "UNK", "sid": card.card_number}
 
-        day = Config.get(db, Config.KEY_CURRENT_DAY)
+        day = Config.get_current_day(db)
         run = get_current_run(db, day, competitor)
 
         # Check for duplicate for this competitor on this stage

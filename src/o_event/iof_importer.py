@@ -11,10 +11,7 @@ class IOFImporter:
         tree = ET.parse(filename)
         root = tree.getroot()
 
-        stage = Stage(
-            day=day,
-            name=stage_name
-        )
+        stage = Stage(day=day, name=stage_name)
         self.session.add(stage)
 
         # Stage date from <Event>/<Name>

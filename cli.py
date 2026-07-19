@@ -72,7 +72,7 @@ class Cli:
         return None
 
     def current_day(self):
-        return Config.get(self.db, Config.KEY_CURRENT_DAY)
+        return Config.get_current_day(self.db)
 
     def set_current_day(self, day: str):
         try:

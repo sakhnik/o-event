@@ -45,7 +45,7 @@ class CardUtils:
         return chosen_id
 
     def pick_run(self):
-        current_day = Config.get(self.db, Config.KEY_CURRENT_DAY)
+        current_day = Config.get_current_day(self.db)
 
         runs = (
             self.db.query(Run)

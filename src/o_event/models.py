@@ -14,7 +14,6 @@ class Config(Base):
     id = Column(Integer, primary_key=True)
     key = Column(String, unique=True, nullable=False)
     value = Column(String, nullable=False)
-    type = Column(String, nullable=False)  # "str", "int", "date"
 
     KEY_NAME = "name"
     KEY_DATE = "date"
@@ -26,25 +25,14 @@ class Config(Base):
 
     @staticmethod
     def set(db, key, value):
-        if isinstance(value, int):
-            typ = "int"
-            val_str = str(value)
-        elif isinstance(value, date):
-            typ = "date"
-            val_str = value.isoformat()
-        else:
-            typ = "str"
-            val_str = str(value)
-
         # Check if key exists
         c = db.query(Config).filter_by(key=key).first()
         if c:
             # Update existing
-            c.value = val_str
-            c.type = typ
+            c.value = value
         else:
             # Insert new
-            c = Config(key=key, value=val_str, type=typ)
+            c = Config(key=key, value=value)
             db.add(c)
         db.commit()
 
@@ -53,16 +41,17 @@ class Config(Base):
         c = db.query(Config).filter_by(key=key).first()
         if not c:
             return default
-
-        if c.type == "int":
-            return int(c.value)
-        elif c.type == "date":
-            return date.fromisoformat(c.value)
-        else:
-            return c.value
+        return c.value
 
     @staticmethod
-    def create(db, name: str, start_date: date, judge: str, secretary: str, place: str):
+    def get_current_day(db):
+        day = Config.get(db, Config.KEY_CURRENT_DAY)
+        if day is None:
+            return day
+        return int(day)
+
+    @staticmethod
+    def create(db, name: str, start_date: str, judge: str, secretary: str, place: str):
         Config.set(db, Config.KEY_NAME, name)
         Config.set(db, Config.KEY_DATE, start_date)
         Config.set(db, Config.KEY_JUDGE, judge)

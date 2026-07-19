@@ -11,7 +11,7 @@ class Summary:
         self.db = db
 
     def summary(self, max_place):
-        day = Config.get(self.db, Config.KEY_CURRENT_DAY)
+        day = Config.get_current_day(self.db)
 
         groups = (
             self.db.query(Competitor.group)

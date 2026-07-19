@@ -163,7 +163,7 @@ def load_config(db):
 
 def main():
     with SessionLocal() as db:
-        day = Config.get(db, Config.KEY_CURRENT_DAY)
+        day = Config.get_current_day(db)
         if day is None:
             raise RuntimeError("Config.current_day is not set")
 

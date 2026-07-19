@@ -37,7 +37,7 @@ class Receipt:
         self.club = competitor.reg
         self.category = competitor.group
 
-        day = card.raw_json.get("day") or Config.get(self.db, Config.KEY_CURRENT_DAY)
+        day = card.raw_json.get("day") or Config.get_current_day(self.db)
         if not day:
             raise ValueError("Day not provided in card or config")
 

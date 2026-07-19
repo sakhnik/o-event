@@ -37,7 +37,7 @@ def test_all():
     Base.metadata.create_all(engine)
     Session = sessionmaker(bind=engine)
     session = Session()
-    Config.create(session, "O-Halloween", date(2025, 11, 15), "John Doe", "Jane Smith", "Kyiv")
+    Config.create(session, "O-Halloween", "2025-11-15", "John Doe", "Jane Smith", "Kyiv")
     Config.set(session, Config.KEY_CURRENT_DAY, 1)
 
     importer = IOFImporter(session)

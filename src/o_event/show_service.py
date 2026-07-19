@@ -69,7 +69,7 @@ def compute_group_results(db: Session, day: int):
 def get_results():
     """JSON API for browser to poll."""
     db = SessionLocal()
-    day = Config.get(db, Config.KEY_CURRENT_DAY)
+    day = Config.get_current_day(db)
     data = compute_group_results(db, day)
     db.close()
     return data
