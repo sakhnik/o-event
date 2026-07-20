@@ -1,6 +1,7 @@
 #!/usr/bin/env python
 
 import asyncio
+import contextlib
 from dataclasses import dataclass
 import traceback
 
@@ -16,6 +17,7 @@ SERIAL_DEVICE = "/dev/ttyUSB0"
 HCI_DEVICE = "hci1"
 STATION_NUMBER = 1
 AOP = f"AOP {STATION_NUMBER}"
+KEEPALIVE_INTERVAL = 60
 
 CHECK_STATION = 1
 START_STATION = 10
@@ -92,29 +94,48 @@ def get_transport():
     return SerialTransport(SERIAL_DEVICE)
 
 
+async def keep_alive(shell):
+    await asyncio.sleep(KEEPALIVE_INTERVAL)
+    while True:
+        try:
+            await shell.execute("id")
+            await asyncio.sleep(KEEPALIVE_INTERVAL)
+        except asyncio.CancelledError:
+            raise
+        except Exception as e:
+            print(f"Keep-alive failed: {e}")
+
+
 async def main():
     async with get_transport() as transport:
         shell = ShellProtocol(transport)
+        keepalive_task = asyncio.create_task(keep_alive(shell))
 
-        print(await shell.execute("card-readout"))
+        try:
+            print(await shell.execute("card-readout"))
 
-        async for notification in shell.notifications():
-            db = SessionLocal()
-            try:
-                data = parse_punch_readout(notification.split(), STATION_NUMBER)
-                with PrinterMux() as printer:
-                    result = CardProcessor().handle_readout(db, data, printer)
-                    print('\n'.join(printer.get_output()))
-                    print(result)
-                    return result
+            async for notification in shell.notifications():
+                db = SessionLocal()
+                try:
+                    data = parse_punch_readout(notification.split(), STATION_NUMBER)
+                    with PrinterMux() as printer:
+                        result = CardProcessor().handle_readout(db, data, printer)
+                        print('\n'.join(printer.get_output()))
+                        print(result)
+                        return result
 
-            except Exception as e:
-                print("Exception:", e)
-                db.rollback()
-                traceback.print_exc()
+                except Exception as e:
+                    print("Exception:", e)
+                    db.rollback()
+                    traceback.print_exc()
 
-            finally:
-                db.close()
+                finally:
+                    db.close()
+
+        finally:
+            keepalive_task.cancel()
+            with contextlib.suppress(asyncio.CancelledError):
+                await keepalive_task
 
 
 if __name__ == "__main__":
